@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="160dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:id="@+id/itemLayout">
+
+        <ImageView
+            android:id="@+id/previewImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_01" />
+
+        <TextView
+            android:id="@+id/channelTitle"
+            android:layout_width="48dp"
+            android:layout_height="19dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="-2dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/img_piao"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:text="娱乐"
+            android:textSize="@dimen/text_size_12sp" />
+
+        <ImageView
+            android:id="@+id/audienceIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/img_renqi" />
+
+        <TextView
+            android:id="@+id/audienceNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/audienceIcon"
+            android:layout_marginBottom="-2dp"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@+id/audienceIcon"
+            android:text="2.6万"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_12sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/itemLayout"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/text_size_14sp"
+        android:gravity="center"
+        android:text="古风啊发斯蒂芬"
+        android:textColor="@color/black" />
+</RelativeLayout>

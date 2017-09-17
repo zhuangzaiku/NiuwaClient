@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="androidui-1.1.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/build/intermediates/exploded-aar/com.smart.androidui/androidui/1.1.2/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/build/intermediates/exploded-aar/com.smart.androidui/androidui/1.1.2/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.smart.androidui/androidui/1.1.2/989c163764b67f60ec4cfdddf56c5ffdd20c4a3/androidui-1.1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

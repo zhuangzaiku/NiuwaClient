@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@android:color/transparent">
+    <Button
+        android:id="@+id/manager_jinyan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="禁言"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_border"
+        android:textColor="@color/colorAccent"/>
+    <Button
+        android:id="@+id/manager_changkong"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="设为场控"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_border"
+        android:textColor="@color/colorAccent"/>
+    <Button
+        android:id="@+id/manager_changkong_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="我的场控"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_border"
+        android:textColor="@color/colorAccent"/>
+    <Button
+        android:id="@+id/manager_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="取消"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_border"
+        android:textColor="@color/colorAccent"/>
+
+
+</LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0eeee"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="tv.niuwa.live.own.setting.FeedbackActivity">
+
+    <include layout="@layout/layout_top"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginLeft="20dp"
+        android:text="请在这里输入你的宝贵意见:"
+        android:textColor="#8b8b8b"
+        android:textSize="11sp"
+        android:gravity="center_vertical"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider"
+        android:background="@color/divider_color"/>
+
+    <EditText
+        android:id="@+id/edit_input_advice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/feedback_shape"
+        android:gravity="top"
+        android:hint="请在这里输入..."
+        android:minHeight="160dp"
+        android:padding="15dp"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:textColorHint="#808080"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider"
+        android:background="@color/divider_color"/>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_shape"
+        android:text="提交"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"/>
+</LinearLayout>

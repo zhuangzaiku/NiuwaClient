@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0eeee"
+    android:orientation="vertical"
+    tools:context="tv.niuwa.live.own.setting.SettingActivity">
+
+    <include layout="@layout/layout_top"/>
+
+    <LinearLayout
+        android:id="@+id/linear_about_container"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="14dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_weight="1"
+            android:text="关于我们"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"/>
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/middle_butto_forward_normal" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider"
+        android:background="@color/divider_color"/>
+
+    <LinearLayout
+        android:id="@+id/linear_version_container"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="14dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_weight="1"
+            android:text="当前版本 : V2.1.3"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/middle_butto_forward_normal"/>
+    </LinearLayout>
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/divider"-->
+        <!--android:background="@color/divider_color"/>-->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorNewDivider"/>
+
+    <LinearLayout
+        android:id="@+id/linear_feedback_container"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="14dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_weight="1"
+            android:text="意见反馈"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/middle_butto_forward_normal"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider"
+        android:background="@color/divider_color"/>
+
+    <LinearLayout
+        android:id="@+id/linear_modify_password_container"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="14dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_weight="1"
+            android:text="修改密码"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/middle_butto_forward_normal"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider"
+        android:background="@color/divider_color"/>
+
+    <Button
+        android:id="@+id/btn_sign_out"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/selector_pink2white_30radius"
+        android:text="退出当前帐号"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"/>
+</LinearLayout>

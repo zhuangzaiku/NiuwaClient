@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".XieyiActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/image_back"
+                android:layout_width="40dp"
+                android:layout_height="55dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/middle_butto_return_norma1" />
+        </LinearLayout>
+
+       <TextView
+           android:layout_centerInParent="true"
+           android:layout_width="wrap_content"
+           android:textColor="@color/tv_xieyi_title"
+           android:textSize="18sp"
+           android:layout_height="wrap_content"
+           android:text="@string/tv_xieyi_title"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            android:text="@string/tv_xieyi_content" />
+
+    </ScrollView>
+</LinearLayout>

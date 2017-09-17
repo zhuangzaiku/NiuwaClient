@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="tv.niuwa.live.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:background="@drawable/img_top"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_common_top" />
+
+        <RelativeLayout
+            android:id="@+id/user_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_head"
+                android:layout_width="104dp"
+                android:layout_height="104dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/img_head" />
+
+            <TextView
+                android:id="@+id/user_coin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/user_head"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="18dp"
+                android:text="@string/user_coin"
+                android:textColor="@color/color_F8EB8D"
+                android:textSize="@dimen/lcim_textsize_normal" />
+
+            <Button
+                android:id="@+id/loginRegister"
+                android:layout_width="152dp"
+                android:layout_height="39.5dp"
+                android:layout_below="@+id/user_coin"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_zhuce"
+                android:text="@string/login_or_register"
+                android:textColor="@color/white"
+                android:textSize="@dimen/lcim_textsize_normal" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/color_ebebeb" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="18dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btn_my_gift"
+                android:layout_width="320dp"
+                android:layout_height="128dp"
+                android:background="@drawable/btn_mygift" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/grey" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_marginTop="14dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btn_enter_living"
+                android:layout_width="320dp"
+                android:layout_height="128dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/btn_zhibo" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!--<ListView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:listSelector="@color/transparent"-->
+    <!--android:scrollbars="none"-->
+    <!--android:divider="@null"-->
+    <!--android:id="@+id/user_center_menus"/>-->
+
+</LinearLayout>

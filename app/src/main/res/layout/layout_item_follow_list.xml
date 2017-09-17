@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/bottom_solid"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+              android:id="@+id/item_container">
+
+    <ImageView
+        android:id="@+id/follow_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerCrop"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/icon_avatar_default"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/follow_nicename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="太阳的后裔"
+                android:textColor="@android:color/black"
+                android:textSize="13sp"/>
+
+            <ImageView
+                android:id="@+id/follow_sex"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:src="@drawable/userinfo_female"/>
+
+            <TextView
+                android:id="@+id/follow_level"
+                android:layout_width="36dp"
+                android:layout_height="15dp"
+                android:background="@drawable/new_userlevel_1"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:text="0"
+                android:textColor="@android:color/white"
+                android:textSize="8sp" />
+            <ImageView
+                android:id="@+id/follow_real"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_marginLeft="6dp"
+                android:src="@drawable/icon_v"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp">
+            <TextView
+                android:id="@+id/follow_signature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textSize="11dp"
+                android:text="这家伙没有设置签名!"
+                android:textColor="#999999"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

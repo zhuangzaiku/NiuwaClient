@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+
+    <item
+        android:duration="150"
+        android:drawable="@mipmap/gift_jiezhi_1"/>
+
+    <item
+        android:duration="150"
+        android:drawable="@mipmap/gift_jiezhi_2"/>
+
+    <item
+        android:duration="150"
+        android:drawable="@mipmap/gift_jiezhi_3"/>
+
+    <item
+        android:duration="150"
+        android:drawable="@mipmap/gift_jiezhi_4"/>
+
+    <item
+        android:duration="150"
+        android:drawable="@mipmap/gift_jiezhi_5"/>
+    <item
+        android:duration="150"
+        android:drawable="@mipmap/gift_jiezhi_6"/>
+
+    <item
+        android:duration="150"
+        android:drawable="@mipmap/gift_jiezhi_7"/>
+
+    <item
+        android:duration="150"
+        android:drawable="@mipmap/gift_jiezhi_8"/>
+
+    <item
+        android:duration="150"
+        android:drawable="@mipmap/gift_jiezhi_9"/>
+
+    <item
+        android:duration="150"
+        android:drawable="@mipmap/gift_jiezhi_10"/>
+
+
+
+</animation-list>

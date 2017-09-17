@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:gravity="center"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="50dp">
+        <TextView
+            android:id="@+id/music_name"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:text="userName"
+            android:textSize="12sp"
+            android:textColor="@color/colorGray"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/singer_name"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="12sp"
+            android:textColor="@color/colorGray"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorGrayFont"/>
+</LinearLayout>
+
+    <Button
+        android:id="@+id/btn_download"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:background="@color/colorPrimary"
+        android:text="下载"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:layout_alignParentRight="true"/>
+</RelativeLayout>

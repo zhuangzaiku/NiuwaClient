@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="tv.niuwa.live.MainActivity">
+
+    <include layout="@layout/layout_common_top"/>
+    <com.shizhefei.view.indicator.ScrollIndicatorView
+        android:id="@+id/moretab_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/moretab_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<fragment-->
+            <!--android:id="@+id/fragment_home"-->
+            <!--android:name="tv.niuwa.live.home.fragment.HomeFragment"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"/>-->
+
+        <!--<fragment-->
+            <!--android:id="@+id/fragment_own"-->
+            <!--android:name="tv.niuwa.live.own.OwnFragment"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"/>-->
+
+        <!--<com.smart.androidui.widget.menu.BottomTabMenu-->
+            <!--android:id="@+id/bottomTabMenu"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="54dp"-->
+            <!--app:tab_image_width="20dp"-->
+            <!--app:tab_image_height="20dp"-->
+            <!--android:background="@color/white"-->
+            <!--app:tab_image_middle_divider_width="80dp"-->
+            <!--app:tab_textColor_normal="@color/black"-->
+            <!--app:tab_textColor_selected="@color/colorTheme"-->
+            <!--app:tab_textSize="12sp"/>-->
+    <!--</LinearLayout>-->
+
+  <!--<LinearLayout-->
+      <!--android:layout_width="wrap_content"-->
+      <!--android:layout_height="wrap_content"-->
+      <!--android:orientation="vertical"-->
+      <!--android:layout_gravity="bottom|center_horizontal"-->
+      <!--android:gravity="center">-->
+      <!--<ImageView-->
+          <!--android:id="@+id/image_start_living"-->
+          <!--android:layout_width="65dp"-->
+          <!--android:layout_height="65dp"-->
+          <!--android:layout_marginBottom="2dp"-->
+          <!--android:src="@drawable/zhibo_begin"/>-->
+      <!--<TextView-->
+          <!--android:layout_width="wrap_content"-->
+          <!--android:layout_height="wrap_content"-->
+          <!--android:text="直播"-->
+          <!--android:textColor="@color/white"-->
+          <!--android:textSize="12sp"/>-->
+  <!--</LinearLayout>-->
+
+</LinearLayout>

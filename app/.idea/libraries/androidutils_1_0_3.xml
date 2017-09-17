@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="androidutils-1.0.3">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/build/intermediates/exploded-aar/com.smart.androidutils/androidutils/1.0.3/res" />
+      <root url="jar://$PROJECT_DIR$/build/intermediates/exploded-aar/com.smart.androidutils/androidutils/1.0.3/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.smart.androidutils/androidutils/1.0.3/762b7b6f80ca5dba3c989d5557136b572a1111ab/androidutils-1.0.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

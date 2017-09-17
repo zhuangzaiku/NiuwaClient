@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0eeee"
+    android:orientation="vertical"
+    tools:context="tv.niuwa.live.own.setting.AboutActivity">
+
+    <include layout="@layout/layout_top"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_marginTop="38dp"
+        android:layout_marginBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_xiupai_live"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/icon_sisi"
+            android:visibility="gone"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="       牛哇直播.最流行最高端的手机直播视频直播平台,明星网红都在玩!"
+                android:textColor="@color/colorGray"
+                android:textSize="12sp"
+                android:padding="12dp"
+                android:lineSpacingExtra="3dp"
+                android:lineSpacingMultiplier="1.5"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="微信公众号:  牛哇直播"
+                android:textColor="#bfbfbf"
+                android:textSize="18sp"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:lineSpacingExtra="6dp"
+            android:text="© 2016 Beijing Kinlink Information Technology Co.Ltd.\n北京景蓝信息技术有限公司 ©版权所有"
+            android:textColor="#bfbfbf"
+            android:textSize="14sp"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+</LinearLayout>
+
+</LinearLayout>

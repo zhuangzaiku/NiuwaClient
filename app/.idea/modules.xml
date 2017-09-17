@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../androidHorizontalListView/androidHorizontalListView.iml" filepath="$PROJECT_DIR$/../androidHorizontalListView/androidHorizontalListView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../leancloudchatkit/leancloudchatkit.iml" filepath="$PROJECT_DIR$/../leancloudchatkit/leancloudchatkit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../loginsharesdk/loginsharesdk.iml" filepath="$PROJECT_DIR$/../loginsharesdk/loginsharesdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../lrcview/lrcview.iml" filepath="$PROJECT_DIR$/../lrcview/lrcview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../qishi.iml" filepath="$PROJECT_DIR$/../qishi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../thirdpay/thirdpay.iml" filepath="$PROJECT_DIR$/../thirdpay/thirdpay.iml" />
+    </modules>
+  </component>
+</project>

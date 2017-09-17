@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical"
+    tools:context="tv.niuwa.live.own.userinfo.MyDataActivity">
+
+    <include layout="@layout/layout_top" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/frame_user_avatar_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:visibility="gone">
+
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:id="@+id/mydata_user_avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:text="头像:"
+                        android:textColor="@color/colorGray"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/image_user_avatar"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/icon_avatar_default" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/middle_butto_forward_normal" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@color/divider_color" />
+
+                <LinearLayout
+                    android:id="@+id/linear_user_nick_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:text="昵称:"
+                        android:textColor="@color/colorGrayFont2"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/text_user_nick"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="26dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:ellipsize="end"
+                        android:gravity="right"
+                        android:paddingRight="16dp"
+                        android:singleLine="true"
+                        android:text="无"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/middle_butto_forward_normal"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <View
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider"
+                    android:background="@color/divider_color" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:text="用户ID:"
+                        android:textColor="@color/colorGrayFont2"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/text_user_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="26dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:ellipsize="end"
+                        android:gravity="right"
+                        android:paddingRight="16dp"
+                        android:singleLine="true"
+                        android:text="1"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/middle_butto_forward_normal"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <View
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider"
+                    android:background="@color/divider_color" />
+
+                <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/divider"-->
+                <!--android:layout_marginTop="14dp"-->
+                <!--android:background="@color/divider_color"/>-->
+
+                <LinearLayout
+                    android:id="@+id/linear_user_sex_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:text="性别:"
+                        android:textColor="@color/colorGrayFont2"
+                        android:textSize="12sp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right|center_vertical"
+                        android:paddingRight="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="26dp"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="男"
+                            android:textColor="@android:color/black"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/userinfo_male" />
+
+                        <CheckBox
+                            android:id="@+id/radio_male"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/checkbox_payway_selector1"
+                            android:button="@null" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="26dp"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="女"
+                            android:textColor="@android:color/black"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/userinfo_female" />
+
+                        <CheckBox
+                            android:id="@+id/radio_female"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/checkbox_payway_selector1"
+                            android:button="@null"
+                            android:checked="true" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/middle_butto_forward_normal"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider"
+                    android:background="@color/divider_color" />
+
+
+                <LinearLayout
+                    android:id="@+id/linear_user_tel"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:text="我的手机:"
+                        android:textColor="@color/colorGrayFont2"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/mobile_status"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="26dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:ellipsize="end"
+                        android:gravity="right"
+                        android:singleLine="true"
+                        android:text="已绑定"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/middle_butto_forward_normal" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/colorNewDivider" />
+
+            <LinearLayout
+                android:id="@+id/linear_user_email_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:paddingTop="17dp"
+                    android:text="签名:"
+                    android:textColor="@color/colorGrayFont2"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="17dp">
+
+                    <EditText
+                        android:id="@+id/text_user_signature"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:gravity="top"
+                        android:minLines="3"
+                        android:text="无"
+                        android:textColor="@color/colorGrayFont2"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginBottom="10dp"
+                        android:text="支持50个字"
+                        android:textColor="#c3c3c3"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/divider"-->
+            <!--android:background="@color/divider_color"/>-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/colorNewDivider" />
+
+            <LinearLayout
+                android:id="@+id/linear_user_real_container"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="实名认证:"
+                    android:textColor="@color/colorGrayFont2"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/text_userdata_real"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:background="@drawable/btn_shape_green"
+                    android:ellipsize="end"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="2dp"
+                    android:singleLine="true"
+                    android:text="未实名"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/middle_butto_forward_normal" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_save_and_back"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/selector_pink2white_30radius"
+                android:text="保存并返回"
+                android:textColor="@drawable/selector_pink2white_30radius"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

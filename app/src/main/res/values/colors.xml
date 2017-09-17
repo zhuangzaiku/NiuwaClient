@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffecba2c</color>
+    <color name="colorPrimaryDanmu">#73d83dff</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#ffecba2c</color>
+    <color name="colorGray">#808080</color>
+    <color name="top_tab_normal_color">#333333</color>
+    <color name="divider_color">#dbdbdb</color>
+    <color name="corner">#bdd1d0d0</color>
+    <color name="cover_background">#e0414141</color>
+    <color name="alpha_gray">#80000000</color>
+    <color name="divider_color_alpha">#50adadad</color>
+    <color name="danmu_user_name">#a45319</color>
+    <color name="danmu_notice">#e73d3d</color>
+    <color name="home_tab">#ffc000</color>
+    <color name="home_tab1">#ffc000</color>
+    <color name="colorGreen">#71b654</color>
+    <color name="num2">#f2a201</color>
+    <color name="num3">#007ade</color>
+    <color name="colorYanzheng">#e7a2c7</color>
+    <color name="colorMainGray">#acacac</color>
+    <color name="colorNewDivider">#e9e9e9</color>
+    <color name="colorLevel">#b21616</color>
+    <color name="colorGrayFont">#d3d3d3</color>
+    <color name="colorGrayFont1">#ababab</color>
+    <color name="colorGrayFont2">#666666</color>
+    <color name="color_F8EB8D">#F8EB8D</color>
+
+
+
+    <color name="tablayout_select">#ffecba2c</color>
+
+    <color name="transparent33">#33000000</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="colorTheme">@color/common_top_bg</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grey">#dddddd</color>
+    <color name="black">#000000</color>
+
+
+
+    <!-- UI等颜色 -->
+
+    <color name="bg">#fafafa</color>
+    <color name="transparent_black">#88000000</color>
+    <color name="transparent_white">#88ffffff</color>
+    <color name="transparent_grey">#88dddddd</color>
+    <color name="textcolor_title">#ffffff</color>
+    <color name="tv_login_xieyi">@color/common_top_bg</color>
+
+    <color name="tv_xieyi_title">@color/textcolor_title</color>
+    <color name="popup_bg">#e5000000</color>
+
+    <color name="common_top_bg">#ffecba2c</color>
+    <color name="color_ebebeb">#ebebeb</color>
+
+</resources>
+

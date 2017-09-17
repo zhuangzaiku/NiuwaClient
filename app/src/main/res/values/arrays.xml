@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="user_center_menu">
+        <item>导演联络</item>
+        <item>我的奖品</item>
+        <item>我的购物</item>
+        <item>言论列表</item>
+        <item>我的哇友</item>
+        <item>蝌蚪群</item>
+    </string-array>
+
+    <string-array name="titles">
+        <item>古风唯美茶小乖</item>
+        <item>何以解忧唯有69</item>
+        <item>美艳无敌惊艳宇宙</item>
+        <item>吉他忧郁小媚娘</item>
+        <item>时尚达人小美</item>
+        <item>周杰伦演唱会现场</item>
+        <item>范冰冰见面会</item>
+        <item>新华社即时报道</item>
+    </string-array>
+    <string-array name="channelTitles">
+        <item>娱乐</item>
+        <item>时尚</item>
+        <item>时尚</item>
+        <item>演唱会</item>
+        <item>时尚</item>
+        <item>演唱会</item>
+        <item>明星会</item>
+        <item>新闻</item>
+    </string-array>
+</resources>

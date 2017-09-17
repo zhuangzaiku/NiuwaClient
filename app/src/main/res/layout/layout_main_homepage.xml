@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/banner_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/img_xian02" />
+
+        <com.bigkoo.convenientbanner.ConvenientBanner xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/convenientBanner"
+            android:layout_width="match_parent"
+            android:layout_height="127dp"
+            app:canLoop="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/tagLayout"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/img_xian02" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:scrollbars="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:layout_width="58dp"
+                    android:layout_height="21.5dp"
+                    android:text="搭讪"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:background="@drawable/img_quan00"/>
+                <Button
+                    android:layout_width="58dp"
+                    android:layout_height="21.5dp"
+                    android:text="猎奇"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:background="@drawable/img_quan00"/>
+
+                <Button
+                    android:layout_width="58dp"
+                    android:layout_height="21.5dp"
+                    android:text="人气榜"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:background="@drawable/img_quan00"/>
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="58dp"
+                    android:layout_height="21.5dp"
+                    android:background="@drawable/img_quan00">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="6dp"
+                        android:text="美食"
+                        android:textColor="@color/lcim_commom_read"
+                        android:layout_centerInParent="true"
+                        android:textSize="@dimen/text_size_14sp"
+                        />
+
+
+                    <ImageView
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="8dp"
+                        android:id="@+id/selectedIcon"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/icon_main_tab_selected_shape" />
+
+                </RelativeLayout>
+
+                <Button
+                    android:layout_width="58dp"
+                    android:layout_height="21.5dp"
+                    android:text="致富"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:background="@drawable/img_quan00"/>
+                <Button
+                    android:layout_width="58dp"
+                    android:layout_height="21.5dp"
+                    android:text="财经"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:background="@drawable/img_quan00"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+
+    <include layout="@layout/layout_main_common" />
+
+</LinearLayout>

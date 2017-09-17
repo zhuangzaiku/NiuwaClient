@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@android:color/white"
+              android:padding="5dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/manager_list_avatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/icon_avatar_default"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            />
+        <TextView
+            android:id="@+id/manager_list_nicename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="暂无昵称"
+            android:textSize="14sp"
+            android:layout_toRightOf="@+id/manager_list_avatar"
+            android:layout_centerVertical="true"/>
+        <Button
+            android:id="@+id/manager_list_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_border"
+            android:text="取消场控"
+            android:textSize="14sp"
+            android:clickable="false"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+</LinearLayout>

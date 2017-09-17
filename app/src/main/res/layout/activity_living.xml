@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_living_root_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context="tv.niuwa.live.living.LivingActivity">
+
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:scaleType="fitXY"-->
+    <!--android:src="@drawable/image_living_bg"/>-->
+    <android.opengl.GLSurfaceView
+        android:id="@+id/camera_preview"
+        android:layout_width="2dp"
+        android:layout_height="3dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"/>
+    <SurfaceView
+        android:id="@+id/player_surface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/living_pause_cover"
+        android:visibility="gone"
+        android:id="@+id/pauseCover"/>
+    <!--<TextureView-->
+    <!--android:id="@+id/player_texture"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--tools:targetApi="ice_cream_sandwich"/>-->
+
+
+    <!--<FrameLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+    <!--<include layout="@layout/layout_live_top"/>-->
+    <ViewFlipper
+        android:id="@+id/live_viewflipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+        <include layout="@layout/layout_live_top"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </ViewFlipper>
+
+    <!--</FrameLayout>-->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/layout_living_end_cover"/>
+    </FrameLayout>
+
+</FrameLayout>

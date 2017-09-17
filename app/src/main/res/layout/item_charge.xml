@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@android:color/white"
+              android:padding="5dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="5dp">
+
+        <ImageView
+            android:id="@+id/charge_zuanshi"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/zhibo_money_s"
+            android:layout_marginRight="8dp"
+            android:layout_centerVertical="true"
+            />
+        <TextView
+            android:id="@+id/charge_item_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="60"
+            android:textSize="14sp"
+            android:layout_toRightOf="@+id/charge_zuanshi"
+            android:layout_centerVertical="true"/>
+        <Button
+            android:id="@+id/charge_item_money"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/shape_stroke1_solidtrans"
+            android:text="6元"
+            android:textSize="11sp"
+            android:clickable="false"
+            android:textColor="@color/colorPrimary"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+</LinearLayout>

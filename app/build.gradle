@@ -1,0 +1,110 @@
+apply plugin: 'com.android.application'
+apply plugin: 'bugly'
+bugly {
+    appId = '1ada2b4c05'
+    appKey = 'c877d311-6bd9-429f-8a93-2bea743a2372'
+}
+android {
+    compileSdkVersion 24
+    buildToolsVersion '25.0.2'
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    defaultConfig {
+        applicationId "tv.niuwa.live"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 3
+        versionName "2.1.4"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+        aaptOptions.cruncherEnabled = false
+        aaptOptions.useNewCruncher = false
+        aaptOptions.cruncherEnabled = false
+        aaptOptions.useNewCruncher = false
+    }
+    signingConfigs {
+        debug {
+
+        }
+        release {
+            storeFile file('../keystore/sisi.jks')
+            keyAlias 'sisi'
+            keyPassword 'dfsbLPL6wjG4t68kjd'
+            storePassword 'dfsbLPL6wjG4t68kjd'
+        }
+    }
+
+    buildTypes {
+        debug {
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            //混淆
+            minifyEnabled false
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources false
+            //加载默认混淆配置文件
+            //proguardFiles getDefaultProguardFile('proguard-Android.txt'), 'proguard-rules.pro'
+            //签名
+            signingConfig signingConfigs.release
+        }
+        release {
+            debuggable true
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //混淆
+            minifyEnabled false
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources false
+            //加载默认混淆配置文件
+            //proguardFiles getDefaultProguardFile('proguard-Android.txt'), 'proguard-rules.pro'
+            //签名
+            signingConfig signingConfigs.release
+        }
+    }
+}
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.android.support:design:+'
+    compile 'com.android.support:recyclerview-v7:+'
+    compile 'cn.leancloud.android:avoscloud-sdk:v3.13.+'
+    compile('cn.leancloud.android:avoscloud-push:v3.13.+@aar') { transitive = true }
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.smart.androidutils:androidutils:1.0.3'
+    //    compile 'com.smart.androidui:androidui:1.0.4.5'
+    compile 'com.smart.androidui:androidui:1.1.2'
+    //    compile project(':androidui')
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.bigkoo:convenientbanner:2.0.5'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.loopj.android:android-async-http:1.4.9'
+    //compile 'com.qiniu:happy-dns:0.2.5'
+    compile 'com.github.stuxuhai:jpinyin:1.0'
+    //compile project(':ijkwidget')
+    compile project(':androidHorizontalListView')
+    compile project(':leancloudchatkit')
+    //compile project (':thirdpay')
+    compile files('libs/BaiduLBS_Android.jar')
+    compile files('libs/httpcore-4.2.4.jar')
+    compile files('libs/httpclient-4.2.5.jar')
+    compile files('libs/alipaySdk-20160825.jar')
+    compile 'com.android.support:multidex:1.0.1'
+    compile project(':loginsharesdk')
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.isseiaoki:simplecropview:1.1.4'
+
+    compile 'com.shizhefei:ViewPagerIndicator:1.1.6'
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    compile project(path: ':BruToolKit')
+}

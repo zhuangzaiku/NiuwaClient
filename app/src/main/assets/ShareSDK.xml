@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DevInfor>
+    <ShareSDK
+        AppKey = "17ac9213914dc" />
+
+    <Wechat
+        Id="1"
+        SortId="1"
+        AppId="wxe0c5a5f9c01c8aa8"
+        AppSecret="0acb2c7d9974981701e647d6203f4b51"
+        BypassApproval="false"
+        Enable="true" />
+
+    <!-- 微信朋友圈 -->
+    <WechatMoments
+        Id="2"
+        SortId="2"
+        AppId="wxe0c5a5f9c01c8aa8"
+        AppSecret="0acb2c7d9974981701e647d6203f4b51"
+        BypassApproval="false"
+        Enable="true" />
+
+    <QQ
+        Id="3"
+        SortId="3"
+        AppId="101347679"
+        AppKey="be04b1a0da7e4414e6dd9867d8cda88e"
+        ShareByAppClient="true"
+        Enable="true" />
+    <QZone
+        Id="4"
+        SortId="4"
+        AppId="101347679"
+        AppKey="be04b1a0da7e4414e6dd9867d8cda88e"
+        ShareByAppClient="true"
+        Enable="true" />
+
+    <SinaWeibo
+        Id="5"
+        SortId="5"
+        AppKey="2467366817"
+        AppSecret="74317e7b2fd6e3f66903fc235a3bdbeb"
+        RedirectUrl="https://api.weibo.com/oauth2/default.html"
+        ShareByAppClient="true"
+        Enable="true" />
+</DevInfor>

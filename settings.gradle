@@ -1,0 +1,3 @@
+include ':app', ':thirdpay', ':leancloudchatkit', ':loginsharesdk', ':lrcview'
+include ':androidHorizontalListView'
+include ':BruToolKit'

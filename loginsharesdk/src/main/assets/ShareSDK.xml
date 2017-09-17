@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DevInfor>
+    <ShareSDK
+        AppKey = "17ac9213914dc"/>
+
+    <Wechat
+        Id="1"
+        SortId="1"
+        AppId="wx09dfd844e8efdfd4"
+        AppSecret="339b48b992ed7724e32baf42a7fc3ab4"
+        BypassApproval="false"
+        Enable="true" />
+
+    <!-- 微信朋友圈 -->
+    <WechatMoments
+        Id="2"
+        SortId="2"
+        AppId="wx09dfd844e8efdfd4"
+        AppSecret="339b48b992ed7724e32baf42a7fc3ab4"
+        BypassApproval="false"
+        Enable="true" />
+
+    <QQ
+        Id="3"
+        SortId="3"
+        AppId="1105675577"
+        AppKey="nHEvnHFoNCcZp9PQ"
+        ShareByAppClient="true"
+        Enable="true" />
+
+    <SinaWeibo
+        Id="4"
+        SortId="4"
+        AppKey="936741235"
+        AppSecret="3ef8a78d9a96dbb19f2e085b1f3b8737"
+        RedirectUrl="https://www.baidu.com/"
+        ShareByAppClient="true"
+        Enable="true" />
+</DevInfor>

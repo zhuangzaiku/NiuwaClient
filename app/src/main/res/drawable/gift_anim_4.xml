@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+
+    <item
+        android:duration="200"
+        android:drawable="@mipmap/gift_car_1"/>
+
+    <!--<item-->
+        <!--android:duration="150"-->
+        <!--android:drawable="@mipmap/gift_car_2"/>-->
+
+    <item
+        android:duration="200"
+        android:drawable="@mipmap/gift_car_3"/>
+
+    <!--<item-->
+        <!--android:duration="150"-->
+        <!--android:drawable="@mipmap/gift_car_4"/>-->
+
+    <item
+        android:duration="200"
+        android:drawable="@mipmap/gift_car_5"/>
+    <!--<item-->
+        <!--android:duration="150"-->
+        <!--android:drawable="@mipmap/gift_car_6"/>-->
+
+    <item
+        android:duration="200"
+        android:drawable="@mipmap/gift_car_7"/>
+
+    <!--<item-->
+        <!--android:duration="150"-->
+        <!--android:drawable="@mipmap/gift_car_8"/>-->
+
+    <!--<item-->
+        <!--android:duration="300"-->
+        <!--android:drawable="@mipmap/gift_car_9"/>-->
+
+    <item
+        android:duration="200"
+        android:drawable="@mipmap/gift_car_10"/>
+
+</animation-list>
