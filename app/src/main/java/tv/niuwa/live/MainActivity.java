@@ -86,9 +86,6 @@ public class MainActivity extends BaseSiSiActivity {
     @Bind(R.id.moretab_viewPager)
     ViewPager viewPager;
 
-    private Integer[] images = {R.drawable.img_banner01, R.drawable.img_banner02, R.drawable.img_banner03,
-            R.drawable.img_banner04};
-
     @Bind(R.id.title)
     TextView title;
 
@@ -414,23 +411,23 @@ public class MainActivity extends BaseSiSiActivity {
     }
 
     private void initHomePage(View convertView) {
-        convertView.findViewById(R.id.banner_layout).setVisibility(View.VISIBLE);
-        convertView.findViewById(R.id.tagLayout).setVisibility(View.GONE);
-        ConvenientBanner convenientBanner = (ConvenientBanner) convertView.findViewById(R.id.convenientBanner);
-        //自定义你的Holder，实现更多复杂的界面，不一定是图片翻页，其他任何控件翻页亦可。
-        convenientBanner.setPages(
-                new CBViewHolderCreator<LocalImageHolderView>() {
-                    @Override
-                    public LocalImageHolderView createHolder() {
-                        return new LocalImageHolderView();
-                    }
-                }, Arrays.asList(images))
-                //设置两个点图片作为翻页指示器，不设置则没有指示器，可以根据自己需求自行配合自己的指示器,不需要圆点指示器可用不设
-                .setPageIndicator(new int[]{R.drawable.ic_page_indicator, R.drawable.ic_page_indicator_focused})
-                //设置指示器的方向
-                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_LEFT)
-                .startTurning(5000);
-        initData(convertView, true);
+//        convertView.findViewById(R.id.banner_layout).setVisibility(View.VISIBLE);
+//        convertView.findViewById(R.id.tagLayout).setVisibility(View.GONE);
+//        ConvenientBanner convenientBanner = (ConvenientBanner) convertView.findViewById(R.id.convenientBanner);
+//        //自定义你的Holder，实现更多复杂的界面，不一定是图片翻页，其他任何控件翻页亦可。
+//        convenientBanner.setPages(
+//                new CBViewHolderCreator<LocalImageHolderView>() {
+//                    @Override
+//                    public LocalImageHolderView createHolder() {
+//                        return new LocalImageHolderView();
+//                    }
+//                }, Arrays.asList(images))
+//                //设置两个点图片作为翻页指示器，不设置则没有指示器，可以根据自己需求自行配合自己的指示器,不需要圆点指示器可用不设
+//                .setPageIndicator(new int[]{R.drawable.ic_page_indicator, R.drawable.ic_page_indicator_focused})
+//                //设置指示器的方向
+//                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_LEFT)
+//                .startTurning(5000);
+//        initData(convertView, true);
     }
 
     private void initOtherPage(View convertView) {
@@ -441,39 +438,39 @@ public class MainActivity extends BaseSiSiActivity {
     }
 
     private void initData(View convertView, boolean isHomePage) {
-        List<HomeDataItem> data = new ArrayList<>();
-        String[] audienceNum = new String[]{"12.4万", "4.4万", "5.6万", "45万", "23.3万", "2.7万", "11.1万", "6.2万"};
-        String[] titleStrs = getResources().getStringArray(R.array.titles);
-        String[] channelTitles = getResources().getStringArray(R.array.channelTitles);
-        int[] imgIds = new int[]{R.drawable.img_01, R.drawable.img_02, R.drawable.img_03, R.drawable.img_04,
-                R.drawable.img_05, R.drawable.img_06, R.drawable.img_07, R.drawable.img_08};
-        for (int i = 0; i < audienceNum.length; i++) {
-            data.add(new HomeDataItem(isHomePage ? channelTitles[i] : null, titleStrs[i], audienceNum[i], imgIds[i]));
-        }
-        GridView gridView = (GridView) convertView.findViewById(R.id.gridView);
-        gridView.setAdapter(new HomeListAdapter(this, data));
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                VideoItem videoItem = new VideoItem();
-//                videoItem.setRoom_id("16");
-//                videoItem.setId("156276");
-//                videoItem.setUser_nicename("\u7528\u6237156276");
-//                videoItem.setAvatar("http://zhibo.519wan.com/data/upload/avatar/default.png");
-//                videoItem.setChannel_creater("156276");
-//                videoItem.setChannel_location(null);
-//                videoItem.setChannel_title("niuwa");
-//                videoItem.setOnline_num("11");
-//                videoItem.setSmeta("http://zhibo.519wan.com/data/upload/avatar/default.png");
-//                videoItem.setChannel_status("2");
-//                videoItem.setUser_level("1");
-//                videoItem.setPrice("0");
-//                videoItem.setNeed_password("0");
-//                Bundle data = new Bundle();
-//                data.putSerializable("videoItem", videoItem);
-//                openActivity(LivingActivity.class,data);
-            }
-        });
+//        List<HomeDataItem> data = new ArrayList<>();
+//        String[] audienceNum = new String[]{"12.4万", "4.4万", "5.6万", "45万", "23.3万", "2.7万", "11.1万", "6.2万"};
+//        String[] titleStrs = getResources().getStringArray(R.array.titles);
+//        String[] channelTitles = getResources().getStringArray(R.array.channelTitles);
+//        int[] imgIds = new int[]{R.drawable.img_01, R.drawable.img_02, R.drawable.img_03, R.drawable.img_04,
+//                R.drawable.img_05, R.drawable.img_06, R.drawable.img_07, R.drawable.img_08};
+//        for (int i = 0; i < audienceNum.length; i++) {
+//            data.add(new HomeDataItem(isHomePage ? channelTitles[i] : null, titleStrs[i], audienceNum[i], imgIds[i]));
+//        }
+//        GridView gridView = (GridView) convertView.findViewById(R.id.gridView);
+//        gridView.setAdapter(new HomeListAdapter(this, data));
+//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+////                VideoItem videoItem = new VideoItem();
+////                videoItem.setRoom_id("16");
+////                videoItem.setId("156276");
+////                videoItem.setUser_nicename("\u7528\u6237156276");
+////                videoItem.setAvatar("http://zhibo.519wan.com/data/upload/avatar/default.png");
+////                videoItem.setChannel_creater("156276");
+////                videoItem.setChannel_location(null);
+////                videoItem.setChannel_title("niuwa");
+////                videoItem.setOnline_num("11");
+////                videoItem.setSmeta("http://zhibo.519wan.com/data/upload/avatar/default.png");
+////                videoItem.setChannel_status("2");
+////                videoItem.setUser_level("1");
+////                videoItem.setPrice("0");
+////                videoItem.setNeed_password("0");
+////                Bundle data = new Bundle();
+////                data.putSerializable("videoItem", videoItem);
+////                openActivity(LivingActivity.class,data);
+//            }
+//        });
     }
 
 

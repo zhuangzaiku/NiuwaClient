@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
-                    android:text="我的秀币:"
+                    android:text="我的牛币:"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"/>
 
@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
                     android:singleLine="true"
-                    android:text="(1元=10秀币)"
+                    android:text="(1元=10牛币)"
                     android:textColor="#919191"
                     android:textSize="16sp"/>
             </LinearLayout>

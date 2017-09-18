@@ -98,7 +98,7 @@ public class ChargeMoneyActivity extends BaseSiSiActivity implements View.OnClic
 //        product = "1";
 //        String goldNum = mEditChargeGoldNum.getText().toString().trim();
 //        if (StringUtils.isEmpty(goldNum)) {
-//            toast("请输入充值的秀币数量!");
+//            toast("请输入充值的牛币数量!");
 //            return;
 //        }
 //        if ((!mCheckBoxPayWechat.isChecked()) && (!mCheckBoxAliPay.isChecked())) {
@@ -148,7 +148,7 @@ public class ChargeMoneyActivity extends BaseSiSiActivity implements View.OnClic
         MyApplication app = (MyApplication) this.getApplication();
         mTextMyGoldNum.setText(app.getBalance());
         currentMoney = app.getBalance();
-       // mTextTopTitle.setText("秀币充值");
+       // mTextTopTitle.setText("牛币充值");
         //mAvatarContainerWidth = DensityUtils.screenWidth(this);
         //mAvatarContainerHeight = (mAvatarContainerWidth * 330) / 750;
         //LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(mAvatarContainerWidth, mAvatarContainerHeight);

@@ -9,21 +9,32 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSONObject;
+import com.bumptech.glide.Glide;
+import com.smart.androidutils.images.GlideCircleTransform;
+import com.smart.androidutils.utils.SharePrefsUtils;
+import com.smart.androidutils.utils.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
+import tv.niuwa.live.MyApplication;
 import tv.niuwa.live.R;
 import tv.niuwa.live.core.BaseSiSiActivity;
 import tv.niuwa.live.home.model.VideoItem;
+import tv.niuwa.live.intf.OnRequestDataListener;
 import tv.niuwa.live.living.LivingActivity;
 import tv.niuwa.live.login.LoginActivity;
 import tv.niuwa.live.own.message.MessageActivity;
 import tv.niuwa.live.own.setting.SettingActivity;
+import tv.niuwa.live.own.userinfo.MyDataActivity;
 import tv.niuwa.live.own.userinfo.UserMenuItem;
 import tv.niuwa.live.own.userinfo.UserMenuListAdapter;
 import tv.niuwa.live.search.SearchActivity;
+import tv.niuwa.live.utils.Api;
 
 /**
  * @author Ronan.zhuang
@@ -47,14 +58,22 @@ public class UserCenterActivity extends BaseSiSiActivity {
     Button loginRegister;
 
     @Bind(R.id.btn_my_gift)
-    Button myGift;
+    ImageView myGift;
 
     @Bind(R.id.btn_enter_living)
-    Button enterLiving;
+    ImageView enterLiving;
 
 
     @Bind(R.id.right_icon)
     ImageView rightIcon;
+
+
+    @Bind(R.id.user_head)
+    CircleImageView userHead;
+
+    @Bind(R.id.user_nickname)
+    TextView userNickname;
+
     @Bind(R.id.user_coin)
     TextView userCoin;
 
@@ -67,7 +86,7 @@ public class UserCenterActivity extends BaseSiSiActivity {
     @OnClick(R.id.right_icon)
     public void goSetting(View view) {
         ((ImageView)view).setImageResource(R.drawable.img_setting);
-        startActivity(new Intent(this, UserMainActivity.class));
+        startActivity(new Intent(this, SettingActivity.class));
     }
 //
 //    @Bind(R.id.user_center_menus)
@@ -77,6 +96,7 @@ public class UserCenterActivity extends BaseSiSiActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
+        initData();
     }
 
     @Override
@@ -84,16 +104,26 @@ public class UserCenterActivity extends BaseSiSiActivity {
         return R.layout.activity_user_center;
     }
 
+    @OnClick(R.id.user_head)
+    public void clickAvatarName(View view) {
+        Intent i = new Intent(this, MyDataActivity.class);
+        startActivityForResult(i, 1);
+    }
+
+
+
+    @Bind(R.id.nickname_edit)
+    ImageView nicknameEdit;
+
+    @OnClick(R.id.nickname_edit)
+    public void clickAvatarName1(View view) {
+        Intent i = new Intent(this, MyDataActivity.class);
+        startActivityForResult(i, 1);
+    }
+
     private void initView() {
         title.setText(R.string.user_center);
 
-//        String[] menuStrs = getResources().getStringArray(R.array.user_center_menu);
-//        int[] menuResIds = new int[]{R.drawable.img_icon01, R.drawable.img_icon02, R.drawable.img_icon03,
-//                R.drawable.img_icon04, R.drawable.img_icon05, R.drawable.img_icon06, };
-//        for(int i = 0;i < menuStrs.length; i++) {
-//            mMenuListData.add(new UserMenuItem(menuStrs[i], menuResIds[i]));
-//        }
-//        menuList.setAdapter(new UserMenuListAdapter(this,mMenuListData));
         userCoin.setText(Html.fromHtml(String.format(getResources().getString(R.string.user_coin), String.valueOf(54))));
 
 
@@ -151,4 +181,59 @@ public class UserCenterActivity extends BaseSiSiActivity {
         });
     }
 
+    private void initData() {
+        String token = (String) SharePrefsUtils.get(UserCenterActivity.this, "user", "token", "");
+        String userId = (String) SharePrefsUtils.get(UserCenterActivity.this, "user", "userId", "");
+        if (!StringUtils.isEmpty(token) && !StringUtils.isEmpty(userId)) {
+            JSONObject requestParams = new JSONObject();
+            requestParams.put("token", token);
+            requestParams.put("id", userId);
+            Api.getUserInfo(UserCenterActivity.this, requestParams, new OnRequestDataListener() {
+                @Override
+                public void requestSuccess(int code, JSONObject data) {
+                    if(isActive){
+                        JSONObject userInfo = data.getJSONObject("data");
+                        String nickname = userInfo.getString("user_nicename");
+                        SharePrefsUtils.put(UserCenterActivity.this, "user", "user_nicename", nickname);
+                        SharePrefsUtils.put(UserCenterActivity.this, "user", "user_level", userInfo.getString("user_level"));
+                        SharePrefsUtils.put(UserCenterActivity.this, "user", "avatar", userInfo.getString("avatar"));
+                        MyApplication app = (MyApplication) UserCenterActivity.this.getApplication();
+                        app.setBalance(userInfo.getString("balance"));
+
+                        userCoin.setText(String.format(getString(R.string.user_coin),app.getBalance()));
+                        userNickname.setVisibility(View.VISIBLE);
+                        userNickname.setText(nickname);
+                        nicknameEdit.setVisibility(View.VISIBLE);
+
+                        Glide.with(UserCenterActivity.this).load(userInfo.getString("avatar"))
+                                .error(R.drawable.icon_avatar_default)
+                                .transform(new GlideCircleTransform(UserCenterActivity.this))
+                                .into(userHead);
+
+                    }
+
+                }
+
+                @Override
+                public void requestFailure(int code, String msg) {
+                }
+            });
+            loginRegister.setVisibility(View.GONE);
+
+        } else {
+            userCoin.setText(String.format(getString(R.string.user_coin),"0"));
+            loginRegister.setVisibility(View.VISIBLE);
+            userNickname.setVisibility(View.INVISIBLE);
+            nicknameEdit.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 1:
+                initData();
+        }
+    }
 }

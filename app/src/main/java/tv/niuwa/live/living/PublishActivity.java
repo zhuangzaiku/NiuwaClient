@@ -779,11 +779,11 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
     public void danmuCheckChangerd(CompoundButton buttonView, boolean isChecked) {
         CheckBox temp = (CheckBox) buttonView;
         danmuChecked = temp.isChecked();
-        if (danmuChecked) {
-            mLiveEditInput.setHint("开启大喇叭，1秀币/条");
-        } else {
-            mLiveEditInput.setHint("我也要给主播小主发言...");
-        }
+//        if (danmuChecked) {
+//            mLiveEditInput.setHint("开启大喇叭，1牛币/条");
+//        } else {
+//            mLiveEditInput.setHint("我也要给主播小主发言...");
+//        }
     }
 
     @Override

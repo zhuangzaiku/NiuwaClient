@@ -13,7 +13,10 @@ import com.smart.androidutils.utils.SharePrefsUtils;
 
 import butterknife.Bind;
 import tv.niuwa.live.intf.OnRequestDataListener;
+import tv.niuwa.live.own.UserCenterActivity;
+import tv.niuwa.live.own.UserMainActivity;
 import tv.niuwa.live.own.WebviewActivity;
+import tv.niuwa.live.own.userinfo.MyDataActivity;
 import tv.niuwa.live.utils.Api;
 
 public class SplashActivity extends BaseSplashActivity {
@@ -54,7 +57,7 @@ public class SplashActivity extends BaseSplashActivity {
                 @Override
                 public void run() {
                     if (!destroy) {
-                        openActivity(MainActivity.class);
+                        openActivity(UserCenterActivity.class);
                         SplashActivity.this.finish();
                     }
                 }

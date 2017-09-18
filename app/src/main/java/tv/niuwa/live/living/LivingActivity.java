@@ -226,8 +226,6 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     RelativeLayout mLinearLiveTopUserContainer;
     @Bind(R.id.pauseCover)
     RelativeLayout mPauseCover;
-    @Bind(R.id.shopLayout)
-    RelativeLayout mShopLayout;
     @Bind(R.id.gift_container)
     LinearLayout mGiftContainer;
     @Bind(R.id.live_end_container)
@@ -788,11 +786,11 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     public void danmuCheckChangerd(CompoundButton buttonView, boolean isChecked) {
         CheckBox temp = (CheckBox) buttonView;
         danmuChecked = temp.isChecked();
-        if (danmuChecked) {
-            mLiveEditInput.setHint("开启大喇叭，1秀币/条");
-        } else {
-            mLiveEditInput.setHint("我也要给主播小主发言...");
-        }
+//        if (danmuChecked) {
+//            mLiveEditInput.setHint("开启大喇叭，1牛币/条");
+//        } else {
+//            mLiveEditInput.setHint("我也要给主播小主发言...");
+//        }
     }
 
     @OnClick(R.id.image_own_message)
@@ -802,7 +800,6 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
 
     @OnClick(R.id.publish_shop_icon)
     public void publishShopIcon(View v) {
-        // TODO: 03/09/2017  打开商店
 //        JSONObject params = new JSONObject();
 //        params.put("token", token);
 //        params.put("room_id", mVideoItem.getRoom_id());
@@ -820,14 +817,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
 //                toast(msg);
 //            }
 //        });
-        mShopLayout.setVisibility(View.VISIBLE);
 
-        mShopLayout.startAnimation(AnimationUtils.loadAnimation(this,R.anim.in_rightleft));
-    }
-
-    @OnClick(R.id.shopLayout)
-    public void closeShop(View view) {
-        mShopLayout.setVisibility(View.GONE);
     }
 
     private boolean isPaused = false;

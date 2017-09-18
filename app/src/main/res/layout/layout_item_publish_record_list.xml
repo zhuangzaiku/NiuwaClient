@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorGrayFont1"
                 android:textSize="11sp"
-                android:text="秀币"/>
+                android:text="牛币"/>
         </LinearLayout>
     </RelativeLayout>
 

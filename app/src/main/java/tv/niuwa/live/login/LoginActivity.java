@@ -19,12 +19,12 @@ import com.smart.loginsharesdk.login.third.LoginApi;
 import com.smart.loginsharesdk.login.third.OnLoginResultListener;
 import com.smart.loginsharesdk.login.third.ThirdLogin;
 import com.smart.loginsharesdk.login.third.UserInfo;
-import tv.niuwa.live.MainActivity;
 import tv.niuwa.live.R;
 import tv.niuwa.live.XieyiActivity;
 import tv.niuwa.live.core.BaseSiSiEditActivity;
 import tv.niuwa.live.event.BroadCastEvent;
 import tv.niuwa.live.intf.OnRequestDataListener;
+import tv.niuwa.live.own.UserCenterActivity;
 import tv.niuwa.live.utils.Api;
 import tv.niuwa.live.view.SFProgrssDialog;
 
@@ -363,7 +363,7 @@ public class LoginActivity extends BaseSiSiEditActivity implements OnLoginResult
                 if(null != mProgressDialog)
                 mProgressDialog.dismiss();
                 toast("登录成功√");
-                openActivity(MainActivity.class);
+                openActivity(UserCenterActivity.class);
                 LoginActivity.this.finish();
             } else if (msg.what == THIRD_LOGIN_ERROR) {
                 //失败

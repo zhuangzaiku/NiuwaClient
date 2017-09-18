@@ -269,7 +269,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="打赏秀币"
+                    android:text="打赏牛币"
                     android:textColor="@color/colorGrayFont1"
                     android:textSize="12sp" />
 
@@ -294,7 +294,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="收益秀币"
+                    android:text="收益牛币"
                     android:textColor="@color/colorGrayFont1"
                     android:textSize="12sp" />
 

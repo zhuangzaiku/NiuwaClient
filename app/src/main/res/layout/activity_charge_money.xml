@@ -76,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="秀币余额"
+                    android:text="牛币余额"
                     android:textColor="@android:color/white"
                     android:textSize="11sp" />
 
