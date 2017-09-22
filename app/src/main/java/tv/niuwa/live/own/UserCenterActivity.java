@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONObject;
+import com.avos.avoscloud.im.v2.AVIMConversation;
 import com.bumptech.glide.Glide;
 import com.smart.androidutils.images.GlideCircleTransform;
 import com.smart.androidutils.utils.SharePrefsUtils;
@@ -20,19 +21,21 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import cn.leancloud.chatkit.LCChatKit;
+import cn.leancloud.chatkit.cache.LCIMConversationItemCache;
 import de.hdodenhof.circleimageview.CircleImageView;
 import tv.niuwa.live.MyApplication;
 import tv.niuwa.live.R;
 import tv.niuwa.live.core.BaseSiSiActivity;
 import tv.niuwa.live.home.model.VideoItem;
 import tv.niuwa.live.intf.OnRequestDataListener;
+import tv.niuwa.live.lean.ConversationListActivity;
 import tv.niuwa.live.living.LivingActivity;
 import tv.niuwa.live.login.LoginActivity;
 import tv.niuwa.live.own.message.MessageActivity;
 import tv.niuwa.live.own.setting.SettingActivity;
 import tv.niuwa.live.own.userinfo.MyDataActivity;
 import tv.niuwa.live.own.userinfo.UserMenuItem;
-import tv.niuwa.live.own.userinfo.UserMenuListAdapter;
 import tv.niuwa.live.search.SearchActivity;
 import tv.niuwa.live.utils.Api;
 
@@ -63,10 +66,11 @@ public class UserCenterActivity extends BaseSiSiActivity {
     @Bind(R.id.btn_enter_living)
     ImageView enterLiving;
 
-
     @Bind(R.id.right_icon)
     ImageView rightIcon;
 
+    @Bind(R.id.image_own_unread)
+    ImageView mImageOwnUnread;
 
     @Bind(R.id.user_head)
     CircleImageView userHead;
@@ -77,18 +81,6 @@ public class UserCenterActivity extends BaseSiSiActivity {
     @Bind(R.id.user_coin)
     TextView userCoin;
 
-    @OnClick(R.id.left_icon)
-    public void goMessages(View view) {
-        ((ImageView)view).setImageResource(R.drawable.img_xinxi);
-        startActivity(new Intent(this, SearchActivity.class));
-    }
-
-    @OnClick(R.id.right_icon)
-    public void goSetting(View view) {
-        ((ImageView)view).setImageResource(R.drawable.img_setting);
-        startActivity(new Intent(this, SettingActivity.class));
-    }
-//
 //    @Bind(R.id.user_center_menus)
 //    ListView menuList;
 
@@ -109,8 +101,6 @@ public class UserCenterActivity extends BaseSiSiActivity {
         Intent i = new Intent(this, MyDataActivity.class);
         startActivityForResult(i, 1);
     }
-
-
 
     @Bind(R.id.nickname_edit)
     ImageView nicknameEdit;
@@ -152,7 +142,7 @@ public class UserCenterActivity extends BaseSiSiActivity {
         myGift.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                openActivity(MyRewardActivity.class);
             }
         });
         enterLiving.setOnClickListener(new View.OnClickListener() {
@@ -174,7 +164,7 @@ public class UserCenterActivity extends BaseSiSiActivity {
                 videoItem.setNeed_password("0");
                 Bundle data = new Bundle();
                 data.putSerializable("videoItem", videoItem);
-                Intent intent = new Intent(UserCenterActivity.this,LivingActivity.class);
+                Intent intent = new Intent(UserCenterActivity.this, LivingActivity.class);
                 intent.putExtras(data);
                 UserCenterActivity.this.startActivity(intent);
             }
@@ -191,7 +181,7 @@ public class UserCenterActivity extends BaseSiSiActivity {
             Api.getUserInfo(UserCenterActivity.this, requestParams, new OnRequestDataListener() {
                 @Override
                 public void requestSuccess(int code, JSONObject data) {
-                    if(isActive){
+                    if (isActive) {
                         JSONObject userInfo = data.getJSONObject("data");
                         String nickname = userInfo.getString("user_nicename");
                         SharePrefsUtils.put(UserCenterActivity.this, "user", "user_nicename", nickname);
@@ -200,7 +190,7 @@ public class UserCenterActivity extends BaseSiSiActivity {
                         MyApplication app = (MyApplication) UserCenterActivity.this.getApplication();
                         app.setBalance(userInfo.getString("balance"));
 
-                        userCoin.setText(String.format(getString(R.string.user_coin),app.getBalance()));
+                        userCoin.setText(String.format(getString(R.string.user_coin), app.getBalance()));
                         userNickname.setVisibility(View.VISIBLE);
                         userNickname.setText(nickname);
                         nicknameEdit.setVisibility(View.VISIBLE);
@@ -221,11 +211,13 @@ public class UserCenterActivity extends BaseSiSiActivity {
             loginRegister.setVisibility(View.GONE);
 
         } else {
-            userCoin.setText(String.format(getString(R.string.user_coin),"0"));
+            userCoin.setText(String.format(getString(R.string.user_coin), "0"));
             loginRegister.setVisibility(View.VISIBLE);
             userNickname.setVisibility(View.INVISIBLE);
             nicknameEdit.setVisibility(View.INVISIBLE);
         }
+
+        getUnread();
     }
 
     @Override
@@ -234,6 +226,21 @@ public class UserCenterActivity extends BaseSiSiActivity {
         switch (requestCode) {
             case 1:
                 initData();
+        }
+    }
+
+    private void getUnread() {
+        int num = 0;
+        List<String> convIdList = LCIMConversationItemCache.getInstance().getSortedConversationList();
+        for (String id : convIdList) {
+            AVIMConversation conversation = LCChatKit.getInstance().getClient().getConversation(id);
+            if (conversation.getMembers().size() != 2)
+                continue;
+            num += LCIMConversationItemCache.getInstance().getUnreadCount(conversation.getConversationId());
+        }
+        mImageOwnUnread.setVisibility(View.GONE);
+        if (num > 0) {
+            mImageOwnUnread.setVisibility(View.VISIBLE);
         }
     }
 }

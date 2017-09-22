@@ -168,7 +168,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     RelativeLayout mDanmuContainer;
     @Bind(R.id.danmu_check_box)
     CheckBox mDanmuCheckBox;
-    DanmuAdapter mDanmuadapter;
+//    DanmuAdapter mDanmuadapter;
     OnlineUserAdapter mOnlineUserAdapter;
     @Bind(R.id.live_share)
     ImageButton mLiveShare;
@@ -216,8 +216,8 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     EditText mLiveEditInput;
     @Bind(R.id.frame_living_root_container)
     FrameLayout mFrameLivingRootContainer;
-    @Bind(R.id.living_danmu)
-    ListView mLiveingDanmu;
+//    @Bind(R.id.living_danmu)
+//    ListView mLiveingDanmu;
     @Bind(R.id.living_danmu_container)
     LinearLayout mLivingDanmuContainer;
     @Bind(R.id.live_music)
@@ -295,7 +295,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     private boolean mSWEncoderUnsupported;
     private Handler mMainHandler;
     private boolean CLICKED_HEARD = false;//是否已经点亮
-    private ArrayList<DanmuModel> mDanmuItems;
+//    private ArrayList<DanmuModel> mDanmuItems;
     private ArrayList<UserModel> mUserItems;
     private AlertDialog userInfoDialog;
     private String otherUserId;//点击item获取当前用户id
@@ -764,17 +764,8 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             mPopupShareWindow.setBackgroundDrawable(new ColorDrawable(0x50000000));
             mPopupShareWindow.setFocusable(true);
             mPopupShareWindow.showAtLocation(mLiveShare, Gravity.BOTTOM, locX, locY);
-            ImageView shareQZone = (ImageView) inflate.findViewById(R.id.image_live_share_qzone);
-            ImageView shareQQ = (ImageView) inflate.findViewById(R.id.image_live_share_qq);
-            ImageView shareSina = (ImageView) inflate.findViewById(R.id.image_live_share_sina);
             ImageView shareWechat = (ImageView) inflate.findViewById(R.id.image_live_share_wechat);
             ImageView shareWechatMoment = (ImageView) inflate.findViewById(R.id.image_live_share_wechat_moment);
-            TextView textView = (TextView) inflate.findViewById(R.id.tv_cancel);
-            ClickListener clickListener = new ClickListener();
-            textView.setOnClickListener(clickListener);
-            shareQZone.setOnClickListener(this);
-            shareQQ.setOnClickListener(this);
-            shareSina.setOnClickListener(this);
             shareWechat.setOnClickListener(this);
             shareWechatMoment.setOnClickListener(this);
         } else {
@@ -854,55 +845,55 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
         Api.getShareInfo(LivingActivity.this, params, new OnRequestDataListener() {
             @Override
             public void requestSuccess(int code, JSONObject data) {
-                JSONObject info = data.getJSONObject("data");
+                JSONObject info = data;
                 switch (v.getId()) {
                     case R.id.tv_cancel:
                         if (mPopupShareWindow != null && mPopupShareWindow.isShowing()) {
                             mPopupShareWindow.dismiss();
                         }
                         break;
-                    case R.id.image_live_share_qzone:
-                        //toast("qzone");
-                        mThirdShare.setTitle(info.getString("content"));
-                        mThirdShare.setText(info.getString("content"));
-                        mThirdShare.setTitleUrl(info.getString("shareUrl"));
-                        mThirdShare.setImageType(Type.IMAGE_NETWORK);
-                        mThirdShare.setImageUrl(info.getString("pic"));
-                        mThirdShare.share2QZone();
-                        break;
-                    case R.id.image_live_share_qq:
-                        //toast("qq");
-                        mThirdShare.setTitle(info.getString("content"));
-                        mThirdShare.setText(info.getString("content"));
-                        mThirdShare.setTitleUrl(info.getString("shareUrl"));
-                        mThirdShare.setImageType(Type.IMAGE_NETWORK);
-                        mThirdShare.setImageUrl(info.getString("pic"));
-                        mThirdShare.share2QQ();
-                        break;
-                    case R.id.image_live_share_sina:
-                        //toast("weibo");
-                        mThirdShare.setText(info.getString("content"));
-                        mThirdShare.setImageUrl(info.getString("pic"));
-                        mThirdShare.share2SinaWeibo(false);
-                        break;
+//                    case R.id.image_live_share_qzone:
+//                        //toast("qzone");
+//                        mThirdShare.setTitle(info.getString("content"));
+//                        mThirdShare.setText(info.getString("content"));
+//                        mThirdShare.setTitleUrl(info.getString("shareUrl"));
+//                        mThirdShare.setImageType(Type.IMAGE_NETWORK);
+//                        mThirdShare.setImageUrl(info.getString("pic"));
+//                        mThirdShare.share2QZone();
+//                        break;
+//                    case R.id.image_live_share_qq:
+//                        //toast("qq");
+//                        mThirdShare.setTitle(info.getString("content"));
+//                        mThirdShare.setText(info.getString("content"));
+//                        mThirdShare.setTitleUrl(info.getString("shareUrl"));
+//                        mThirdShare.setImageType(Type.IMAGE_NETWORK);
+//                        mThirdShare.setImageUrl(info.getString("pic"));
+//                        mThirdShare.share2QQ();
+//                        break;
+//                    case R.id.image_live_share_sina:
+//                        //toast("weibo");
+//                        mThirdShare.setText(info.getString("content"));
+//                        mThirdShare.setImageUrl(info.getString("pic"));
+//                        mThirdShare.share2SinaWeibo(false);
+//                        break;
                     case R.id.image_live_share_wechat:
                         //toast("wechat");
-                        mThirdShare.setTitle(info.getString("content"));
-                        mThirdShare.setText(info.getString("content"));
+                        mThirdShare.setTitle(info.getString("title"));
+                        mThirdShare.setText(info.getString("title"));
                         mThirdShare.setShareType(Type.SHARE_WEBPAGE);
                         mThirdShare.setImageType(Type.IMAGE_NETWORK);
-                        mThirdShare.setImageUrl(info.getString("pic"));
-                        mThirdShare.setUrl(info.getString("shareUrl"));
+                        mThirdShare.setImageUrl(info.getString("image"));
+                        mThirdShare.setUrl(info.getString("url"));
                         mThirdShare.share2Wechat();
                         break;
                     case R.id.image_live_share_wechat_moment:
                         //toast("wechat moment");
-                        mThirdShare.setTitle(info.getString("content"));
-                        mThirdShare.setText(info.getString("content"));
+                        mThirdShare.setTitle(info.getString("title"));
+                        mThirdShare.setText(info.getString("title"));
                         mThirdShare.setShareType(Type.SHARE_WEBPAGE);
                         mThirdShare.setImageType(Type.IMAGE_NETWORK);
-                        mThirdShare.setImageUrl(info.getString("pic"));
-                        mThirdShare.setUrl(info.getString("shareUrl"));
+                        mThirdShare.setImageUrl(info.getString("image"));
+                        mThirdShare.setUrl(info.getString("url"));
                         mThirdShare.share2WechatMoments();
                         break;
                 }
@@ -947,6 +938,14 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             });
         }
 
+    }
+
+    @OnClick(R.id.btn_close)
+    public void clickClose(View view) {
+        if (ksyMediaPlayer != null)
+            ksyMediaPlayer.release();
+        ksyMediaPlayer = null;
+        finish();
     }
 
     //@OnClick(R.id.live_gift)
@@ -1047,9 +1046,10 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                         model.setAvatar(avatar);
                         model.setUserId(userId);
                         model.setContent(user_nicename + "关注了主播");
-                        mDanmuItems.add(model);
-                        mDanmuadapter.notifyDataSetChanged();
-                        mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
+                        showDanmuAnim(LivingActivity.this, model);
+//                        mDanmuItems.add(model);
+//                        mDanmuadapter.notifyDataSetChanged();
+//                        mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
                         String message = JSONObject.toJSONString(model);
                         EventBus.getDefault().post(
                                 new LCIMInputBottomBarTextEvent(LCIMInputBottomBarEvent.INPUTBOTTOMBAR_SEND_TEXT_ACTION, message, channelInfo.getString("leancloud_room")));
@@ -1680,6 +1680,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             JSONObject jo = new JSONObject();
             jo.put("text", content);
             jo.put("message", new Gson().toJson(model));
+            showDanmuAnim(LivingActivity.this, model);
             Api.sendDanmuNew(this, jo, new OnRequestDataListener() {
                 @Override
                 public void requestSuccess(int code, JSONObject data) {
@@ -1740,12 +1741,12 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
 
     }
 
-    // TODO: 03/09/2017  发送
     public void sendMessage(DanmuModel model) {
         if (isActive) {
-            mDanmuItems.add(model);
-            mDanmuadapter.notifyDataSetChanged();
-            mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
+//            mDanmuItems.add(model);
+//            mDanmuadapter.notifyDataSetChanged();
+//            mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
+            showDanmuAnim(LivingActivity.this, model);
             mLiveEditInput.setText("");
             if (mLivingDanmuContainer.getVisibility() == View.VISIBLE) {
                 mLiveBottomBtn.setVisibility(View.VISIBLE);
@@ -1760,7 +1761,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     }
 
     private void initData() {
-        mDanmuItems = new ArrayList<DanmuModel>();
+//        mDanmuItems = new ArrayList<DanmuModel>();
         mUserItems = new ArrayList<UserModel>();
         if (null != sysMessage) {
             for (int i = 0; i < sysMessage.size(); i++) {
@@ -1768,17 +1769,18 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                 model.setType("3");
                 model.setUserName(sysMessage.getJSONObject(i).getString("title"));
                 model.setContent(sysMessage.getJSONObject(i).getString("msg"));
-                mDanmuItems.add(model);
+                showDanmuAnim(LivingActivity.this, model);
+//                mDanmuItems.add(model);
             }
 
         }
-        mDanmuadapter = new DanmuAdapter(this, mDanmuItems);
-        mLiveingDanmu.setAdapter(mDanmuadapter);
+//        mDanmuadapter = new DanmuAdapter(this, mDanmuItems);
+//        mLiveingDanmu.setAdapter(mDanmuadapter);
         mOnlineUserAdapter = new OnlineUserAdapter(this, mUserItems);
 //        mLiveOnlineUsers.requestParentListViewToNotInterceptTouchEvents(false);
         mLiveOnlineUsers.setOnItemClickListener(this);
         mLiveOnlineUsers.setAdapter(mOnlineUserAdapter);
-        mLiveingDanmu.setOnItemClickListener(this);
+//        mLiveingDanmu.setOnItemClickListener(this);
         JSONObject params = new JSONObject();
         params.put("token", token);
         params.put("room_id", channelInfo.getString("room_id"));
@@ -1839,9 +1841,10 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     model.setUserId(userId);
                     model.setUserLevel(user_level);
                     model.setContent(user_nicename + "进入房间");
-                    mDanmuItems.add(model);
-                    mDanmuadapter.notifyDataSetChanged();
-                    mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
+                    showDanmuAnim(LivingActivity.this, model);
+//                    mDanmuItems.add(model);
+//                    mDanmuadapter.notifyDataSetChanged();
+//                    mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
                     String message = JSONObject.toJSONString(model);
                     EventBus.getDefault().post(
                             new LCIMInputBottomBarTextEvent(LCIMInputBottomBarEvent.INPUTBOTTOMBAR_SEND_TEXT_ACTION, message, channelInfo.getString("leancloud_room")));
@@ -1895,9 +1898,10 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             model.setUserId(temp.getString("userId"));
             model.setAvatar(temp.getString("avatar"));
             if (!model.getType().equals("9") && !model.getType().equals("10")) {
-                mDanmuItems.add(model);
-                mDanmuadapter.notifyDataSetChanged();
-                mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
+                showDanmuAnim(LivingActivity.this, model);
+//                mDanmuItems.add(model);
+//                mDanmuadapter.notifyDataSetChanged();
+//                mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
             }
             switch (model.getType()) {
                 case "4":
@@ -1943,6 +1947,15 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                 case "10":
                     audience_vote_rl.setVisibility(View.GONE);
                     break;
+                case "11":
+                    // TODO: 19/09/2017
+//                    用户端  显示抽奖结果   消息 type:11
+//                    新增reward字段
+//                            $reward = array(
+//                            array('userId'=>'156277','userName'=>'测试1','avatar'=>'http:zhibo.519wan.com/data/upload/avatar/default.png'),
+//                    array('userId'=>'156278','userName'=>'测试2','avatar'=>'http:zhibo.519wan.com/data/upload/avatar/default.png'),
+                    break;
+//	);
             }
         }
     }
@@ -2439,9 +2452,10 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                                 model.setAvatar(avatar);
                                 model.setUserId(userId);
                                 model.setContent(user_nicename + "关注了主播");
-                                mDanmuItems.add(model);
-                                mDanmuadapter.notifyDataSetChanged();
-                                mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
+                                showDanmuAnim(LivingActivity.this, model);
+//                                mDanmuItems.add(model);
+//                                mDanmuadapter.notifyDataSetChanged();
+//                                mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
                                 String message = JSONObject.toJSONString(model);
                                 EventBus.getDefault().post(
                                         new LCIMInputBottomBarTextEvent(LCIMInputBottomBarEvent.INPUTBOTTOMBAR_SEND_TEXT_ACTION, message, channelInfo.getString("leancloud_room")));

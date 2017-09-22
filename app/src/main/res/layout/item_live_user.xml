@@ -10,8 +10,8 @@
         android:layout_height="wrap_content">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/live_online_user_avatar"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="26.5dp"
+            android:layout_height="26.5dp"
             android:layout_marginRight="8dp"
             android:scaleType="centerCrop"
             android:src="@drawable/icon_user_avatar"

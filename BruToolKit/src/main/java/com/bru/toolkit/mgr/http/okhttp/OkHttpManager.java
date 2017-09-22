@@ -207,7 +207,7 @@ public class OkHttpManager extends BaseHttpImpl implements HttpImpl {
             public void onResponse(Call call, final Response response) throws IOException {
                 final String result = response.body().string();
                 response.body().close();
-                Logs.e(TAG, result);
+                Logs.e(TAG, call.toString() + result);
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -225,12 +225,12 @@ public class OkHttpManager extends BaseHttpImpl implements HttpImpl {
     }
 
     @Override
-    public void postAsync(String url, RequestBody body, final Class<?> cls, boolean showWaitDialog, Context context, final Request4Str request4Str) {
+    public void postAsync(final String url, RequestBody body, final Class<?> cls, boolean showWaitDialog, Context context, final Request4Str request4Str) {
         Request request = new Request.Builder()
                 .url(url)
                 .post(body)
                 .build();
-        Logs.e(TAG, url);
+            Logs.e(TAG, url);
         if (showWaitDialog && null != context)
             showDialog(context);
         mOkHttpClient.newCall(request).enqueue(new Callback() {
@@ -242,7 +242,8 @@ public class OkHttpManager extends BaseHttpImpl implements HttpImpl {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String result = response.body().string();
-                Logs.e(TAG, result);
+
+                    Logs.e(TAG, url + result);
                 handler.post(new Runnable() {
                     @Override
                     public void run() {

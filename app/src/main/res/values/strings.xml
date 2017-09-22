@@ -57,4 +57,6 @@
     <string name="user_coin">我的牛币:%s</string>
     <string name="login_or_register">登录/注册</string>
     <string name="hot_recommend">热门推荐</string>
+
+    <string name="my_reward">我的奖品</string>
 </resources>

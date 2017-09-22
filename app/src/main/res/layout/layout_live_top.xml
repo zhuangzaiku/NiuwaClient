@@ -178,61 +178,79 @@
         android:layout_height="55dp"
         android:layout_gravity="bottom">
 
-        <ImageButton
-            android:id="@+id/live_send"
-            android:layout_width="24.5dp"
-            android:layout_height="19.5dp"
-            android:layout_marginBottom="24dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="24dp"
-            android:scaleType="fitCenter"
-            android:background="@drawable/btn_youjian"
-             />
+        <ImageView
+            android:id="@+id/pause"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/living_pause" />
+
 
         <LinearLayout
             android:id="@+id/live_icon_large_ll"
             android:layout_width="253dp"
-            android:layout_height="40dp"
-            android:layout_alignParentRight="true"
+            android:layout_height="36dp"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/img_di"
             android:gravity="center"
-            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="26dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="20dp">
+
+                <ImageView
+                    android:id="@+id/image_own_unread"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:src="@drawable/unread"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/image_own_message"
+                    android:layout_width="26dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/btn_youjian"
+                    android:visibility="visible" />
+
+            </FrameLayout>
 
             <ImageView
                 android:id="@+id/live_audience_chat_iv"
                 android:layout_width="26dp"
                 android:layout_height="25dp"
-                android:layout_weight="1"
+                android:layout_marginRight="20dp"
                 android:src="@drawable/btn_chat" />
 
             <ImageView
                 android:id="@+id/live_audience_share_iv"
                 android:layout_width="26dp"
                 android:layout_height="25dp"
-                android:layout_weight="1"
+                android:layout_marginRight="20dp"
                 android:src="@drawable/btn_zhuanfa" />
 
             <!--<ImageView-->
-                <!--android:id="@+id/live_audience_rec_iv"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1.0"-->
-                <!--android:src="@drawable/icon_room_rec" />-->
+            <!--android:id="@+id/live_audience_rec_iv"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1.0"-->
+            <!--android:src="@drawable/icon_room_rec" />-->
 
             <ImageView
                 android:id="@+id/live_audience_gift_iv"
                 android:layout_width="26dp"
                 android:layout_height="25dp"
-                android:layout_weight="1"
+                android:layout_marginRight="20dp"
                 android:src="@drawable/btn_gift" />
 
             <ImageView
                 android:id="@+id/live_audience_vote_iv"
                 android:layout_width="26dp"
                 android:layout_height="25dp"
-                android:layout_weight="1"
                 android:src="@drawable/btn_toupiao" />
 
         </LinearLayout>
@@ -242,40 +260,40 @@
             android:layout_height="50dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:visibility="gone"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:paddingRight="10dp"
+            android:visibility="gone">
 
-            <!--<ImageButton-->
-                <!--android:id="@+id/live_send"-->
-                <!--android:layout_width="40dp"-->
-                <!--android:layout_height="40dp"-->
-                <!--android:background="@android:color/transparent"-->
-                <!--android:scaleType="fitCenter"-->
-                <!--android:src="@drawable/message"-->
-                <!--android:visibility="visible" />-->
+            <ImageButton
+                android:id="@+id/live_send"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/message"
+                android:visibility="visible" />
 
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true">
+            <!--<FrameLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true">-->
 
-                <ImageView
-                    android:id="@+id/image_own_unread"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:src="@drawable/unread"
-                    android:visibility="gone" />
+            <!--<ImageView-->
+            <!--android:id="@+id/image_own_unread"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:src="@drawable/unread"-->
+            <!--android:visibility="visible" />-->
 
-                <ImageView
-                    android:id="@+id/image_own_message"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/sixin"
-                    android:visibility="gone" />
+            <!--<ImageView-->
+            <!--android:id="@+id/image_own_message"-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:src="@drawable/sixin"-->
+            <!--android:visibility="gone" />-->
 
-            </FrameLayout>
+            <!--</FrameLayout>-->
 
 
             <LinearLayout
@@ -400,7 +418,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="7.5dp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -409,12 +427,11 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:id="@+id/actor_info_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="7.5dp"
                 android:layout_marginRight="30dp"
-                android:id="@+id/actor_info_layout"
-                android:background="@drawable/bg_ellipse_shape"
                 android:paddingBottom="3dp"
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
@@ -422,8 +439,8 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/live_user_avatar"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="5dp"
 
@@ -437,7 +454,6 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
@@ -446,6 +462,7 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:maxLength="10"
+                        android:layout_marginTop="8dp"
                         android:singleLine="true"
                         android:text=""
                         android:textColor="@android:color/white"
@@ -453,7 +470,8 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp">
 
                         <TextView
                             android:id="@+id/live_user_online_num"
@@ -479,10 +497,10 @@
 
                 <Button
                     android:id="@+id/btn_follow"
-                    android:layout_width="35dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center_vertical"
+                    android:layout_width="29dp"
+                    android:layout_height="17dp"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginTop="14dp"
                     android:background="@drawable/shape_10radius_purple"
                     android:text="@string/btn_follow"
                     android:textColor="@color/white"
@@ -492,29 +510,30 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_toRightOf="@+id/actor_info_layout"
-                android:layout_toLeftOf="@+id/pause"
-                android:layout_marginRight="40dp">
+                android:layout_height="30dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="11.5dp"
+                android:layout_toLeftOf="@+id/btn_close"
+                android:layout_toRightOf="@+id/actor_info_layout">
 
-                <com.meetme.android.horizontallistview.HorizontalListView
-                    xmlns:android="http://schemas.android.com/apk/res/android"
+                <com.meetme.android.horizontallistview.HorizontalListView xmlns:android="http://schemas.android.com/apk/res/android"
                     xmlns:widget="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/HorizontalListView"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:divider="@null"
                     android:gravity="center" />
             </LinearLayout>
 
 
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:id="@+id/pause"
-                    android:src="@drawable/living_pause"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="5dp"/>
+            <ImageView
+                android:id="@+id/btn_close"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/btn_close01" />
 
 
         </RelativeLayout>
@@ -626,7 +645,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/shop"
-                android:visibility="visible" />
+                android:visibility="invisible" />
         </RelativeLayout>
 
     </LinearLayout>

@@ -62,7 +62,8 @@ public class Api {
     private static final String CANCEL_ATTENTION = HOST + "Api/SiSi/cancelAttention";
     private static final String STOP_PUBLISH = HOST + "Api/SiSi/stopLive";
     private static final String GET_TERM = HOST + "/Api/SiSi/getChannelTermList";
-    private static final String GET_SHARE_INFO = HOST + "Api/SiSi/getShareInfo";
+    private static final String GET_SHARE_INFO = HOST + "Api/SiSi/getWxShareInfo";
+//    private static final String GET_SHARE_INFO = HOST + "Api/SiSi/getShareInfo";
     private static final String THIRD_LOGIN = HOST + "Api/SiSi/sendOauthUserInfo";
     private static final String PAY = HOST  + "Api/SiSi/begin_wxpay";
     private static final String PAY_ALI = HOST + "Api/SiSi/begin_alipay";
@@ -85,6 +86,7 @@ public class Api {
     public static final String SEARCH_MUSIC1 = HOST + "/Api/SiSi/searchSong";
     public static String GET_LikePic = HOST + "/Api/SiSi/getFlotageImage";
     public static String GET_SONG_LRC = HOST + "/Api/SiSi/searchSongLyric";
+    public static final String GET_MY_REWARD = HOST + "/Api/SiSi/myGift";
     public static final String PUSH_CALLBACK = HOST + "/Api/SiSi/startLivePushCallback";
     public static final String WAP_PAY = HOST + "/portal/Appweb/chongzhi";
     public static final String WEB_Family = HOST + "portal/Family/index";
@@ -305,7 +307,7 @@ public class Api {
 
     public static void getShareInfo(final Context context, JSONObject params, final OnRequestDataListener listener) {
         SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_SHARE_INFO, context, params,dialog, listener);
+        excutePostNew(GET_SHARE_INFO, context, params,dialog, listener);
     }
 
     public static void thirdLogin(final Context context, JSONObject params, final OnRequestDataListener listener) {
@@ -348,12 +350,15 @@ public class Api {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
         excutePost(GET_TOPIC, context, params,null, listener);
     }
+
+    public static void getMyReward(final Context context,JSONObject params, final OnRequestDataListener listener) {
+        excutePost(GET_MY_REWARD,context, params,null,listener);
+    }
     protected static JSONObject getJsonObject(int statusCode, byte[] responseBody, OnRequestDataListener listener) {
         if (statusCode == 200) {
             String response = null;
             try {
                 response = new String(responseBody, "UTF-8");
-                LogUtils.i("response=" + response);
                 if (response != null) {
                     JSONObject object = JSON.parseObject(response);
                     int code = object.getIntValue("code");
@@ -364,6 +369,39 @@ public class Api {
                             return null;
                         }
                     }
+                    return object;
+                }
+                return null;
+            } catch (Exception e) {
+                if (listener != null) {
+                    listener.requestFailure(-1, "json解析失败!");
+                }
+                return null;
+            }
+        } else {
+            if (listener != null) {
+                listener.requestFailure(-1, "网络请求失败!");
+            }
+            return null;
+        }
+
+    }
+
+    protected static JSONObject getJsonObjectNew(int statusCode, byte[] responseBody, OnRequestDataListener listener) {
+        if (statusCode == 200) {
+            String response = null;
+            try {
+                response = new String(responseBody, "UTF-8");
+                if (response != null) {
+                    JSONObject object = JSON.parseObject(response);
+//                    int code = object.getIntValue("code");
+//                    if (code != 200) {
+//                        String desc = object.getString("descrp");
+//                        if (listener != null) {
+//                            listener.requestFailure(code, desc);
+//                            return null;
+//                        }
+//                    }
                     return object;
                 }
                 return null;
@@ -393,18 +431,21 @@ public class Api {
         return requestParams;
     }
 
-    protected static void excutePost(String url, final Context context, JSONObject params,final SFProgrssDialog dialog, final OnRequestDataListener listener) {
+    protected static void excutePost(final String url, final Context context, JSONObject params,final SFProgrssDialog dialog, final OnRequestDataListener listener) {
         params.put("os",OS);
         params.put("soft_ver",SOFT_VER);
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams requestParams = getRequestParams(params);
-        LogUtils.d(url + requestParams.toString());
+        if(!url.contains("getLiveRoomOnlineNum"))
+            LogUtils.d(url + requestParams.toString());
         client.post(context, url, requestParams, new AsyncHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                if(dialog != null && null != dialog.getContext() && null != dialog.getWindow())
+                if(dialog != null && null != dialog.getContext() && null != dialog.getWindow() && dialog.getWindow().getDecorView().getParent() != null)
                     dialog.dismiss();
+                if(!url.contains("getLiveRoomOnlineNum"))
+                LogUtils.i("response=" + new String(responseBody));
                 JSONObject data = getJsonObject(statusCode, responseBody, listener);
                 if (data != null) {
                     listener.requestSuccess(statusCode, data);
@@ -413,16 +454,56 @@ public class Api {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                if(dialog != null && null != dialog.getContext() && null != dialog.getWindow())
+                if(dialog != null && null != dialog.getContext() && null != dialog.getWindow() && dialog.getWindow().getDecorView().getParent() != null)
                     dialog.dismiss();
                 String response = null;
                 try {
                     if(null != responseBody)
                     response = new String(responseBody, "UTF-8");
+                    if(!url.contains("getLiveRoomOnlineNum"))
+                        LogUtils.i("response=" + response);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-                LogUtils.i("response=" + response);
+                if (listener != null) {
+                    listener.requestFailure(-1, "网络请求失败!");
+                }
+            }
+        });
+    }
+
+    protected static void excutePostNew(final String url, final Context context, JSONObject params,final SFProgrssDialog dialog, final OnRequestDataListener listener) {
+        params.put("os",OS);
+        params.put("soft_ver",SOFT_VER);
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams requestParams = getRequestParams(params);
+        if(!url.contains("getLiveRoomOnlineNum"))
+            LogUtils.d(url + requestParams.toString());
+        client.post(context, url, requestParams, new AsyncHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                dismissDialog(dialog);
+                if(!url.contains("getLiveRoomOnlineNum"))
+                    LogUtils.i("response=" + new String(responseBody));
+                JSONObject data = getJsonObjectNew(statusCode, responseBody, listener);
+                if (data != null) {
+                    listener.requestSuccess(statusCode, data);
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                dismissDialog(dialog);
+                String response = null;
+                try {
+                    if(null != responseBody)
+                        response = new String(responseBody, "UTF-8");
+                    if(!url.contains("getLiveRoomOnlineNum"))
+                        LogUtils.i("response=" + response);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
                 if (listener != null) {
                     listener.requestFailure(-1, "网络请求失败!");
                 }
@@ -439,8 +520,7 @@ public class Api {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                if(dialog != null)
-                    dialog.dismiss();
+                dismissDialog(dialog);
                 JSONObject data = getJsonObject(statusCode, responseBody, listener);
                 if (data != null) {
                     listener.requestSuccess(statusCode, data);
@@ -449,13 +529,17 @@ public class Api {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                if(dialog != null)
-                    dialog.dismiss();
+                dismissDialog(dialog);
                 if (listener != null) {
                     listener.requestFailure(-1, "网络请求失败!");
                 }
             }
         });
+    }
+
+    private static void dismissDialog(SFProgrssDialog dialog) {
+        if(dialog != null && null != dialog.getContext() && null != dialog.getWindow() && dialog.getWindow().getDecorView().getParent() != null)
+            dialog.dismiss();
     }
 
 

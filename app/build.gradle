@@ -25,7 +25,10 @@ android {
     }
     signingConfigs {
         debug {
-
+            storeFile file('../keystore/sisi.jks')
+            keyAlias 'sisi'
+            keyPassword 'dfsbLPL6wjG4t68kjd'
+            storePassword 'dfsbLPL6wjG4t68kjd'
         }
         release {
             storeFile file('../keystore/sisi.jks')
@@ -48,7 +51,7 @@ android {
             //加载默认混淆配置文件
             //proguardFiles getDefaultProguardFile('proguard-Android.txt'), 'proguard-rules.pro'
             //签名
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
         }
         release {
             debuggable true
@@ -107,4 +110,5 @@ dependencies {
     compile 'com.shizhefei:ViewPagerIndicator:1.1.6'
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
     compile project(path: ':BruToolKit')
+    compile "com.networkbench.newlens.agent.android:nbs.newlens.agent:2.5.9"//听云sdk
 }

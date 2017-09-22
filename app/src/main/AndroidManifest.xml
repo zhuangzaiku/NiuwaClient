@@ -146,6 +146,9 @@
             android:name="tv.niuwa.live.own.UserCenterActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="tv.niuwa.live.own.MyRewardActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="tv.niuwa.live.living.PublishActivity"
             android:screenOrientation="landscape"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
