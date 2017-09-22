@@ -206,6 +206,8 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     ImageView mImageOwnUnread;
     @Bind(R.id.pause)
     ImageView mPauseBtn;
+    @Bind(R.id.pause_layout)
+    RelativeLayout mPauseLayout;
     @Bind(R.id.live_meiyan)
     ImageButton mLiveMeiyan;
     @Bind(R.id.live_gift_container)
@@ -811,20 +813,27 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
 
     }
 
-    private boolean isPaused = false;
+    private boolean isPaused = true;
 
-    @OnClick(R.id.pause)
+    @OnClick(R.id.pause_layout)
     public void pauseAndResume(View v) {
         if (ksyMediaPlayer != null) {
+            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) mPauseBtn.getLayoutParams();
             if (isPaused) {
                 mPauseCover.setVisibility(View.GONE);
-                mPauseBtn.setImageResource(R.drawable.living_pause);
+                mPauseLayout.setBackgroundResource(R.drawable.img_kaiguan01);
+                lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 0);
                 ksyMediaPlayer.start();
             } else {
                 mPauseCover.setVisibility(View.VISIBLE);
-                mPauseBtn.setImageResource(R.drawable.living_resume);
+                mPauseLayout.setBackgroundResource(R.drawable.img_kaiguan02);
+                lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 0);
+                lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+
                 ksyMediaPlayer.pause();
             }
+            mPauseBtn.setLayoutParams(lp);
             isPaused = !isPaused;
         }
     }

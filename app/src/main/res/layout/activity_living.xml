@@ -8,11 +8,6 @@
     android:background="@android:color/black"
     tools:context="tv.niuwa.live.living.LivingActivity">
 
-    <!--<ImageView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:scaleType="fitXY"-->
-    <!--android:src="@drawable/image_living_bg"/>-->
     <android.opengl.GLSurfaceView
         android:id="@+id/camera_preview"
         android:layout_width="2dp"

@@ -178,12 +178,23 @@
         android:layout_height="55dp"
         android:layout_gravity="bottom">
 
-        <ImageView
-            android:id="@+id/pause"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginRight="5dp"
-            android:src="@drawable/living_pause" />
+        <RelativeLayout
+            android:layout_width="43.5dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="21dp"
+            android:id="@+id/pause_layout"
+            android:background="@drawable/img_kaiguan02">
+
+            <ImageView
+                android:id="@+id/pause"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="1.5dp"
+                android:layout_marginLeft="1.5dp"
+                android:src="@drawable/img_kaiguan03" />
+        </RelativeLayout>
+
 
 
         <LinearLayout
@@ -703,7 +714,7 @@
         android:id="@+id/audience_vote_rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <ImageView
             android:layout_width="wrap_content"
