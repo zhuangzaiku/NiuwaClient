@@ -1709,9 +1709,9 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             if (mLivingDanmuContainer.getVisibility() == View.VISIBLE) {
                 mLiveBottomBtn.setVisibility(View.VISIBLE);
             }
-//            mLiveEditInput.setText("");
-//            live_message_container_rl.setVisibility(View.GONE);
-//            SoftKeyboardUtils.closeSoftInputMethod(mLiveEditInput);
+            mLiveEditInput.setText("");
+            live_message_container_rl.setVisibility(View.GONE);
+            SoftKeyboardUtils.closeSoftInputMethod(mLiveEditInput);
         }
     }
 
