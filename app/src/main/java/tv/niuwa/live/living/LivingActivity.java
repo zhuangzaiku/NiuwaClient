@@ -19,6 +19,7 @@ import android.opengl.GLSurfaceView;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
@@ -107,6 +108,7 @@ import tv.niuwa.live.own.WebviewActivity;
 import tv.niuwa.live.own.userinfo.ContributionActivity;
 import tv.niuwa.live.utils.Api;
 import tv.niuwa.live.utils.DialogEnsureUtiles;
+import tv.niuwa.live.utils.Util;
 import tv.niuwa.live.view.BubbleView;
 import tv.niuwa.live.view.SFProgrssDialog;
 
@@ -168,7 +170,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     RelativeLayout mDanmuContainer;
     @Bind(R.id.danmu_check_box)
     CheckBox mDanmuCheckBox;
-//    DanmuAdapter mDanmuadapter;
+    //    DanmuAdapter mDanmuadapter;
     OnlineUserAdapter mOnlineUserAdapter;
     @Bind(R.id.live_share)
     ImageButton mLiveShare;
@@ -218,7 +220,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     EditText mLiveEditInput;
     @Bind(R.id.frame_living_root_container)
     FrameLayout mFrameLivingRootContainer;
-//    @Bind(R.id.living_danmu)
+    //    @Bind(R.id.living_danmu)
 //    ListView mLiveingDanmu;
     @Bind(R.id.living_danmu_container)
     LinearLayout mLivingDanmuContainer;
@@ -227,7 +229,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     @Bind(R.id.linear_live_top_user_container)
     RelativeLayout mLinearLiveTopUserContainer;
     @Bind(R.id.pauseCover)
-    RelativeLayout mPauseCover;
+    ImageView mPauseCover;
     @Bind(R.id.gift_container)
     LinearLayout mGiftContainer;
     @Bind(R.id.live_end_container)
@@ -297,7 +299,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     private boolean mSWEncoderUnsupported;
     private Handler mMainHandler;
     private boolean CLICKED_HEARD = false;//是否已经点亮
-//    private ArrayList<DanmuModel> mDanmuItems;
+    //    private ArrayList<DanmuModel> mDanmuItems;
     private ArrayList<UserModel> mUserItems;
     private AlertDialog userInfoDialog;
     private String otherUserId;//点击item获取当前用户id
@@ -454,7 +456,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             ksyMediaPlayer.setVideoScalingMode(KSYMediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
 
             //start player
-            if(!isPaused)
+            if (!isPaused)
                 ksyMediaPlayer.start();
 
 
@@ -854,41 +856,15 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
         Api.getShareInfo(LivingActivity.this, params, new OnRequestDataListener() {
             @Override
             public void requestSuccess(int code, JSONObject data) {
-                JSONObject info = data;
+                JSONObject info = data.getJSONObject("data");
+                if (mPopupShareWindow != null && mPopupShareWindow.isShowing()) {
+                    mPopupShareWindow.dismiss();
+                }
                 switch (v.getId()) {
-                    case R.id.tv_cancel:
-                        if (mPopupShareWindow != null && mPopupShareWindow.isShowing()) {
-                            mPopupShareWindow.dismiss();
-                        }
-                        break;
-//                    case R.id.image_live_share_qzone:
-//                        //toast("qzone");
-//                        mThirdShare.setTitle(info.getString("content"));
-//                        mThirdShare.setText(info.getString("content"));
-//                        mThirdShare.setTitleUrl(info.getString("shareUrl"));
-//                        mThirdShare.setImageType(Type.IMAGE_NETWORK);
-//                        mThirdShare.setImageUrl(info.getString("pic"));
-//                        mThirdShare.share2QZone();
-//                        break;
-//                    case R.id.image_live_share_qq:
-//                        //toast("qq");
-//                        mThirdShare.setTitle(info.getString("content"));
-//                        mThirdShare.setText(info.getString("content"));
-//                        mThirdShare.setTitleUrl(info.getString("shareUrl"));
-//                        mThirdShare.setImageType(Type.IMAGE_NETWORK);
-//                        mThirdShare.setImageUrl(info.getString("pic"));
-//                        mThirdShare.share2QQ();
-//                        break;
-//                    case R.id.image_live_share_sina:
-//                        //toast("weibo");
-//                        mThirdShare.setText(info.getString("content"));
-//                        mThirdShare.setImageUrl(info.getString("pic"));
-//                        mThirdShare.share2SinaWeibo(false);
-//                        break;
                     case R.id.image_live_share_wechat:
                         //toast("wechat");
                         mThirdShare.setTitle(info.getString("title"));
-                        mThirdShare.setText(info.getString("title"));
+                        mThirdShare.setText(info.getString("content"));
                         mThirdShare.setShareType(Type.SHARE_WEBPAGE);
                         mThirdShare.setImageType(Type.IMAGE_NETWORK);
                         mThirdShare.setImageUrl(info.getString("image"));
@@ -898,7 +874,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     case R.id.image_live_share_wechat_moment:
                         //toast("wechat moment");
                         mThirdShare.setTitle(info.getString("title"));
-                        mThirdShare.setText(info.getString("title"));
+                        mThirdShare.setText(info.getString("content"));
                         mThirdShare.setShareType(Type.SHARE_WEBPAGE);
                         mThirdShare.setImageType(Type.IMAGE_NETWORK);
                         mThirdShare.setImageUrl(info.getString("image"));
@@ -1464,6 +1440,28 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             }
         }, 3000);
         listener = new OrientationSensorListener(this, null);
+
+        Api.getLivingBg(this, new JSONObject(), new OnRequestDataListener() {
+            @Override
+            public void requestSuccess(int code, JSONObject data) {
+                String url = data.getString("data");
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    if (!isDestroyed()) {
+                        Glide.with(LivingActivity.this).load(url).into(mPauseCover);
+                    }
+                } else {
+                    if (Util.isOnMainThread() && !isFinishing()) {
+                        Glide.with(LivingActivity.this).load(url).into(mPauseCover);
+                    }
+                }
+            }
+
+            @Override
+            public void requestFailure(int code, String msg) {
+
+            }
+        });
     }
 
 

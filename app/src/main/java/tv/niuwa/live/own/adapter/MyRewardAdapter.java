@@ -31,20 +31,24 @@ import tv.niuwa.live.own.bean.RewardItem;
  * All copyright reserved.
  */
 
-public class MyRewardAdapter extends BaseAdapter{
+public class MyRewardAdapter extends BaseAdapter {
 
     private Context mContext;
     private List<RewardItem> mUserMenuItems = new ArrayList<>();
     private LayoutInflater mInflater;
 
-    public MyRewardAdapter(Context context, List<RewardItem> data) {
+    public MyRewardAdapter(Context context) {
         this.mContext = context;
-        mUserMenuItems = data;
         mInflater = LayoutInflater.from(context);
     }
 
     public void addUserMenuItemList(List<RewardItem> data) {
-        mUserMenuItems.clear();
+        addUserMenuItemList(data, true);
+    }
+
+    public void addUserMenuItemList(List<RewardItem> data, boolean needClear) {
+        if (needClear)
+            mUserMenuItems.clear();
         mUserMenuItems.addAll(data);
         notifyDataSetChanged();
     }
@@ -80,9 +84,7 @@ public class MyRewardAdapter extends BaseAdapter{
         }
 
         holder.title.setText(data.getName());
-//        holder.desc.setText(data.getAudienceNum());
-
-//        holder.thumb.setImageResource(data.getAvatar());
+        holder.desc.setText(data.getDesc());
         Glide.with(mContext).load(data.getAvatar()).into(holder.thumb);
 
         return convertView;

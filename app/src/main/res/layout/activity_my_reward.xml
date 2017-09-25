@@ -7,13 +7,23 @@
     android:orientation="vertical"
     tools:context="tv.niuwa.live.MainActivity">
 
-        <include layout="@layout/layout_common_top" />
+    <include layout="@layout/layout_common_top_back" />
+
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ListView
+            android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/listView"
+            android:layout_marginLeft="10.5dp"
+            android:layout_marginRight="10.5dp"
             android:cacheColorHint="@color/transparent"
-            android:listSelector="@color/transparent"/>
+            android:listSelector="@color/transparent" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
 
 </LinearLayout>

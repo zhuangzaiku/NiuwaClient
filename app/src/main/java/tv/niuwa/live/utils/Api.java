@@ -63,9 +63,9 @@ public class Api {
     private static final String STOP_PUBLISH = HOST + "Api/SiSi/stopLive";
     private static final String GET_TERM = HOST + "/Api/SiSi/getChannelTermList";
     private static final String GET_SHARE_INFO = HOST + "Api/SiSi/getWxShareInfo";
-//    private static final String GET_SHARE_INFO = HOST + "Api/SiSi/getShareInfo";
+    //    private static final String GET_SHARE_INFO = HOST + "Api/SiSi/getShareInfo";
     private static final String THIRD_LOGIN = HOST + "Api/SiSi/sendOauthUserInfo";
-    private static final String PAY = HOST  + "Api/SiSi/begin_wxpay";
+    private static final String PAY = HOST + "Api/SiSi/begin_wxpay";
     private static final String PAY_ALI = HOST + "Api/SiSi/begin_alipay";
     private static final String GET_CHARGE_PACK = HOST + "Api/SiSi/get_recharge_package";
     private static final String CHECK_UPDATE = HOST + "Api/SiSi/checkAndroidVer";
@@ -87,273 +87,297 @@ public class Api {
     public static String GET_LikePic = HOST + "/Api/SiSi/getFlotageImage";
     public static String GET_SONG_LRC = HOST + "/Api/SiSi/searchSongLyric";
     public static final String GET_MY_REWARD = HOST + "/Api/SiSi/myGift";
+    public static final String GET_LIVING_BG = HOST + "/Api/SiSi/getBackGroundImg";
     public static final String PUSH_CALLBACK = HOST + "/Api/SiSi/startLivePushCallback";
     public static final String WAP_PAY = HOST + "/portal/Appweb/chongzhi";
     public static final String WEB_Family = HOST + "portal/Family/index";
+
     public static void doRegister(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(DO_REGISTER, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(DO_REGISTER, context, params, dialog, listener);
     }
 
     public static void getSongLrc(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_SONG_LRC, context, params,null, listener);
+        excutePost(GET_SONG_LRC, context, params, null, listener);
     }
+
     public static void pushCallback(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(PUSH_CALLBACK, context, params,null, listener);
+        excutePost(PUSH_CALLBACK, context, params, null, listener);
     }
 
     public static void searchMusic1(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(SEARCH_MUSIC1, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(SEARCH_MUSIC1, context, params, dialog, listener);
     }
 
     public static void getLikePic(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"waiting...");
-        excutePost(GET_LikePic, context, params,null, listener);
+        excutePost(GET_LikePic, context, params, null, listener);
     }
 
     public static void checkPass(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(CHECK_PASS, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(CHECK_PASS, context, params, dialog, listener);
     }
 
 
     public static void addLike(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(DO_REGISTER, context, params,null, listener);
+        excutePost(DO_REGISTER, context, params, null, listener);
     }
 
     public static void getSystemRankList(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_SYSTEM_RANK_LIST, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(GET_SYSTEM_RANK_LIST, context, params, dialog, listener);
     }
 
     public static void changeMobile(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(CHANGE_MOBILE, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(CHANGE_MOBILE, context, params, dialog, listener);
     }
 
     public static void setShopLink(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(SET_SHOP_LINK, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(SET_SHOP_LINK, context, params, dialog, listener);
     }
 
     public static void getShopLink(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_SHOP_LINK, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(GET_SHOP_LINK, context, params, dialog, listener);
     }
 
     public static void getVarCode(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_VARCODE, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(GET_VARCODE, context, params, dialog, listener);
     }
+
     public static void doLogin(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(DO_LOGIN, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(DO_LOGIN, context, params, dialog, listener);
     }
+
     public static void getUserInfo(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_USERINFO, context, params,dialog, listener);
+//        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
+        excutePost(GET_USERINFO, context, params, null, listener);
     }
+
     public static void getTerm(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_TERM, context, params,null, listener);
+        excutePost(GET_TERM, context, params, null, listener);
     }
+
     public static void getUserData(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_USERDATA, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(GET_USERDATA, context, params, dialog, listener);
     }
 
     public static void getUserData1(final Context context, JSONObject params, final OnRequestDataListener listener) {
-       // ProgressDialog dialog = ProgressDialog.show(context, "", "请稍后...", true);
-        excutePost(GET_USERINFO, context, params,null, listener);
+        // ProgressDialog dialog = ProgressDialog.show(context, "", "请稍后...", true);
+        excutePost(GET_USERINFO, context, params, null, listener);
     }
 
     public static void setUserData(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(SET_USERDATA, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(SET_USERDATA, context, params, dialog, listener);
     }
 
     public static void forgetPassword(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(FORGET_PASSWORD, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(FORGET_PASSWORD, context, params, dialog, listener);
     }
 
     public static void changePassword(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(CHANGE_PASSWORD, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(CHANGE_PASSWORD, context, params, dialog, listener);
     }
 
     public static void feedBack(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(FEED_BACK, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(FEED_BACK, context, params, dialog, listener);
     }
 
     public static void getUserAttentionList(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_USER_ATTENTION_LIST, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(GET_USER_ATTENTION_LIST, context, params, dialog, listener);
     }
 
     public static void getUserFansList(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_USER_FANS_LIST, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(GET_USER_FANS_LIST, context, params, dialog, listener);
     }
 
     public static void getUserContributionList(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_USER_CONTRIBUTION_LIST, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(GET_USER_CONTRIBUTION_LIST, context, params, dialog, listener);
     }
 
     public static void getChannelList(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_CHANNEL_LIST, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(GET_CHANNEL_LIST, context, params, dialog, listener);
     }
 
     public static void getAttentionChannelList(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_ATTENTION_CHANNEL_LIST, context, params,null, listener);
+        excutePost(GET_ATTENTION_CHANNEL_LIST, context, params, null, listener);
     }
 
     public static void getLaunchScreen(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_LAUNCH_SCREEN, context, params,null, listener);
+        excutePost(GET_LAUNCH_SCREEN, context, params, null, listener);
     }
+
     public static void getBanner(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_BANNER, context, params,null, listener);
+        excutePost(GET_BANNER, context, params, null, listener);
     }
 
     public static void doSearch(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(SEARCH, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(SEARCH, context, params, dialog, listener);
     }
+
     public static void startLive(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(START_LIVE, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(START_LIVE, context, params, dialog, listener);
     }
 
     public static void addAttention(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(ADD_ATTENTION, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(ADD_ATTENTION, context, params, dialog, listener);
     }
+
     public static void setLocation(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(SET_LOCATION, context, params,null, listener);
+        excutePost(SET_LOCATION, context, params, null, listener);
     }
 
     public static void getChannleInfo(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_CHANNLE_INFO, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(GET_CHANNLE_INFO, context, params, dialog, listener);
     }
+
     public static void getGifts(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //ProgressDialog dialog = ProgressDialog.show(context, "", "请稍后...", true);
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_GIFTS, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(GET_GIFTS, context, params, dialog, listener);
     }
+
     public static void sendGift(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(SEND_GIFT, context, params,null, listener);
+        excutePost(SEND_GIFT, context, params, null, listener);
     }
 
     public static void sendDanmu(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(SEND_DANMU, context, params,null, listener);
+        excutePost(SEND_DANMU, context, params, null, listener);
     }
 
     public static void sendDanmuNew(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(SEND_DANMU_NEW, context, params,null, listener);
+        excutePost(SEND_DANMU_NEW, context, params, null, listener);
     }
 
     public static void sendReport(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(SEND_REPORT, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(SEND_REPORT, context, params, dialog, listener);
     }
+
     public static void addJinyan(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(ADD_JINYAN, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(ADD_JINYAN, context, params, dialog, listener);
     }
+
     public static void getLiveRealTimeNum(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(LIVING_REALTIME_DATA, context, params,null, listener);
+        excutePost(LIVING_REALTIME_DATA, context, params, null, listener);
     }
 
     public static void getOnlineUsers(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_LIVE_ROOM_ONLINE_LIST, context, params,null, listener);
+        excutePost(GET_LIVE_ROOM_ONLINE_LIST, context, params, null, listener);
     }
 
     public static void exitLiveRoom(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(EXIT_LIVE_ROOM, context, params,null, listener);
+        excutePost(EXIT_LIVE_ROOM, context, params, null, listener);
     }
 
     public static void cancelAttention(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(CANCEL_ATTENTION, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(CANCEL_ATTENTION, context, params, dialog, listener);
     }
 
     public static void stopPublish(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(STOP_PUBLISH, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(STOP_PUBLISH, context, params, dialog, listener);
     }
 
     public static void getPublishRecord(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(PUBLISH_RECORD, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(PUBLISH_RECORD, context, params, dialog, listener);
     }
 
     public static void getShareInfo(final Context context, JSONObject params, final OnRequestDataListener listener) {
         SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePostNew(GET_SHARE_INFO, context, params,dialog, listener);
+        excutePost(GET_SHARE_INFO, context, params,dialog, listener);
     }
 
     public static void thirdLogin(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(THIRD_LOGIN, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(THIRD_LOGIN, context, params, dialog, listener);
     }
+
     public static void pay(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(PAY, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(PAY, context, params, dialog, listener);
     }
 
     public static void getChargePack(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_CHARGE_PACK, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(GET_CHARGE_PACK, context, params, dialog, listener);
     }
 
     public static void payAli(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(PAY_ALI, context, params,dialog, listener);
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(PAY_ALI, context, params, dialog, listener);
     }
 
     public static void checkUpdate(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(CHECK_UPDATE, context, params,null, listener);
+        excutePost(CHECK_UPDATE, context, params, null, listener);
     }
 
     public static void setManager(final Context context, JSONObject params, final OnRequestDataListener listener) {
         //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(SET_MANAGERER, context, params,null, listener);
-    }
-    public static void cancelManager(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(CANCEL_MANAGER, context, params,null, listener);
-    }
-    public static void getManagerList(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_MANAGER_LIST, context, params,null, listener);
-    }
-    public static void getTopic(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
-        excutePost(GET_TOPIC, context, params,null, listener);
+        excutePost(SET_MANAGERER, context, params, null, listener);
     }
 
-    public static void getMyReward(final Context context,JSONObject params, final OnRequestDataListener listener) {
-        excutePost(GET_MY_REWARD,context, params,null,listener);
+    public static void cancelManager(final Context context, JSONObject params, final OnRequestDataListener listener) {
+        //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
+        excutePost(CANCEL_MANAGER, context, params, null, listener);
     }
+
+    public static void getManagerList(final Context context, JSONObject params, final OnRequestDataListener listener) {
+        //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
+        excutePost(GET_MANAGER_LIST, context, params, null, listener);
+    }
+
+    public static void getTopic(final Context context, JSONObject params, final OnRequestDataListener listener) {
+        //SFProgrssDialog dialog = SFProgrssDialog.show(context,"请稍后...");
+        excutePost(GET_TOPIC, context, params, null, listener);
+    }
+
+    public static void getMyReward(final Context context, JSONObject params, final OnRequestDataListener listener) {
+        SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
+        excutePost(GET_MY_REWARD, context, params, null, listener);
+    }
+
+    public static void getLivingBg(final Context context, JSONObject params, final OnRequestDataListener listener) {
+        excutePost(GET_LIVING_BG, context, params, null, listener);
+    }
+
     protected static JSONObject getJsonObject(int statusCode, byte[] responseBody, OnRequestDataListener listener) {
         if (statusCode == 200) {
             String response = null;
@@ -387,39 +411,6 @@ public class Api {
 
     }
 
-    protected static JSONObject getJsonObjectNew(int statusCode, byte[] responseBody, OnRequestDataListener listener) {
-        if (statusCode == 200) {
-            String response = null;
-            try {
-                response = new String(responseBody, "UTF-8");
-                if (response != null) {
-                    JSONObject object = JSON.parseObject(response);
-//                    int code = object.getIntValue("code");
-//                    if (code != 200) {
-//                        String desc = object.getString("descrp");
-//                        if (listener != null) {
-//                            listener.requestFailure(code, desc);
-//                            return null;
-//                        }
-//                    }
-                    return object;
-                }
-                return null;
-            } catch (Exception e) {
-                if (listener != null) {
-                    listener.requestFailure(-1, "json解析失败!");
-                }
-                return null;
-            }
-        } else {
-            if (listener != null) {
-                listener.requestFailure(-1, "网络请求失败!");
-            }
-            return null;
-        }
-
-    }
-
     protected static RequestParams getRequestParams(JSONObject params) {
         RequestParams requestParams = new RequestParams();
         Iterator<?> it = params.keySet().iterator();
@@ -431,21 +422,21 @@ public class Api {
         return requestParams;
     }
 
-    protected static void excutePost(final String url, final Context context, JSONObject params,final SFProgrssDialog dialog, final OnRequestDataListener listener) {
-        params.put("os",OS);
-        params.put("soft_ver",SOFT_VER);
+    protected static void excutePost(final String url, final Context context, JSONObject params, final SFProgrssDialog dialog, final OnRequestDataListener listener) {
+        params.put("os", OS);
+        params.put("soft_ver", SOFT_VER);
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams requestParams = getRequestParams(params);
-        if(!url.contains("getLiveRoomOnlineNum"))
+        if (!url.contains("getLiveRoomOnlineNum"))
             LogUtils.d(url + requestParams.toString());
         client.post(context, url, requestParams, new AsyncHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                if(dialog != null && null != dialog.getContext() && null != dialog.getWindow() && dialog.getWindow().getDecorView().getParent() != null)
+                if (dialog != null && null != dialog.getWindow() && dialog.getWindow().getDecorView().getParent() != null)
                     dialog.dismiss();
-                if(!url.contains("getLiveRoomOnlineNum"))
-                LogUtils.i("response=" + new String(responseBody));
+                if (!url.contains("getLiveRoomOnlineNum"))
+                    LogUtils.i("response=" + new String(responseBody));
                 JSONObject data = getJsonObject(statusCode, responseBody, listener);
                 if (data != null) {
                     listener.requestSuccess(statusCode, data);
@@ -454,52 +445,13 @@ public class Api {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                if(dialog != null && null != dialog.getContext() && null != dialog.getWindow() && dialog.getWindow().getDecorView().getParent() != null)
+                if (dialog != null && null != dialog.getContext() && null != dialog.getWindow() && dialog.getWindow().getDecorView().getParent() != null)
                     dialog.dismiss();
                 String response = null;
                 try {
-                    if(null != responseBody)
-                    response = new String(responseBody, "UTF-8");
-                    if(!url.contains("getLiveRoomOnlineNum"))
-                        LogUtils.i("response=" + response);
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-                if (listener != null) {
-                    listener.requestFailure(-1, "网络请求失败!");
-                }
-            }
-        });
-    }
-
-    protected static void excutePostNew(final String url, final Context context, JSONObject params,final SFProgrssDialog dialog, final OnRequestDataListener listener) {
-        params.put("os",OS);
-        params.put("soft_ver",SOFT_VER);
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams requestParams = getRequestParams(params);
-        if(!url.contains("getLiveRoomOnlineNum"))
-            LogUtils.d(url + requestParams.toString());
-        client.post(context, url, requestParams, new AsyncHttpResponseHandler() {
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                dismissDialog(dialog);
-                if(!url.contains("getLiveRoomOnlineNum"))
-                    LogUtils.i("response=" + new String(responseBody));
-                JSONObject data = getJsonObjectNew(statusCode, responseBody, listener);
-                if (data != null) {
-                    listener.requestSuccess(statusCode, data);
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                dismissDialog(dialog);
-                String response = null;
-                try {
-                    if(null != responseBody)
+                    if (null != responseBody)
                         response = new String(responseBody, "UTF-8");
-                    if(!url.contains("getLiveRoomOnlineNum"))
+                    if (!url.contains("getLiveRoomOnlineNum"))
                         LogUtils.i("response=" + response);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
@@ -512,9 +464,9 @@ public class Api {
     }
 
 
-    public static void excuteUpload(String url, final Context context, RequestParams params,final SFProgrssDialog dialog, final OnRequestDataListener listener) {
-        params.put("os",OS);
-        params.put("soft_ver",SOFT_VER);
+    public static void excuteUpload(String url, final Context context, RequestParams params, final SFProgrssDialog dialog, final OnRequestDataListener listener) {
+        params.put("os", OS);
+        params.put("soft_ver", SOFT_VER);
         AsyncHttpClient client = new AsyncHttpClient();
         client.post(context, url, params, new AsyncHttpResponseHandler() {
 
@@ -538,9 +490,8 @@ public class Api {
     }
 
     private static void dismissDialog(SFProgrssDialog dialog) {
-        if(dialog != null && null != dialog.getContext() && null != dialog.getWindow() && dialog.getWindow().getDecorView().getParent() != null)
+        if (dialog != null && null != dialog.getContext() && null != dialog.getWindow() && dialog.getWindow().getDecorView().getParent() != null)
             dialog.dismiss();
     }
-
 
 }

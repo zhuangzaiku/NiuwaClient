@@ -12,11 +12,13 @@ public class RewardItem {
 
     private String name;
     private String avatar;
+    private String desc;
     private int status;
 
-    public RewardItem(String name, String avatar, int status) {
+    public RewardItem(String name, String avatar, String desc, int status) {
         this.name = name;
         this.avatar = avatar;
+        this.desc = desc;
         this.status = status;
     }
 
@@ -42,5 +44,13 @@ public class RewardItem {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 }

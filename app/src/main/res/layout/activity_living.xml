@@ -21,11 +21,11 @@
         android:layout_centerInParent="true"/>
 
 
-    <RelativeLayout
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/living_pause_cover"
-        android:visibility="gone"
+        android:visibility="visible"
+        android:scaleType="fitXY"
         android:id="@+id/pauseCover"/>
     <!--<TextureView-->
     <!--android:id="@+id/player_texture"-->
