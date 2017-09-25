@@ -102,6 +102,7 @@
         <activity
             android:name="tv.niuwa.live.living.LivingActivity"
             android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|screenSize|orientation|keyboard"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name="tv.niuwa.live.search.SearchActivity"

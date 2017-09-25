@@ -95,9 +95,11 @@ import com.smart.loginsharesdk.share.ThirdShare;
 import com.smart.loginsharesdk.share.onekeyshare.Type;
 
 import cn.leancloud.chatkit.cache.LCIMConversationItemCache;
+import master.flame.danmaku.ui.widget.DanmakuView;
 import tv.niuwa.live.MainActivity;
 import tv.niuwa.live.MyApplication;
 import tv.niuwa.live.R;
+import tv.niuwa.live.danmaku.DanmaManager;
 import tv.niuwa.live.home.model.VideoItem;
 import tv.niuwa.live.intf.OnCustomClickListener;
 import tv.niuwa.live.intf.OnRequestDataListener;
@@ -220,8 +222,6 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     EditText mLiveEditInput;
     @Bind(R.id.frame_living_root_container)
     FrameLayout mFrameLivingRootContainer;
-    //    @Bind(R.id.living_danmu)
-//    ListView mLiveingDanmu;
     @Bind(R.id.living_danmu_container)
     LinearLayout mLivingDanmuContainer;
     @Bind(R.id.live_music)
@@ -249,6 +249,11 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     TextView tv_zhibo_close_num;
     @Bind(R.id.live_send)
     ImageButton mLiveSend;
+
+    @Bind(R.id.sv_danmaku)
+    DanmakuView mDanmakuView;
+    DanmaManager mDanmaManager;
+
     CircleImageView mDialogUserAvatar;
     TextView mDialogUserNicename;
     ImageView mDialogClose;
@@ -765,7 +770,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
         if (mPopupShareWindow == null || !mPopupShareWindow.isShowing()) {
             View inflate = LayoutInflater.from(LivingActivity.this).inflate(R.layout.layout_shape_dialog, null);
             mPopupShareWindow = new PopupWindow(inflate, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            mPopupShareWindow.setBackgroundDrawable(new ColorDrawable(0x50000000));
+            mPopupShareWindow.setBackgroundDrawable(new ColorDrawable(0x00000000));
             mPopupShareWindow.setFocusable(true);
             mPopupShareWindow.showAtLocation(mLiveShare, Gravity.BOTTOM, locX, locY);
             ImageView shareWechat = (ImageView) inflate.findViewById(R.id.image_live_share_wechat);
@@ -1031,7 +1036,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                         model.setAvatar(avatar);
                         model.setUserId(userId);
                         model.setContent(user_nicename + "关注了主播");
-                        showDanmuAnim(LivingActivity.this, model);
+                        mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
 //                        mDanmuItems.add(model);
 //                        mDanmuadapter.notifyDataSetChanged();
 //                        mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
@@ -1462,6 +1467,8 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
 
             }
         });
+
+        mDanmaManager = new DanmaManager(this,mDanmakuView);
     }
 
 
@@ -1665,7 +1672,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     model.setAvatar(avatar);
                     model.setContent(content);
                     sendMessage(model);
-                    showDanmuAnim(LivingActivity.this, model);
+                    mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
                 }
 
                 @Override
@@ -1687,7 +1694,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             JSONObject jo = new JSONObject();
             jo.put("text", content);
             jo.put("message", new Gson().toJson(model));
-            showDanmuAnim(LivingActivity.this, model);
+            mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
             Api.sendDanmuNew(this, jo, new OnRequestDataListener() {
                 @Override
                 public void requestSuccess(int code, JSONObject data) {
@@ -1699,61 +1706,61 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     LogUtils.d("error" + msg);
                 }
             });
-            mLiveEditInput.setText("");
             if (mLivingDanmuContainer.getVisibility() == View.VISIBLE) {
                 mLiveBottomBtn.setVisibility(View.VISIBLE);
             }
-            live_message_container_rl.setVisibility(View.GONE);
-            SoftKeyboardUtils.closeSoftInputMethod(mLiveEditInput);
+//            mLiveEditInput.setText("");
+//            live_message_container_rl.setVisibility(View.GONE);
+//            SoftKeyboardUtils.closeSoftInputMethod(mLiveEditInput);
         }
     }
 
-    public void showDanmuAnim(final LivingActivity temp, DanmuModel model) {
-        final View giftPop = View.inflate(temp, R.layout.item_danmu_pop, null);
-        ImageView giftAvatar = (ImageView) giftPop.findViewById(R.id.gift_pop_avatar);
-        TextView giftUserName = (TextView) giftPop.findViewById(R.id.gift_pop_username);
-        TextView giftContent = (TextView) giftPop.findViewById(R.id.gift_pop_content);
-        Glide.with(temp).load(temp.avatar)
-                .error(R.drawable.icon_avatar_default)
-                .into(giftAvatar);
-        giftUserName.setText(temp.user_nicename);
-        giftContent.setText(model.getContent());
-        temp.mDanmuContainer.addView(giftPop);
-        Animation anim = AnimationUtils.loadAnimation(temp, R.anim.danmu_enter);
-        giftPop.startAnimation(anim);
-        anim.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                if (isActive) {
-                    new Handler().post(new Runnable() {
-                        @Override
-                        public void run() {
-                            temp.mDanmuContainer.removeView(giftPop);
-                        }
-                    });
-
-                }
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
-    }
+//    public void showDanmuAnim(final LivingActivity temp, DanmuModel model) {
+//        final View giftPop = View.inflate(temp, R.layout.item_danmu_pop, null);
+//        ImageView giftAvatar = (ImageView) giftPop.findViewById(R.id.gift_pop_avatar);
+//        TextView giftUserName = (TextView) giftPop.findViewById(R.id.gift_pop_username);
+//        TextView giftContent = (TextView) giftPop.findViewById(R.id.gift_pop_content);
+//        Glide.with(temp).load(temp.avatar)
+//                .error(R.drawable.icon_avatar_default)
+//                .into(giftAvatar);
+//        giftUserName.setText(temp.user_nicename);
+//        giftContent.setText(model.getContent());
+//        temp.mDanmuContainer.addView(giftPop);
+//        Animation anim = AnimationUtils.loadAnimation(temp, R.anim.danmu_enter);
+//        giftPop.startAnimation(anim);
+//        anim.setAnimationListener(new Animation.AnimationListener() {
+//            @Override
+//            public void onAnimationStart(Animation animation) {
+//
+//            }
+//
+//            @Override
+//            public void onAnimationEnd(Animation animation) {
+//                if (isActive) {
+//                    new Handler().post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            temp.mDanmuContainer.removeView(giftPop);
+//                        }
+//                    });
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onAnimationRepeat(Animation animation) {
+//
+//            }
+//        });
+//
+//    }
 
     public void sendMessage(DanmuModel model) {
         if (isActive) {
 //            mDanmuItems.add(model);
 //            mDanmuadapter.notifyDataSetChanged();
 //            mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
-            showDanmuAnim(LivingActivity.this, model);
+            mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
             mLiveEditInput.setText("");
             if (mLivingDanmuContainer.getVisibility() == View.VISIBLE) {
                 mLiveBottomBtn.setVisibility(View.VISIBLE);
@@ -1776,7 +1783,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                 model.setType("3");
                 model.setUserName(sysMessage.getJSONObject(i).getString("title"));
                 model.setContent(sysMessage.getJSONObject(i).getString("msg"));
-                showDanmuAnim(LivingActivity.this, model);
+                mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
 //                mDanmuItems.add(model);
             }
 
@@ -1848,7 +1855,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     model.setUserId(userId);
                     model.setUserLevel(user_level);
                     model.setContent(user_nicename + "进入房间");
-                    showDanmuAnim(LivingActivity.this, model);
+                    mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
 //                    mDanmuItems.add(model);
 //                    mDanmuadapter.notifyDataSetChanged();
 //                    mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
@@ -1905,7 +1912,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             model.setUserId(temp.getString("userId"));
             model.setAvatar(temp.getString("avatar"));
             if (!model.getType().equals("9") && !model.getType().equals("10")) {
-                showDanmuAnim(LivingActivity.this, model);
+                mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
 //                mDanmuItems.add(model);
 //                mDanmuadapter.notifyDataSetChanged();
 //                mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
@@ -1915,7 +1922,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     clickHeart();
                     break;
                 case "7":
-                    showDanmuAnim(this, model);
+                    mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
                     break;
                 case "6":
                     //系统消息  -  进入房间
@@ -2022,6 +2029,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mDanmaManager.destroy();
         DanmuModel model = new DanmuModel();
         model.setType("5");
         model.setUserName("系统消息");
@@ -2141,6 +2149,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
         super.onResume();
         getUnread();
         startCameraPreviewWithPermCheck();
+        mDanmaManager.resume();
         EventBus.getDefault().register(this);
         if (ksyMediaPlayer != null && !isPaused) {
             ksyMediaPlayer.start();
@@ -2155,6 +2164,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     @Override
     protected void onPause() {
         super.onPause();
+        mDanmaManager.pause();
         EventBus.getDefault().unregister(this);
         if (ksyMediaPlayer != null) {
 //            ksyMediaPlayer.pause();
@@ -2459,7 +2469,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                                 model.setAvatar(avatar);
                                 model.setUserId(userId);
                                 model.setContent(user_nicename + "关注了主播");
-                                showDanmuAnim(LivingActivity.this, model);
+                                mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
 //                                mDanmuItems.add(model);
 //                                mDanmuadapter.notifyDataSetChanged();
 //                                mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);

@@ -58,5 +58,15 @@
     <color name="color_717171">#717171</color>
     <color name="color_ffba00">#ffba00</color>
 
+    <color name="kk_danma_my_text_color">#f7ff1e</color>
+    <color name="kk_danma_game_gift_text_color">#ff6479</color>
+    <color name="kk_danma_my_text_alpha">#59000000</color>
+
+    <color name="kk_danma_color1">#FFFFFF</color>
+    <color name="kk_danma_color2">#00ff00</color>
+    <color name="kk_danma_color3">#ff0000</color>
+    <color name="kk_danma_color4">#0000ff</color>
+    <color name="kk_danma_color5">#ff00ff</color>
+
 </resources>
 

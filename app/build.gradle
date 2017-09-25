@@ -111,4 +111,7 @@ dependencies {
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
     compile project(path: ':BruToolKit')
     compile "com.networkbench.newlens.agent.android:nbs.newlens.agent:2.5.9"//听云sdk
+
+    compile 'com.github.ctiao:DanmakuFlameMaster:0.9.12'
+    compile 'com.github.ctiao:ndkbitmap-armv7a:0.9.12'
 }
