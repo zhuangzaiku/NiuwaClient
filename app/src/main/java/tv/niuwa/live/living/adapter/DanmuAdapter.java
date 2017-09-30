@@ -1,4 +1,4 @@
-package tv.niuwa.live.living;
+package tv.niuwa.live.living.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import tv.niuwa.live.R;
+import tv.niuwa.live.living.model.DanmuModel;
 
 /**
  * Created by Administrator on 2016/8/29.

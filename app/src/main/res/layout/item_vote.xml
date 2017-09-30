@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <tv.niuwa.live.view.ShapedImageView
+        android:layout_width="69dp"
+        android:layout_height="69dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/vote_bg"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_12sp"
+        android:id="@+id/vote_num"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/img_name"
+        android:layout_below="@+id/vote_bg"
+        android:id="@+id/vote_name"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/color_323232"
+        android:textSize="@dimen/text_size_12sp"
+        android:gravity="center"
+        android:layout_marginTop="6dp"/>
+</RelativeLayout>

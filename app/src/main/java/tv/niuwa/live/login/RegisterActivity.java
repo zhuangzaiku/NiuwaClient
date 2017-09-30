@@ -116,6 +116,7 @@ public class RegisterActivity extends BaseSiSiEditActivity {
                 if (token != null) {
                     toast(data.getString("descrp"));
                     SharePrefsUtils.put(RegisterActivity.this, "user", "token", token);
+                    SharePrefsUtils.put(RegisterActivity.this, "user", "getTokenTime", System.currentTimeMillis());
                     openActivity(LoginActivity.class);
                     RegisterActivity.this.finish();
                 }

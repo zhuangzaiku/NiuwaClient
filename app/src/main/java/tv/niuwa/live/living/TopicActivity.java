@@ -13,6 +13,7 @@ import com.smart.androidutils.activity.BaseActivity;
 import com.smart.androidutils.utils.DensityUtils;
 import tv.niuwa.live.R;
 import tv.niuwa.live.intf.OnRequestDataListener;
+import tv.niuwa.live.living.model.TermModel;
 import tv.niuwa.live.utils.Api;
 
 import java.util.ArrayList;

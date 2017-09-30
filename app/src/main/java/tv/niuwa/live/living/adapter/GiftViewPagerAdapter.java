@@ -1,4 +1,4 @@
-package tv.niuwa.live.living;
+package tv.niuwa.live.living.adapter;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.View;

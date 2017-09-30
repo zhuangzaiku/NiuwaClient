@@ -3,6 +3,7 @@ package tv.niuwa.live.own;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -111,7 +112,17 @@ public class UserCenterActivity extends BaseSiSiActivity {
         startActivityForResult(i, 1);
     }
 
+    String token;
+    String userId;
+
     private void initView() {
+        long getTokenTime = (long) SharePrefsUtils.get(UserCenterActivity.this, "user", "getTokenTime", 0L);
+        if(System.currentTimeMillis() - getTokenTime >= TWO_DAYS) {
+            SharePrefsUtils.remove(UserCenterActivity.this, "user", "token");
+        }
+        token = (String) SharePrefsUtils.get(UserCenterActivity.this, "user", "token", "");
+        userId = (String) SharePrefsUtils.get(UserCenterActivity.this, "user", "userId", "");
+
         title.setText(R.string.user_center);
 
         userCoin.setText(Html.fromHtml(String.format(getResources().getString(R.string.user_coin), String.valueOf(54))));
@@ -148,6 +159,10 @@ public class UserCenterActivity extends BaseSiSiActivity {
         enterLiving.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(TextUtils.isEmpty(token)) {
+                    openActivity(LoginActivity.class);
+                    return;
+                }
                 VideoItem videoItem = new VideoItem();
                 videoItem.setRoom_id("17");
                 videoItem.setId("156277");
@@ -171,9 +186,9 @@ public class UserCenterActivity extends BaseSiSiActivity {
         });
     }
 
+    private static final long TWO_DAYS = 1000 * 60 * 60 * 48;
+
     private void initData() {
-        String token = (String) SharePrefsUtils.get(UserCenterActivity.this, "user", "token", "");
-        String userId = (String) SharePrefsUtils.get(UserCenterActivity.this, "user", "userId", "");
         if (!StringUtils.isEmpty(token) && !StringUtils.isEmpty(userId)) {
             JSONObject requestParams = new JSONObject();
             requestParams.put("token", token);

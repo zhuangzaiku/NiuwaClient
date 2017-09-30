@@ -17,7 +17,9 @@ import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import tv.niuwa.live.R;
+
 /**
  *
  */
@@ -52,17 +54,20 @@ public class BubbleView extends RelativeLayout {
 
     public BubbleView setDefaultDrawableList() {
         List<Drawable> drawableList = new ArrayList<Drawable>();
-        drawableList.add(getResources().getDrawable(R.drawable.live_ic_love1));
+        drawableList.add(getResources().getDrawable(R.drawable.img_wanju01));
         // drawableList.add(getResources().getDrawable(R.drawable.live_ic_glasses));
-        drawableList.add(getResources().getDrawable(R.drawable.live_ic_love2));
+        drawableList.add(getResources().getDrawable(R.drawable.img_wanju02));
         //drawableList.add(getResources().getDrawable(R.drawable.live_ic_good));
-        drawableList.add(getResources().getDrawable(R.drawable.live_ic_love3));
+        drawableList.add(getResources().getDrawable(R.drawable.img_wanju03));
         //drawableList.add(getResources().getDrawable(R.drawable.live_ic_kele));
-        drawableList.add(getResources().getDrawable(R.drawable.live_ic_love4));
+        drawableList.add(getResources().getDrawable(R.drawable.img_wanju04));
         //drawableList.add(getResources().getDrawable(R.drawable.live_ic_donuts));
-        drawableList.add(getResources().getDrawable(R.drawable.live_ic_love5));
+        drawableList.add(getResources().getDrawable(R.drawable.img_wanju05));
         //drawableList.add(getResources().getDrawable(R.drawable.live_ic_sandwich));
-        drawableList.add(getResources().getDrawable(R.drawable.live_ic_love6));
+        drawableList.add(getResources().getDrawable(R.drawable.img_wanju06));
+        drawableList.add(getResources().getDrawable(R.drawable.img_wanju07));
+        drawableList.add(getResources().getDrawable(R.drawable.img_wanju08));
+        drawableList.add(getResources().getDrawable(R.drawable.img_wanju09));
 
         setDrawableList(drawableList);
         return this;

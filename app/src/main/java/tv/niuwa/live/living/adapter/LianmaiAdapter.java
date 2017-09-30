@@ -1,4 +1,4 @@
-package tv.niuwa.live.living;
+package tv.niuwa.live.living.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.smart.androidutils.images.GlideCircleTransform;
 import tv.niuwa.live.R;
 import tv.niuwa.live.home.intf.OnRecyclerViewItemClickListener;
+import tv.niuwa.live.living.model.DanmuModel;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package tv.niuwa.live.living;
+package tv.niuwa.live.living.model;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -6,7 +6,7 @@ import com.alibaba.fastjson.JSONObject;
  * Created by Administrator on 2016/8/29.
  * Author: XuDeLong
  */
-public class ManagerModel {
+public class DanmuModel {
     private JSONObject other;
     private String userName;
     private String userLevel;

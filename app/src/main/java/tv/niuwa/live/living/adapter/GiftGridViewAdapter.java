@@ -1,4 +1,4 @@
-package tv.niuwa.live.living;
+package tv.niuwa.live.living.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import tv.niuwa.live.R;
+import tv.niuwa.live.living.model.GiftModel;
 
 /**
  * Created by Administrator on 2016/9/5.

@@ -158,11 +158,11 @@ public class DanmaManager {
 		// 设置最大显示行数
 		HashMap<Integer, Integer> maxLinesPair = new HashMap<Integer, Integer>();
 		maxLinesPair.put(TYPE_SCROLL_RL, 5); // 滚动弹幕最大显示5行
-		maxLinesPair.put(TYPE_SCROLL_LR, 5); // 滚动弹幕最大显示5行
+//		maxLinesPair.put(TYPE_SCROLL_LR, 5); // 滚动弹幕最大显示5行
 		// 设置是否禁止重叠
 		HashMap<Integer, Boolean> overlappingEnablePair = new HashMap<Integer, Boolean>();
 		overlappingEnablePair.put(TYPE_SCROLL_RL, true);
-		overlappingEnablePair.put(TYPE_SCROLL_LR, true);
+//		overlappingEnablePair.put(TYPE_SCROLL_LR, true);
 		overlappingEnablePair.put(BaseDanmaku.TYPE_FIX_TOP, true);
 		overlappingEnablePair.put(BaseDanmaku.TYPE_SPECIAL, true);
 
@@ -278,7 +278,7 @@ public class DanmaManager {
 		msg.obj = danmaku;
 		handler.sendMessage(msg);
 	}
-	private int[] mShowType = new int[]{BaseDanmaku.TYPE_SCROLL_RL,BaseDanmaku.TYPE_SCROLL_LR,BaseDanmaku.TYPE_FIX_TOP,BaseDanmaku.TYPE_SPECIAL,BaseDanmaku.TYPE_SPECIAL};
+	private int[] mShowType = new int[]{BaseDanmaku.TYPE_SCROLL_RL,BaseDanmaku.TYPE_SCROLL_RL,BaseDanmaku.TYPE_FIX_TOP,BaseDanmaku.TYPE_SPECIAL,BaseDanmaku.TYPE_SPECIAL};
 	private int[] mShowColor = new int[]{R.color.kk_danma_color1, R.color.kk_danma_color2, R.color.kk_danma_color3,
 			R.color.kk_danma_color4, R.color.kk_danma_color5};
 	private Random mRandom = new Random(System.currentTimeMillis());
@@ -314,7 +314,13 @@ public class DanmaManager {
 		danmaku.textSize = DisplayUtil.sp2px(context, 18);
 		danmaku.textShadowColor = context.getResources().getColor(R.color.kk_danma_my_text_alpha);
 		danmaku.borderColor = 0;
-		danmaku.setDuration(new Duration(5000));
+		if(showType == BaseDanmaku.TYPE_FIX_TOP) {
+			danmaku.setDuration(new Duration(2500));
+			danmaku.padding = 20;
+		} else {
+			danmaku.setDuration(new Duration(5000));
+		}
+
 		return danmaku;
 	}
 

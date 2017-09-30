@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.smart.androidutils.images.GlideCircleTransform;
 import tv.niuwa.live.R;
+import tv.niuwa.live.living.model.GiftSendModel;
 import tv.niuwa.live.view.StrokeTextView;
 
 

@@ -93,6 +93,7 @@ public class LoginByPhoneActivity extends BaseSiSiEditActivity {
                 JSONArray userInfo = data.getJSONArray("info");
                 if (token != null) {
                     SharePrefsUtils.put(LoginByPhoneActivity.this, "user", "token", token);
+                    SharePrefsUtils.put(LoginByPhoneActivity.this, "user", "getTokenTime", System.currentTimeMillis());
                     if (userInfo.get(0) != null) {
                         JSONObject obj = (JSONObject) userInfo.getJSONObject(0);
                         String userId = obj.getString("id");

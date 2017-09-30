@@ -1,4 +1,4 @@
-package tv.niuwa.live.living;
+package tv.niuwa.live.living.model;
 
 /**
  * Created by Administrator on 2016/9/5.

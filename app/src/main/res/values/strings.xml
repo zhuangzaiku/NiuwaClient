@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">牛哇直播</string>
     <string name="app_name_short">牛哇</string>
-    <string name="coin">秀豆</string>
+    <string name="coin">牛币</string>
     <string name="coin1">牛币</string>
     <string name="unspport_message_type">暂不支持此消息类型</string>
     <string name="square">广场</string>

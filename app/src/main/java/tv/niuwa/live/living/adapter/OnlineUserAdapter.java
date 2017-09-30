@@ -1,4 +1,4 @@
-package tv.niuwa.live.living;
+package tv.niuwa.live.living.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import tv.niuwa.live.R;
+import tv.niuwa.live.living.model.UserModel;
 
 /**
  * Created by Administrator on 2016/8/29.

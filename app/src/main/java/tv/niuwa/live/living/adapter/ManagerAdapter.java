@@ -1,4 +1,4 @@
-package tv.niuwa.live.living;
+package tv.niuwa.live.living.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import tv.niuwa.live.R;
 import tv.niuwa.live.intf.OnRequestDataListener;
+import tv.niuwa.live.living.model.ManagerModel;
 import tv.niuwa.live.utils.Api;
 
 /**

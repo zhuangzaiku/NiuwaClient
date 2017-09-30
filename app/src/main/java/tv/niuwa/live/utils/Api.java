@@ -6,12 +6,15 @@ import android.os.Build;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.smart.androidutils.utils.LogUtils;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.Charset;
 import java.util.Iterator;
 
 import cz.msebera.android.httpclient.Header;
@@ -84,10 +87,14 @@ public class Api {
     public static final String GET_MUSIC = "http://apis.baidu.com/geekery/music/playinfo";
     public static final String CHECK_PASS = HOST + "/Api/SiSi/checkRoomPassword";
     public static final String SEARCH_MUSIC1 = HOST + "/Api/SiSi/searchSong";
-    public static String GET_LikePic = HOST + "/Api/SiSi/getFlotageImage";
+//    public static String GET_LikePic = HOST + "/Api/SiSi/getFlotageImage";
     public static String GET_SONG_LRC = HOST + "/Api/SiSi/searchSongLyric";
     public static final String GET_MY_REWARD = HOST + "/Api/SiSi/myGift";
     public static final String GET_LIVING_BG = HOST + "/Api/SiSi/getBackGroundImg";
+    public static final String ADD_SCORE = HOST + "/Api/SiSi/addScore";
+    public static final String GET_VOTE = HOST + "/Api/SiSi/getVote";
+    public static final String DO_VOTE = HOST + "/Api/SiSi/doVote";
+    public static final String VOTE_RESULT = HOST + "/Api/SiSi/voteResult";
     public static final String PUSH_CALLBACK = HOST + "/Api/SiSi/startLivePushCallback";
     public static final String WAP_PAY = HOST + "/portal/Appweb/chongzhi";
     public static final String WEB_Family = HOST + "portal/Family/index";
@@ -111,11 +118,11 @@ public class Api {
         SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
         excutePost(SEARCH_MUSIC1, context, params, dialog, listener);
     }
-
-    public static void getLikePic(final Context context, JSONObject params, final OnRequestDataListener listener) {
-        //SFProgrssDialog dialog = SFProgrssDialog.show(context,"waiting...");
-        excutePost(GET_LikePic, context, params, null, listener);
-    }
+//
+//    public static void getLikePic(final Context context, JSONObject params, final OnRequestDataListener listener) {
+//        //SFProgrssDialog dialog = SFProgrssDialog.show(context,"waiting...");
+//        excutePost(GET_LikePic, context, params, null, listener);
+//    }
 
     public static void checkPass(final Context context, JSONObject params, final OnRequestDataListener listener) {
         SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
@@ -371,11 +378,24 @@ public class Api {
 
     public static void getMyReward(final Context context, JSONObject params, final OnRequestDataListener listener) {
         SFProgrssDialog dialog = SFProgrssDialog.show(context, "请稍后...");
-        excutePost(GET_MY_REWARD, context, params, null, listener);
+        excutePost(GET_MY_REWARD, context, params, dialog, listener);
     }
 
     public static void getLivingBg(final Context context, JSONObject params, final OnRequestDataListener listener) {
         excutePost(GET_LIVING_BG, context, params, null, listener);
+    }
+    public static void addScore(final Context context, JSONObject params, final OnRequestDataListener listener) {
+        excutePost(ADD_SCORE, context, params, null, listener);
+    }
+    public static void getVote(final Context context, JSONObject params, final OnRequestDataListener listener) {
+        excutePost(GET_VOTE, context, params, null, listener);
+    }
+
+    public static void voteResult(final Context context, JSONObject params, final OnRequestDataListener listener) {
+        excutePost(VOTE_RESULT, context, params, null, listener);
+    }
+    public static void doVote(final Context context, JSONObject params, final OnRequestDataListener listener) {
+        excutePost(DO_VOTE, context, params, null, listener);
     }
 
     protected static JSONObject getJsonObject(int statusCode, byte[] responseBody, OnRequestDataListener listener) {
@@ -385,6 +405,7 @@ public class Api {
                 response = new String(responseBody, "UTF-8");
                 if (response != null) {
                     JSONObject object = JSON.parseObject(response);
+                    LogUtils.i("response=" + object.toString());
                     int code = object.getIntValue("code");
                     if (code != 200) {
                         String desc = object.getString("descrp");
@@ -427,16 +448,13 @@ public class Api {
         params.put("soft_ver", SOFT_VER);
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams requestParams = getRequestParams(params);
-        if (!url.contains("getLiveRoomOnlineNum"))
-            LogUtils.d(url + requestParams.toString());
+        LogUtils.d(url + requestParams.toString());
         client.post(context, url, requestParams, new AsyncHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 if (dialog != null && null != dialog.getWindow() && dialog.getWindow().getDecorView().getParent() != null)
                     dialog.dismiss();
-                if (!url.contains("getLiveRoomOnlineNum"))
-                    LogUtils.i("response=" + new String(responseBody));
                 JSONObject data = getJsonObject(statusCode, responseBody, listener);
                 if (data != null) {
                     listener.requestSuccess(statusCode, data);
@@ -451,8 +469,7 @@ public class Api {
                 try {
                     if (null != responseBody)
                         response = new String(responseBody, "UTF-8");
-                    if (!url.contains("getLiveRoomOnlineNum"))
-                        LogUtils.i("response=" + response);
+                    LogUtils.i("response=" + response);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }

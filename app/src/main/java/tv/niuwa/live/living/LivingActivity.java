@@ -19,7 +19,6 @@ import android.opengl.GLSurfaceView;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
@@ -51,7 +50,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -105,8 +103,13 @@ import tv.niuwa.live.intf.OnCustomClickListener;
 import tv.niuwa.live.intf.OnRequestDataListener;
 import tv.niuwa.live.lean.Chat;
 import tv.niuwa.live.lean.ConversationListActivity;
+import tv.niuwa.live.living.adapter.DanmuAdapter;
+import tv.niuwa.live.living.adapter.OnlineUserAdapter;
+import tv.niuwa.live.living.model.DanmuModel;
+import tv.niuwa.live.living.model.GiftModel;
+import tv.niuwa.live.living.model.GiftSendModel;
+import tv.niuwa.live.living.model.UserModel;
 import tv.niuwa.live.own.UserMainActivity;
-import tv.niuwa.live.own.WebviewActivity;
 import tv.niuwa.live.own.userinfo.ContributionActivity;
 import tv.niuwa.live.utils.Api;
 import tv.niuwa.live.utils.DialogEnsureUtiles;
@@ -312,6 +315,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     private AVIMConversation mSquareConversation;
     private JSONArray sysMessage;
     private GiftFragment mGiftFragment;
+    private VoteFragment mVoteFragment;
     private Handler myHandler;
 
     //漂浮心
@@ -356,6 +360,10 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     private int mVideoHeight = 0;
     private Context mContext;
     private String guard_status = "0";
+    private String channel_like = "0";
+
+    @Bind(R.id.like_num)
+    TextView mLikeNum;
     Runnable dataRunnable = new Runnable() {
         @Override
         public void run() {
@@ -370,6 +378,11 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                         if (null != mLiveUserOnlineNum && null != mLiveUserTotal) {
                             mLiveUserTotal.setText(getEarn(data.getString("total_earn")));
                             guard_status = data.getString("guard_status");
+                            channel_like = data.getString("channel_like");
+                            if(TextUtils.isEmpty(channel_like)) {
+                                channel_like = "0";
+                            }
+                            mLikeNum.setText(channel_like);
                             mLiveUserOnlineNum.setText(data.getString("online_num"));
                             dataHandler.postDelayed(dataRunnable, 2000);
                         }
@@ -401,6 +414,23 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                             break;
                     }
 
+                }
+            });
+        }
+    };
+
+    Runnable addScoreRunnable = new Runnable() {
+        @Override
+        public void run() {
+            JSONObject params = new JSONObject();
+            params.put("userId", userId);
+            Api.addScore(LivingActivity.this, params, new OnRequestDataListener() {
+                @Override
+                public void requestSuccess(int code, JSONObject data1) {
+                }
+
+                @Override
+                public void requestFailure(int code, String msg) {
                 }
             });
         }
@@ -900,7 +930,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
         }
     }
 
-    @OnClick(R.id.praise_anim)
+    @OnClick(R.id.btn_like)
     public void clickHeart() {
         if (!CLICKED_HEARD) {
             DanmuModel model = new DanmuModel();
@@ -953,6 +983,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
 
     @OnClick(R.id.live_audience_vote_iv)
     public void liveVote(View view) {
+        showVote();
         audience_vote_rl.setVisibility(View.VISIBLE);
         mLiveBottomBtn.setVisibility(View.GONE);
     }
@@ -973,6 +1004,18 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             mTransaction.commit();
         }
         mGiftContainer.setVisibility(View.VISIBLE);
+    }
+
+    private void showVote() {
+        if (mVoteFragment == null) {
+            mVoteFragment = new VoteFragment();
+            FragmentManager mManager = getSupportFragmentManager();
+            FragmentTransaction mTransaction = mManager.beginTransaction();
+            mTransaction.addToBackStack("");
+            mTransaction.add(R.id.audience_vote_rl, mVoteFragment);
+            mTransaction.commit();
+        }
+        audience_vote_rl.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -1307,6 +1350,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                         }
                     }
                     dataHandler.postDelayed(dataRunnable, 2000);
+                    dataHandler.postDelayed(addScoreRunnable, 1000 * 60 * 5);
                     mLiveEndContainer.setVisibility(View.GONE);
                 }
 
@@ -1343,7 +1387,8 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                         }, "", "该房间需要密码");
                         break;
                     default:
-                        finish();
+                        // TODO: 29/09/2017
+//                        finish();
                 }
 
                 //mLiveEndContainer.setVisibility(View.VISIBLE);
@@ -1381,7 +1426,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
 
         bubbleView = (BubbleView) findViewById(R.id.praise_anim);
         bubbleView.setDefaultDrawableList();
-        setDrawbleList();
+//        setDrawbleList();
         myHandler = new Handler() {
             public void handleMessage(Message msg) {
                 switch (msg.what) {
@@ -1475,33 +1520,33 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     //获取点赞图标
     private List<Drawable> mDrawbleList = new ArrayList<>();
 
-    private void setDrawbleList() {
-        Api.getLikePic(this, new JSONObject(), new OnRequestDataListener() {
-            @Override
-            public void requestSuccess(int code, final JSONObject data) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mDrawbleList.add(loadImageFromNetwork(data.getJSONObject("data").getString("First")));
-                        mDrawbleList.add(loadImageFromNetwork(data.getJSONObject("data").getString("Second")));
-                        mDrawbleList.add(loadImageFromNetwork(data.getJSONObject("data").getString("Third")));
-                        mDrawbleList.add(loadImageFromNetwork(data.getJSONObject("data").getString("Fourth")));
-                        mDrawbleList.add(loadImageFromNetwork(data.getJSONObject("data").getString("Fifth")));
-                        if (null != mDrawbleList && mDrawbleList.size() > 0) {
-                            bubbleView.setDrawableList(mDrawbleList);
-                        }
-                    }
-                }).start();
-                //Timer heart_timer = new Timer(true);
-                //heart_timer.schedule(task, 500, 500); //延时1000ms后执行，1000ms执行一次
-            }
-
-            @Override
-            public void requestFailure(int code, String msg) {
-
-            }
-        });
-    }
+//    private void setDrawbleList() {
+//        Api.getLikePic(this, new JSONObject(), new OnRequestDataListener() {
+//            @Override
+//            public void requestSuccess(int code, final JSONObject data) {
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        mDrawbleList.add(loadImageFromNetwork(data.getJSONObject("data").getString("First")));
+//                        mDrawbleList.add(loadImageFromNetwork(data.getJSONObject("data").getString("Second")));
+//                        mDrawbleList.add(loadImageFromNetwork(data.getJSONObject("data").getString("Third")));
+//                        mDrawbleList.add(loadImageFromNetwork(data.getJSONObject("data").getString("Fourth")));
+//                        mDrawbleList.add(loadImageFromNetwork(data.getJSONObject("data").getString("Fifth")));
+//                        if (null != mDrawbleList && mDrawbleList.size() > 0) {
+//                            bubbleView.setDrawableList(mDrawbleList);
+//                        }
+//                    }
+//                }).start();
+//                //Timer heart_timer = new Timer(true);
+//                //heart_timer.schedule(task, 500, 500); //延时1000ms后执行，1000ms执行一次
+//            }
+//
+//            @Override
+//            public void requestFailure(int code, String msg) {
+//
+//            }
+//        });
+//    }
 
     private Drawable loadImageFromNetwork(String imageUrl) {
         Drawable drawable = null;
