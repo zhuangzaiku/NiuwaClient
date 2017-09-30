@@ -10,12 +10,12 @@
         android:id="@+id/vote_bg"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="69dp"
+        android:layout_height="69dp"
         android:textSize="@dimen/text_size_12sp"
+        android:gravity="center"
         android:id="@+id/vote_num"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
         android:textColor="@color/white"/>
 
     <TextView

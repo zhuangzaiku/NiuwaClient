@@ -13,6 +13,7 @@ import java.util.List;
 
 import tv.niuwa.live.R;
 import tv.niuwa.live.living.model.VoteListItem;
+import tv.niuwa.live.utils.DisplayUtil;
 import tv.niuwa.live.view.ShapedImageView;
 
 /**
@@ -78,6 +79,9 @@ public class VoteAdapter extends BaseAdapter {
         viewHolder.bg.setImageResource(VOTE_BG[i]);
         viewHolder.bg.setPercent(percents[i]);
         viewHolder.voteName.setText(item.getVoteOpName());
+        if(item.getVoteNum() > 999) {
+            viewHolder.voteNum.setTextSize(8);
+        }
         viewHolder.voteNum.setText(String.valueOf(item.getVoteNum()));
         return view;
     }

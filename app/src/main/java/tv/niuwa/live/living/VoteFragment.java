@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -53,51 +54,40 @@ public class VoteFragment extends BaseSiSiFragment {
             }
         });
 
-        JSONObject data = JSON.parseObject("{\"code\":200,\"descrp\":\"\\u6295\\u7968\\u9879\",\"data\":[" +
-                "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"刘德华\",\"vote_opid\":\"1\"}," +
-                "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"李连杰\",\"vote_opid\":\"2\"}," +
-                "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"王府井\",\"vote_opid\":\"3\"}," +
-                "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"郭德纲\",\"vote_opid\":\"4\"}" +
-                "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"李连杰\",\"vote_opid\":\"5\"}" +
-                "]}");
-        JSONArray votes = data.getJSONArray("data");
-        mVoteList.clear();
-        for (int i = 0; i < votes.size(); i++) {
-            JSONObject jo = votes.getJSONObject(i);
-            VoteListItem item = new VoteListItem(jo.getString("votename"), jo.getString("vote_opname"), jo.getString("vote_opid"));
-            mVoteList.add(item);
-        }
-        int length = votes.size();
-        if (length > 0) {
-            mVoteListView.setNumColumns(length);
-            mVoteAdapter.setVoteList(mVoteList);
-        }
+        
+       
+        Api.getVote(getContext(), new JSONObject(), new OnRequestDataListener() {
+            @Override
+            public void requestSuccess(int code, JSONObject data) {
+                // TODO: 30/09/2017 vote
+                data = JSON.parseObject("{\"code\":200,\"descrp\":\"\\u6295\\u7968\\u9879\",\"data\":[" +
+                        "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"刘德华\",\"vote_opid\":\"1\"}," +
+                        "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"李连杰\",\"vote_opid\":\"2\"}," +
+                        "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"王府井\",\"vote_opid\":\"3\"}," +
+                        "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"郭德纲\",\"vote_opid\":\"4\"}" +
+                        "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"李连杰\",\"vote_opid\":\"5\"}" +
+                        "]}");
+                JSONArray votes = data.getJSONArray("data");
+                mVoteList.clear();
+                for (int i = 0; i < votes.size(); i++) {
+                    JSONObject jo = votes.getJSONObject(i);
+                    VoteListItem item = new VoteListItem(jo.getString("votename"), jo.getString("vote_opname"), jo.getString("vote_opid"));
+                    mVoteList.add(item);
+                }
+                int length = votes.size();
+                if (length > 0) {
+                    mVoteListView.setNumColumns(length);
+                    mVoteAdapter.setVoteList(mVoteList);
+                }
 
-        getVoteResult();
-//        Api.getVote(getContext(), new JSONObject(), new OnRequestDataListener() {
-//            @Override
-//            public void requestSuccess(int code, JSONObject data) {
-//                JSONArray votes = data.getJSONArray("data");
-//                mVoteList.clear();
-//                for (int i = 0; i < votes.size(); i++) {
-//                    JSONObject jo = votes.getJSONObject(i);
-//                    VoteListItem item = new VoteListItem(jo.getString("votename"), jo.getString("vote_opname"), jo.getString("vote_opid"));
-//                    mVoteList.add(item);
-//                }
-//                int length = votes.size();
-//                if (length > 0) {
-//                    mVoteListView.setNumColumns(length);
-//                    mVoteAdapter.setVoteList(mVoteList);
-//                }
-//
-//                getVoteResult();
-//            }
-//
-//            @Override
-//            public void requestFailure(int code, String msg) {
-//                toast(msg);
-//            }
-//        });
+                getVoteResult();
+            }
+
+            @Override
+            public void requestFailure(int code, String msg) {
+                toast(msg);
+            }
+        });
     }
 
     private void doVote(String voteId) {
@@ -108,7 +98,8 @@ public class VoteFragment extends BaseSiSiFragment {
         Api.doVote(getContext(), params, new OnRequestDataListener() {
             @Override
             public void requestSuccess(int code, JSONObject data) {
-//                JSONArray votes = data.getJSONArray("data");
+                String desc = data.getString("descrp");
+                Toast.makeText(getContext(), desc, Toast.LENGTH_SHORT).show();
                 getVoteResult();
 
             }

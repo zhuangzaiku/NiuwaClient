@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="5"
+        android:cacheColorHint="@color/transparent"
+        android:listSelector="@color/transparent"
         android:layout_alignParentBottom="true"
         android:id="@+id/voteList"/>
 </RelativeLayout>

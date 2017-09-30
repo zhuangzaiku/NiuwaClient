@@ -3,43 +3,43 @@
     android:oneshot="false">
 
     <item
-        android:duration="40"
+        android:duration="60"
         android:drawable="@mipmap/huojian0001"/>
     <item
-        android:duration="40"
+        android:duration="60"
         android:drawable="@mipmap/huojian0002"/>
     <item
-        android:duration="40"
+        android:duration="60"
         android:drawable="@mipmap/huojian0003"/>
     <item
-        android:duration="40"
+        android:duration="60"
         android:drawable="@mipmap/huojian0004"/>
     <item
-        android:duration="40"
+        android:duration="60"
         android:drawable="@mipmap/huojian0005"/>
     <item
-        android:duration="40"
+        android:duration="60"
         android:drawable="@mipmap/huojian0006"/>
     <item
-        android:duration="40"
+        android:duration="60"
         android:drawable="@mipmap/huojian0007"/>
     <item
-        android:duration="40"
+        android:duration="60"
         android:drawable="@mipmap/huojian0008"/>
     <item
-        android:duration="40"
+        android:duration="60"
         android:drawable="@mipmap/huojian0009"/>
     <item
-        android:duration="40"
+        android:duration="60"
         android:drawable="@mipmap/huojian0010"/>
     <item
-        android:duration="40"
+        android:duration="60"
         android:drawable="@mipmap/huojian0011"/>
     <item
-        android:duration="40"
+        android:duration="60"
         android:drawable="@mipmap/huojian0012"/>
     <item
-        android:duration="40"
+        android:duration="60"
         android:drawable="@mipmap/huojian0013"/>
 
 </animation-list>

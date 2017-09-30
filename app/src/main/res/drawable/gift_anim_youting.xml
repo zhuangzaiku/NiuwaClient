@@ -3,49 +3,49 @@
     android:oneshot="false">
 
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/youting0001"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/youting0002"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/youting0003"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/youting0004"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/youting0005"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/youting0006"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/youting0007"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/youting0008"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/youting0009"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/youting0010"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/youting0011"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/youting0012"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/youting0013"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/youting0014"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/youting0015"/>
 
 

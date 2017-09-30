@@ -3,49 +3,49 @@
     android:oneshot="false">
 
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/cheers0001"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/cheers0002"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/cheers0003"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/cheers0004"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/cheers0005"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/cheers0006"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/cheers0007"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/cheers0008"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/cheers0009"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/cheers0010"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/cheers0011"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/cheers0012"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/cheers0013"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/cheers0014"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/cheers0015"/>
 
 </animation-list>

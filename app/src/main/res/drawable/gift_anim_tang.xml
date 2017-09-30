@@ -3,34 +3,34 @@
     android:oneshot="false">
 
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/tang0001"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/tang0002"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/tang0003"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/tang0004"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/tang0005"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/tang0006"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/tang0007"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/tang0008"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/tang0009"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/tang0010"/>
 
 </animation-list>

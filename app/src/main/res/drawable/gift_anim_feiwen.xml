@@ -3,49 +3,49 @@
     android:oneshot="false">
 
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/feiwen0001"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/feiwen0002"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/feiwen0003"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/feiwen0004"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/feiwen0005"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/feiwen0006"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/feiwen0007"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/feiwen0008"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/feiwen0009"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/feiwen0010"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/feiwen0011"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/feiwen0012"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/feiwen0013"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/feiwen0014"/>
     <item
-        android:duration="40"
+        android:duration="100"
         android:drawable="@mipmap/feiwen0015"/>
 
 </animation-list>

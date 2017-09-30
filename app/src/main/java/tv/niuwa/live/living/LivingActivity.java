@@ -5,6 +5,7 @@ import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -115,6 +116,7 @@ import tv.niuwa.live.utils.Api;
 import tv.niuwa.live.utils.DialogEnsureUtiles;
 import tv.niuwa.live.utils.Util;
 import tv.niuwa.live.view.BubbleView;
+import tv.niuwa.live.view.CustomDialog;
 import tv.niuwa.live.view.SFProgrssDialog;
 
 import java.io.IOException;
@@ -623,20 +625,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
 
     public void starGiftAnimation(GiftSendModel model) {
         LogUtils.i("delong", model.getGiftCount() + "");
-        switch (model.getGift_id()) {
-            case "40":
-                showBigAnim("gift_anim_5", model);
-                break;
-            case "13":
-                showBigAnim("gift_anim_2", model);
-                break;
-            case "48":
-                showBigAnim("gift_anim_3", model);
-                break;
-            case "46":
-                showBigAnim("gift_anim_4", model);
-                break;
-        }
+        showBigAnim(model.getGift_id(), model);
         // layout1正在显示你的礼物动画//并且gift num  大于当前的num
         if (giftFrameLayout1.isShowing()) {
             GiftSendModel temp1 = giftFrameLayout1.getSendModel();
@@ -679,27 +668,46 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
         }
     }
 
-    private void showBigAnim(String anim, final GiftSendModel model) {
+    private void showBigAnim(String giftId, final GiftSendModel model) {
         if (mLivingGiftBig.getVisibility() == View.VISIBLE) {
-            model.setBigAnim(anim);
             bigAnim.add(model);
         } else {
             mLivingGiftBig.setVisibility(View.VISIBLE);
             mLivingGiftBig.setBackground(null);
-            switch (anim) {
-                case "gift_anim_5":
-                    mLivingGiftBig.setBackgroundResource(R.drawable.gift_anim_5);
+            int giftBgId = -1;
+            switch (giftId) {
+//                case "4":
+//                    giftBgId = R.drawable.gift_anim_5;
+//                    break;
+                case "13":
+                    giftBgId = R.drawable.gift_anim_1;
                     break;
-                case "gift_anim_2":
-                    mLivingGiftBig.setBackgroundResource(R.drawable.gift_anim_2);
+//                case "48":
+//                    giftBgId = R.drawable.gift_anim_3;
+//                    break;
+//                case "46":
+//                    giftBgId = R.drawable.gift_anim_4;
+//                    break;
+                case "34":
+                    giftBgId = R.drawable.gift_anim_cheers;
                     break;
-                case "gift_anim_3":
-                    mLivingGiftBig.setBackgroundResource(R.drawable.gift_anim_3);
+                case "36":
+                    giftBgId = R.drawable.gift_anim_feiwen;
                     break;
-                case "gift_anim_4":
-                    mLivingGiftBig.setBackgroundResource(R.drawable.gift_anim_4);
+                case "32":
+                    giftBgId = R.drawable.gift_anim_huojian;
                     break;
+                case "33":
+                    giftBgId = R.drawable.gift_anim_qiuanwei;
+                    break;
+                case "31":
+                    giftBgId = R.drawable.gift_anim_tang;
+                    break;
+                case "35":
+                    giftBgId = R.drawable.gift_anim_youting;
             }
+            mLivingGiftBig.setBackgroundResource(giftBgId);
+            
             AnimationDrawable animTemp = (AnimationDrawable) mLivingGiftBig.getBackground();
             animTemp.start();
             int duration = 0;
@@ -714,7 +722,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                         if (null != bigAnim && bigAnim.size() > 0) {
                             GiftSendModel model1 = bigAnim.get(bigAnim.size() - 1);
                             bigAnim.remove(bigAnim.size() - 1);
-                            showBigAnim(model1.getBigAnim(), model1);
+                            showBigAnim(model1.getGift_id(), model1);
                         } else {
                             mLivingGiftBig.setVisibility(View.GONE);
                         }
@@ -2001,13 +2009,14 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     showGiftAnim1(LivingActivity.this, model, gift, Integer.parseInt(num));
                     break;
                 case "9":
-                    audience_vote_rl.setVisibility(View.VISIBLE);
+                    showVote();
                     break;
                 case "10":
                     audience_vote_rl.setVisibility(View.GONE);
                     break;
                 case "11":
                     // TODO: 19/09/2017
+                    showLotteryDialog();
 //                    用户端  显示抽奖结果   消息 type:11
 //                    新增reward字段
 //                            $reward = array(
@@ -2016,6 +2025,13 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     break;
 //	);
             }
+        }
+    }
+
+    private Dialog mLotteryDialog;
+
+    private void showLotteryDialog() {
+        if(mLotteryDialog == null) {
         }
     }
 
