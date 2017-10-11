@@ -253,6 +253,9 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     @Bind(R.id.live_send)
     ImageButton mLiveSend;
 
+    @Bind(R.id.btn_like)
+    RelativeLayout mBtnLike;
+
     @Bind(R.id.sv_danmaku)
     DanmakuView mDanmakuView;
     DanmaManager mDanmaManager;
@@ -991,11 +994,15 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     public void liveVote(View view) {
         showVote();
         audience_vote_rl.setVisibility(View.VISIBLE);
+        mBtnLike.setVisibility(View.GONE);
+        bubbleView.setVisibility(View.GONE);
         mLiveBottomBtn.setVisibility(View.GONE);
     }
 
     @OnClick(R.id.audience_vote_rl)
     public void audience_vote_rl(View view) {
+        mBtnLike.setVisibility(View.VISIBLE);
+        bubbleView.setVisibility(View.VISIBLE);
         audience_vote_rl.setVisibility(View.GONE);
         mLiveBottomBtn.setVisibility(View.VISIBLE);
     }
