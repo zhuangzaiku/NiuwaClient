@@ -50,7 +50,6 @@ public class DownLoadFile {
 
             @Override
             public void onRetry(int retryNo) {
-                // TODO Auto-generated method stub
                 super.onRetry(retryNo);
                 // 返回重试次数
             }

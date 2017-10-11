@@ -199,7 +199,7 @@ public class LCIMConversationItemHolder extends LCIMCommonViewHolder {
      * @param conversation
      */
     private void updateLastMessageByConversation(final AVIMConversation conversation) {
-        // TODO 此处如果调用 AVIMConversation.getLastMessage 的话会造成一直读取缓存数据造成展示不对
+        //  此处如果调用 AVIMConversation.getLastMessage 的话会造成一直读取缓存数据造成展示不对
         // 所以使用 queryMessages，但是这个接口还是很难有，需要 sdk 对这个进行支持
         conversation.getLastMessage(new AVIMSingleMessageQueryCallback() {
             @Override

@@ -30,7 +30,6 @@ public class StrokeTextView extends TextView {
         this.mInnerColor = innnerColor;
         this.mOuterColor = outerColor;
 
-        // TODO Auto-generated constructor stub
     }
 
     public StrokeTextView(Context context, AttributeSet attrs) {
@@ -47,7 +46,6 @@ public class StrokeTextView extends TextView {
         m_TextPaint = this.getPaint();
         this.mInnerColor = innnerColor;
         this.mOuterColor = outerColor;
-        // TODO Auto-generated constructor stub
     }
 
     private boolean m_bDrawSideLine = true; // 默认采用描边

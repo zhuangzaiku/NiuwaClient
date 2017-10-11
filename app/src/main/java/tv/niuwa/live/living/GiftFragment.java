@@ -109,7 +109,7 @@ public class GiftFragment extends BaseSiSiFragment implements AdapterView.OnItem
             @Override
             public void requestSuccess(int code, JSONObject data) {
 
-                // TODO: 2016/12/27 [用户]赠送一个[礼物]
+                //  2016/12/27 [用户]赠送一个[礼物]
                 tv_username.setText(temp.user_nicename);
                 tv_gift.setText(model.getGiftname());
                 

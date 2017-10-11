@@ -355,7 +355,7 @@ public class LCIMConversationFragment extends Fragment {
 
   /**
    * 发送图片消息
-   * TODO 上传的图片最好要压缩一下
+   *  上传的图片最好要压缩一下
    *
    * @param imagePath
    */

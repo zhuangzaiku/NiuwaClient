@@ -67,7 +67,6 @@ public class OrientationSensorListener extends OrientationEventListener {
     }
 
     public void onAccuracyChanged(Sensor arg0, int arg1) {
-        // TODO Auto-generated method stub
     }
 
     public void onSensorChanged(SensorEvent event) {

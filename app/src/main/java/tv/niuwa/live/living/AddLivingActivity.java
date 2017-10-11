@@ -292,7 +292,6 @@ public class AddLivingActivity extends BaseSiSiEditActivity implements OnShareSt
 
         @Override
         public void onReceiveLocation(BDLocation location) {
-            // TODO Auto-generated method stub
             if (null != location && location.getLocType() != BDLocation.TypeServerError) {
                 mLatitude = location.getLatitude();
                 mLongitude = location.getLongitude();
