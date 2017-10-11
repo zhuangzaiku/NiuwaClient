@@ -57,7 +57,7 @@ public class SplashActivity extends BaseSplashActivity {
                 @Override
                 public void run() {
                     if (!destroy) {
-                        openActivity(UserCenterActivity.class);
+                        openActivity(MainActivity.class);
                         SplashActivity.this.finish();
                     }
                 }

@@ -12,6 +12,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.smart.androidutils.utils.NumUtils;
 import com.smart.androidutils.utils.SharePrefsUtils;
+
+import tv.niuwa.live.MainActivity;
 import tv.niuwa.live.R;
 import tv.niuwa.live.core.BaseSiSiEditActivity;
 import tv.niuwa.live.event.BroadCastEvent;
@@ -100,7 +102,7 @@ public class LoginByPhoneActivity extends BaseSiSiEditActivity {
                         SharePrefsUtils.put(LoginByPhoneActivity.this, "user", "userId", userId);
                     }
                     toast("登录成功");
-                    openActivity(UserCenterActivity.class);
+                    openActivity(MainActivity.class);
                     LoginByPhoneActivity.this.finish();
                     // 发送通知
                     EventBus.getDefault().post(new BroadCastEvent(LoginActivity.FINISH_EVENT));

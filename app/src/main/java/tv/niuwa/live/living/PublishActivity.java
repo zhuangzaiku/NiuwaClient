@@ -2235,12 +2235,12 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
                     public void onClick(String value) {
                         //finish();
                         //客户端 需要返回至结束页面
-                        if (mRecording) {
-                            openActivity(PublishStopActivity.class);
-                        }
+//                        if (mRecording) {
+//                            openActivity(PublishStopActivity.class);
+//                        }
                         //电视端 直接退出
-//                        PublishActivity.this.finish();
-//                        Process.killProcess(Process.myPid());
+                        PublishActivity.this.finish();
+                        Process.killProcess(Process.myPid());
                     }
                 });
             }

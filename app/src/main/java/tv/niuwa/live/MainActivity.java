@@ -102,23 +102,23 @@ public class MainActivity extends BaseSiSiActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //电视端
-//        goLiving();
+        goLiving();
 
         //客户端
-        if ("".equals(SharePrefsUtils.get(this, "user", "token", "")) || "".equals(SharePrefsUtils.get(this, "user", "userId", ""))) {
-            // openActivity(LoginActivity.class);
-//            goLiving();
-            Intent intent = new Intent(this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-            return;
-        }
-//        else {
-//            openActivity(PublishActivity.class);
+//        if ("".equals(SharePrefsUtils.get(this, "user", "token", "")) || "".equals(SharePrefsUtils.get(this, "user", "userId", ""))) {
+//            // openActivity(LoginActivity.class);
+////            goLiving();
+//            Intent intent = new Intent(this, LoginActivity.class);
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            startActivity(intent);
+//            finish();
+//            return;
 //        }
-        onCreateRest();
+////        else {
+////            openActivity(PublishActivity.class);
+////        }
+//        onCreateRest();
     }
 
     private void onCreateRest() {
