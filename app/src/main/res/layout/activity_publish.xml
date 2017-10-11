@@ -519,7 +519,7 @@
                     </LinearLayout>
 
 
-                    <com.meetme.android.horizontallistview.HorizontalListView xmlns:android="http://schemas.android.com/apk/res/android"
+                    <com.bru.toolkit.views.HorizontalListView xmlns:android="http://schemas.android.com/apk/res/android"
                         xmlns:widget="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/HorizontalListView"
                         android:layout_width="0dp"

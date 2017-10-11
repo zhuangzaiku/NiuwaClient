@@ -81,7 +81,7 @@ import com.ksyun.media.streamer.kit.OnPreviewFrameListener;
 import com.ksyun.media.streamer.kit.StreamerConstants;
 import com.ksyun.media.streamer.logstats.StatsLogReport;
 import com.ksyun.media.streamer.util.audio.KSYBgmPlayer;
-import com.meetme.android.horizontallistview.HorizontalListView;
+import com.bru.toolkit.views.HorizontalListView;
 import com.smart.androidutils.activity.BaseActivity;
 import com.smart.androidutils.images.GlideCircleTransform;
 import com.smart.androidutils.utils.LogUtils;

@@ -93,7 +93,6 @@ dependencies {
     //compile 'com.qiniu:happy-dns:0.2.5'
     compile 'com.github.stuxuhai:jpinyin:1.0'
     //compile project(':ijkwidget')
-    compile project(':androidHorizontalListView')
     compile project(':leancloudchatkit')
     //compile project (':thirdpay')
     compile files('libs/BaiduLBS_Android.jar')

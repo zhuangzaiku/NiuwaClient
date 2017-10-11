@@ -81,7 +81,7 @@ import com.ksyun.media.streamer.kit.OnAudioRawDataListener;
 import com.ksyun.media.streamer.kit.OnPreviewFrameListener;
 import com.ksyun.media.streamer.kit.StreamerConstants;
 import com.ksyun.media.streamer.logstats.StatsLogReport;
-import com.meetme.android.horizontallistview.HorizontalListView;
+import com.bru.toolkit.views.HorizontalListView;
 import com.smart.androidui.widget.input.SoftKeyboardStateHelper;
 import com.smart.androidutils.activity.BaseActivity;
 import com.smart.androidutils.images.GlideCircleTransform;
@@ -116,7 +116,6 @@ import tv.niuwa.live.utils.Api;
 import tv.niuwa.live.utils.DialogEnsureUtiles;
 import tv.niuwa.live.utils.Util;
 import tv.niuwa.live.view.BubbleView;
-import tv.niuwa.live.view.CustomDialog;
 import tv.niuwa.live.view.SFProgrssDialog;
 
 import java.io.IOException;

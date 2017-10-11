@@ -1,3 +1,2 @@
-include ':app', ':thirdpay', ':leancloudchatkit', ':loginsharesdk', ':lrcview'
-include ':androidHorizontalListView'
+include ':app', ':thirdpay', ':leancloudchatkit', ':loginsharesdk'
 include ':BruToolKit'
