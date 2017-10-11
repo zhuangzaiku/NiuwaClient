@@ -99,7 +99,7 @@ public class FollowRecyclerListAdapter extends RecyclerView.Adapter<FollowRecycl
                 }
             }
         });
-        //TODO 用户等级
+        // 用户等级
     }
 
     @Override

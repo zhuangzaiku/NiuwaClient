@@ -62,7 +62,7 @@ public class SplashActivity extends BaseSplashActivity {
                     SplashActivity.this.finish();
                 }
             }
-        }, 400);// TODO: 28/09/2017
+        }, 4000);
 //        }
 
 

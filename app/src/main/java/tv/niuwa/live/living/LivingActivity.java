@@ -244,7 +244,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     TextView mLianmaiStop;
     @Bind(R.id.btn_follow)
     Button mbtnFollow;
-    //TODO 直播结束页面 数据填充:头像,用户名,观众数量
+    // 直播结束页面 数据填充:头像,用户名,观众数量
     @Bind(R.id.iv_zhibo_close_icon)
     CircleImageView iv_zhibo_close_icon;
     @Bind(R.id.tv_zhibo_close_username)
@@ -1394,8 +1394,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                         }, "", "该房间需要密码");
                         break;
                     default:
-                        // TODO: 29/09/2017
-//                        finish();
+                        finish();
                 }
 
                 //mLiveEndContainer.setVisibility(View.VISIBLE);
@@ -1709,7 +1708,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             params.put("room_id", channelInfo.getString("room_id"));
             params.put("giftid", "19");
             params.put("number", "1");
-            // TODO: 03/09/2017  发送弹幕
+            //  03/09/2017  发送弹幕
             Api.sendDanmu(this, params, new OnRequestDataListener() {
                 @Override
                 public void requestSuccess(int code, JSONObject data) {
@@ -1950,7 +1949,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
         }
     }
 
-    // TODO: 03/09/2017  消息响应
+    //  03/09/2017  消息响应
     public void onEvent(LCIMIMTypeMessageEvent event) {
         getUnread();
         if (null != mSquareConversation && null != event &&
@@ -2014,7 +2013,6 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     audience_vote_rl.setVisibility(View.GONE);
                     break;
                 case "11":
-                    // TODO: 19/09/2017
                     showLotteryDialog();
 //                    用户端  显示抽奖结果   消息 type:11
 //                    新增reward字段

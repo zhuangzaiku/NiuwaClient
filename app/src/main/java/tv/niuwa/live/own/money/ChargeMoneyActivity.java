@@ -108,7 +108,7 @@ public class ChargeMoneyActivity extends BaseSiSiActivity implements View.OnClic
 //       final  Button btn = (Button)view;
 //        btn.setEnabled(false);
 //        btn.setText("支付中.....");
-//        //TODO 进行支付操作
+//        // 进行支付操作
 //        JSONObject params = new JSONObject();
 //        params.put("token",token);
 //        params.put("item_id",product);

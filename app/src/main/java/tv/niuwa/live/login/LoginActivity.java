@@ -67,12 +67,12 @@ public class LoginActivity extends BaseSiSiEditActivity implements OnLoginResult
 
     @OnClick(R.id.tv_xieyi)
     public void openXieyi(){
-        //TODO 跳转协议页面
+        // 跳转协议页面
         XieyiActivity.newInstance(LoginActivity.this);
     }
     @OnClick(R.id.tv_loginbyphone)
     public void loginByPhone(){
-        //TODO 跳转手机注册
+        // 跳转手机注册
         LoginByPhoneActivity.newInstance(this);
     }
 
