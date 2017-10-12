@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clickable="true">
+
+    <RelativeLayout
+        android:layout_width="340dp"
+        android:layout_height="320dp"
+        android:background="@drawable/lottery_anim"
+        android:id="@+id/lottery_bg"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="170dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="120dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:visibility="invisible"
+                android:id="@+id/lottery_users"
+                android:text="156277 123145 1312312"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -116,6 +116,7 @@ import tv.niuwa.live.utils.Api;
 import tv.niuwa.live.utils.DialogEnsureUtiles;
 import tv.niuwa.live.utils.Util;
 import tv.niuwa.live.view.BubbleView;
+import tv.niuwa.live.view.LotteryDialog;
 import tv.niuwa.live.view.SFProgrssDialog;
 
 import java.io.IOException;
@@ -2017,7 +2018,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                 case "10":
                     audience_vote_rl.setVisibility(View.GONE);
                     break;
-                case "11":
+                case "13":
                     // TODO: 19/09/2017
                     showLotteryDialog();
 //                    用户端  显示抽奖结果   消息 type:11
@@ -2031,10 +2032,19 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
         }
     }
 
-    private Dialog mLotteryDialog;
+    private LotteryDialog mLotteryDialog;
 
     private void showLotteryDialog() {
         if(mLotteryDialog == null) {
+            mLotteryDialog = new LotteryDialog.Builder(this).create();
+            mLotteryDialog.show();
+
+            mLotteryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    mLotteryDialog = null;
+                }
+            });
         }
     }
 
