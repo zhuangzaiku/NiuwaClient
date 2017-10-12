@@ -47,21 +47,21 @@ public class LotteryDialog extends Dialog {
             return this;
         }
 
-        public LotteryDialog create() {
+        public LotteryDialog create(String users) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             // instantiate the dialog with the custom Theme
             final LotteryDialog dialog = new LotteryDialog(context, R.style.Dialog);
             View layout = inflater.inflate(R.layout.dialog_lottery, null);
             dialog.addContentView(layout, new ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             // set the dialog title
             final TextView lotteryUsers = (TextView) layout.findViewById(R.id.lottery_users);
+            lotteryUsers.setText(users);
 
             RelativeLayout bg = (RelativeLayout) layout.findViewById(R.id.lottery_bg);
             AnimationDrawable animationDrawable = (AnimationDrawable) bg.getBackground();
             animationDrawable.start();
-
 
             int duration = 0;
             for (int i = 0; i < animationDrawable.getNumberOfFrames(); i++) {
@@ -72,7 +72,7 @@ public class LotteryDialog extends Dialog {
                 public void run() {
                     lotteryUsers.setVisibility(View.VISIBLE);
                 }
-            }, duration);
+            }, duration + 100);
             if (contentView != null) {
                 // if no message set
                 // add the contentView to the dialog body

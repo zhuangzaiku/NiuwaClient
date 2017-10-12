@@ -2019,13 +2019,16 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     audience_vote_rl.setVisibility(View.GONE);
                     break;
                 case "13":
-                    // TODO: 19/09/2017
-                    showLotteryDialog();
-//                    用户端  显示抽奖结果   消息 type:11
-//                    新增reward字段
-//                            $reward = array(
-//                            array('userId'=>'156277','userName'=>'测试1','avatar'=>'http:zhibo.519wan.com/data/upload/avatar/default.png'),
-//                    array('userId'=>'156278','userName'=>'测试2','avatar'=>'http:zhibo.519wan.com/data/upload/avatar/default.png'),
+                    JSONArray array = temp.getJSONArray("reward");
+                    StringBuffer sb = new StringBuffer();
+                    for(int i = 0; i < array.size(); i++) {
+                        JSONObject jo = array.getJSONObject(i);
+                        sb.append(jo.getString("userId"));
+                        if(i < array.size() - 1) {
+                            sb.append(" ");
+                        }
+                    }
+                    showLotteryDialog(sb.toString());
                     break;
 //	);
             }
@@ -2034,9 +2037,10 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
 
     private LotteryDialog mLotteryDialog;
 
-    private void showLotteryDialog() {
+    private void showLotteryDialog(String users) {
+        LogUtils.d(TAG, "lottery users->" + users);
         if(mLotteryDialog == null) {
-            mLotteryDialog = new LotteryDialog.Builder(this).create();
+            mLotteryDialog = new LotteryDialog.Builder(this).create(users);
             mLotteryDialog.show();
 
             mLotteryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {

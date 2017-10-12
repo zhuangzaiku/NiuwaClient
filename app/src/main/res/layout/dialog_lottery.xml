@@ -7,14 +7,23 @@
     <RelativeLayout
         android:layout_width="340dp"
         android:layout_height="320dp"
-        android:background="@drawable/lottery_anim"
-        android:id="@+id/lottery_bg"
+        android:background="@drawable/img_tai01"
         android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:layout_width="264dp"
+            android:layout_height="192dp"
+            android:layout_marginTop="43dp"
+            android:id="@+id/lottery_bg"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/lottery_anim">
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_marginLeft="170dp"
+            android:layout_marginLeft="160dp"
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:orientation="horizontal"
@@ -23,11 +32,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:textSize="@dimen/lcim_textsize_small"
                 android:layout_weight="1"
                 android:maxLines="1"
                 android:visibility="invisible"
-                android:id="@+id/lottery_users"
-                android:text="156277 123145 1312312"/>
+                android:id="@+id/lottery_users"/>
+
 
         </LinearLayout>
 
