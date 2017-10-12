@@ -93,8 +93,10 @@ import com.smart.loginsharesdk.share.ThirdShare;
 import com.smart.loginsharesdk.share.onekeyshare.Type;
 
 import cn.leancloud.chatkit.cache.LCIMConversationItemCache;
+import master.flame.danmaku.ui.widget.DanmakuView;
 import tv.niuwa.live.LocationService;
 import tv.niuwa.live.MyApplication;
+import tv.niuwa.live.danmaku.DanmaManager;
 import tv.niuwa.live.intf.OnCustomClickListener;
 import tv.niuwa.live.intf.OnRequestDataListener;
 import tv.niuwa.live.lean.Chat;
@@ -155,7 +157,6 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
     GiftFrameLayout giftFrameLayout2;
     @Bind(R.id.live_viewflipper)
     ViewFlipper mLiveViewFlipper;
-    DanmuAdapter mDanmuadapter;
     OnlineUserAdapter mOnlineUserAdapter;
     @Bind(R.id.live_share)
     ImageButton mLiveShare;
@@ -169,8 +170,6 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
     ImageButton mLiveMeiyan;
     @Bind(R.id.danmu_container)
     RelativeLayout mDanmuContainer;
-    @Bind(R.id.living_danmu)
-    ListView mLiveingDanmu;
     @Bind(R.id.live_user_avatar)
     CircleImageView mLiveUserAvatar;
     @Bind(R.id.live_user_nicename)
@@ -239,6 +238,10 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
 
     @Bind(R.id.audience_vote_rl)
     RelativeLayout audience_vote_rl;
+
+    @Bind(R.id.sv_danmaku)
+    DanmakuView mDanmakuView;
+    DanmaManager mDanmaManager;
 
     CircleImageView mDialogUserAvatar;
     TextView mDialogUserNicename;
@@ -316,7 +319,6 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
     private String mDebugInfo = "";
     private String mBgmPath = "/sdcard/test.mp3";
     private String mLogoPath = "file:///sdcard/test.png";
-    private ArrayList<DanmuModel> mDanmuItems;
     private ArrayList<UserModel> mUserItems;
     private AVIMConversation mSquareConversation;
     private String TAG = LivingActivity.class.getName();
@@ -1277,9 +1279,8 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
 
     public void sendMessage(DanmuModel model) {
         if (isActive) {
-            mDanmuItems.add(model);
-            mDanmuadapter.notifyDataSetChanged();
-            mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
+
+            mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
             mLiveEditInput.setText("");
             mLiveBottomBtn.setVisibility(View.VISIBLE);
             live_message_container_rl.setVisibility(View.GONE);
@@ -1470,6 +1471,8 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
         mThirdShare = new ThirdShare(this);
         mThirdShare.setOnShareStatusListener(this);
         startLive("niuwa");
+
+        mDanmaManager = new DanmaManager(this,mDanmakuView);
     }
 
     @Override
@@ -1518,7 +1521,6 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
     }
 
     private void initData() {
-        mDanmuItems = new ArrayList<DanmuModel>();
         mUserItems = new ArrayList<UserModel>();
         if (null != sysMessage) {
             for (int i = 0; i < sysMessage.size(); i++) {
@@ -1526,17 +1528,13 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
                 model.setType("3");
                 model.setUserName(sysMessage.getJSONObject(i).getString("title"));
                 model.setContent(sysMessage.getJSONObject(i).getString("msg"));
-                mDanmuItems.add(model);
+                mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
             }
 
         }
-        mDanmuadapter = new DanmuAdapter(this, mDanmuItems);
-        mLiveingDanmu.setAdapter(mDanmuadapter);
         mOnlineUserAdapter = new OnlineUserAdapter(this, mUserItems);
         mLiveOnlineUsers.setAdapter(mOnlineUserAdapter);
         mLiveOnlineUsers.setOnItemClickListener(this);
-        mLiveingDanmu.setAdapter(mDanmuadapter);
-        mLiveingDanmu.setOnItemClickListener(this);
 
         userId = (String) SharePrefsUtils.get(this, "user", "userId", "");
         user_nicename = (String) SharePrefsUtils.get(this, "user", "user_nicename", "");
@@ -1796,9 +1794,7 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
             model.setUserId(temp.getString("userId"));
             model.setAvatar(temp.getString("avatar"));
             if(!model.getType().equals("9") && !model.getType().equals("10")) {
-                mDanmuItems.add(model);
-                mDanmuadapter.notifyDataSetChanged();
-                mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
+                mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
             }
             switch (model.getType()) {
                 case "4":

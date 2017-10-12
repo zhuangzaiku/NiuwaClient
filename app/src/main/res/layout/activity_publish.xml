@@ -91,21 +91,15 @@
             <LinearLayout
                 android:id="@+id/living_danmu_container"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="60dp"
                 android:orientation="vertical">
 
-                <ListView
-                    android:id="@+id/living_danmu"
+                <master.flame.danmaku.ui.widget.DanmakuView
+                    android:id="@+id/sv_danmaku"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="100dp"
-                    android:cacheColorHint="@android:color/transparent"
-                    android:divider="@null"
-                    android:listSelector="@android:color/transparent"
-                    android:overScrollMode="never"></ListView>
+                    android:layout_height="match_parent" />
 
             </LinearLayout>
 
