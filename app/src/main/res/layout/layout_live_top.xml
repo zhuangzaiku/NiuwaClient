@@ -611,6 +611,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
+                android:visibility="gone"
                 android:gravity="right">
 
                 <TextView
@@ -706,7 +707,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/white"
-                android:hint="我也要给主播小主发言..."
+                android:hint="我也要发言..."
                 android:padding="10dp"
                 android:textColor="@android:color/black"
                 android:textColorHint="@color/colorGrayFont"

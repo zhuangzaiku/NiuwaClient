@@ -60,13 +60,13 @@ public class VoteFragment extends BaseSiSiFragment {
             @Override
             public void requestSuccess(int code, JSONObject data) {
                 // TODO: 30/09/2017 vote
-                data = JSON.parseObject("{\"code\":200,\"descrp\":\"\\u6295\\u7968\\u9879\",\"data\":[" +
-                        "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"刘德华\",\"vote_opid\":\"1\"}," +
-                        "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"李连杰\",\"vote_opid\":\"2\"}," +
-                        "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"王府井\",\"vote_opid\":\"3\"}," +
-                        "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"郭德纲\",\"vote_opid\":\"4\"}" +
-                        "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"李连杰\",\"vote_opid\":\"5\"}" +
-                        "]}");
+//                data = JSON.parseObject("{\"code\":200,\"descrp\":\"\\u6295\\u7968\\u9879\",\"data\":[" +
+//                        "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"刘德华\",\"vote_opid\":\"1\"}," +
+//                        "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"李连杰\",\"vote_opid\":\"2\"}," +
+//                        "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"王府井\",\"vote_opid\":\"3\"}," +
+//                        "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"郭德纲\",\"vote_opid\":\"4\"}" +
+//                        "{\"votename\":\"\\u6700\\u559c\\u6b22\\u7684\\u660e\\u661f\",\"vote_opname\":\"李连杰\",\"vote_opid\":\"5\"}" +
+//                        "]}");
                 JSONArray votes = data.getJSONArray("data");
                 mVoteList.clear();
                 for (int i = 0; i < votes.size(); i++) {

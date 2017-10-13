@@ -56,7 +56,7 @@ public class Api {
     private static final String GET_GIFTS = HOST + "Api/SiSi/getGiftList";
     private static final String SEND_GIFT = HOST + "Api/SiSi/sendGiftToAnchor";
     private static final String SEND_DANMU = HOST + "Api/SiSi/sendDanmuToAnchor";
-    private static final String SEND_DANMU_NEW = HOST + "dm/rcdMsg.php";
+    private static final String SEND_DANMU_NEW = "http://dm.519wan.com:82";
     private static final String SEND_REPORT = HOST + "Api/SiSi/sendReport";
     private static final String ADD_JINYAN = HOST + "Api/SiSi/setDisableSendMsg";
     private static final String LIVING_REALTIME_DATA = HOST + "Api/SiSi/getLiveRoomOnlineNumEarn";

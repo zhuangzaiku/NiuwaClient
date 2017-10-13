@@ -26,56 +26,61 @@
         <!--android:layout_width="match_parent"/>-->
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="68.5dp"
         android:layout_alignParentRight="true"
         android:layout_marginTop="30dp"
+        android:background="@drawable/img_kuang"
         android:layout_marginBottom="50dp"
+        android:gravity="center_vertical"
+        android:layout_marginRight="36dp"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
-            android:layout_marginRight="18dp"
             android:id="@+id/wechat_moment_layout"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/image_live_share_wechat_moment"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/wechatmomentlive"/>
+                android:layout_width="34.5dp"
+                android:layout_height="33.5dp"
+                android:src="@drawable/btn_huanfa01"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:textSize="12sp"
-                android:textColor="@color/white"
+                android:layout_marginTop="2dp"
+                android:textSize="@dimen/text_size_10sp"
+                android:textColor="@color/alpha_gray"
                 android:text="朋友圈"/>
         </LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
-            android:layout_marginRight="36dp"
             android:id="@+id/wechat_layout"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/image_live_share_wechat"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/wechatlive"/>
+                android:layout_width="34.5dp"
+                android:layout_height="33.5dp"
+                android:src="@drawable/btn_huanfa00"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="2dp"
                 android:text="微信"
-                android:textColor="@color/white"
-                android:textSize="12sp"/>
+                android:textColor="@color/alpha_gray"
+                android:textSize="@dimen/text_size_10sp"/>
         </LinearLayout>
 
     </LinearLayout>
