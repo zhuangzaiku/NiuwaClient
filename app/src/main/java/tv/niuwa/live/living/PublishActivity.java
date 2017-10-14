@@ -1797,7 +1797,7 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
             model.setContent(temp.getString("content"));
             model.setUserId(temp.getString("userId"));
             model.setAvatar(temp.getString("avatar"));
-            if(!model.getType().equals("9") && !model.getType().equals("10")) {
+            if(!model.getType().equals("5") && !model.getType().equals("6") && !model.getType().equals("10") && !model.getType().equals("10")) {
                 mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
             }
             switch (model.getType()) {
