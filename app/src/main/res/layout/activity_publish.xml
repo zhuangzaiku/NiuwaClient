@@ -53,7 +53,7 @@
                 android:id="@+id/gift_layout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="300dp"
+                android:layout_marginTop="290dp"
                 android:visibility="invisible" />
 
             <tv.niuwa.live.living.GiftFrameLayout
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/gift_layout1"
-                android:layout_marginTop="200dp"
+                android:layout_marginTop="240dp"
                 android:visibility="invisible" />
 
             <ScrollView
