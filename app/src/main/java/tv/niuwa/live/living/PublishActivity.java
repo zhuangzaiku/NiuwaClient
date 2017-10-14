@@ -5,6 +5,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -21,6 +22,8 @@ import android.os.Message;
 import android.os.Process;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
@@ -121,6 +124,7 @@ import tv.niuwa.live.utils.AVImClientManager;
 import tv.niuwa.live.utils.Api;
 import tv.niuwa.live.utils.DialogEnsureUtiles;
 import tv.niuwa.live.utils.Utile;
+import tv.niuwa.live.view.LotteryDialog;
 import tv.niuwa.live.view.LoveAnimView;
 
 import java.util.ArrayList;
@@ -1853,13 +1857,56 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
                     onlineNum--;
                     break;
                 case "9":
-                    audience_vote_rl.setVisibility(View.VISIBLE);
+                    showVote();
                     break;
                 case "10":
                     audience_vote_rl.setVisibility(View.GONE);
                     break;
+                case "13":
+                    JSONArray array = temp.getJSONArray("reward");
+                    StringBuffer sb = new StringBuffer();
+                    for(int i = 0; i < array.size(); i++) {
+                        JSONObject jo = array.getJSONObject(i);
+                        sb.append(jo.getString("userId"));
+                        if(i < array.size() - 1) {
+                            sb.append(" ");
+                        }
+                    }
+                    showLotteryDialog(sb.toString());
+                    break;
             }
         }
+    }
+
+    private LotteryDialog mLotteryDialog;
+
+    private void showLotteryDialog(String users) {
+        LogUtils.d(TAG, "lottery users->" + users);
+        if(mLotteryDialog == null) {
+            mLotteryDialog = new LotteryDialog.Builder(this).create(users);
+            mLotteryDialog.show();
+
+            mLotteryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    mLotteryDialog = null;
+                }
+            });
+        }
+    }
+
+    private VoteFragment mVoteFragment;
+
+    private void showVote() {
+        if (mVoteFragment == null) {
+            mVoteFragment = new VoteFragment();
+            FragmentManager mManager = getSupportFragmentManager();
+            FragmentTransaction mTransaction = mManager.beginTransaction();
+            mTransaction.addToBackStack("");
+            mTransaction.add(R.id.audience_vote_rl, mVoteFragment);
+            mTransaction.commit();
+        }
+        audience_vote_rl.setVisibility(View.VISIBLE);
     }
 
     private void getUnread() {

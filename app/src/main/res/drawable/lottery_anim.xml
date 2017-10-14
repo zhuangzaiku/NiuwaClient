@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
-    android:oneshot="false">
+    android:oneshot="true">
 
     <item
         android:drawable="@mipmap/frame_1"
@@ -50,65 +50,51 @@
         android:duration="40" />
 
     <item
-        android:drawable="@mipmap/frame_13"
+        android:drawable="@mipmap/frame_1"
         android:duration="40" />
 
     <item
-        android:drawable="@mipmap/frame_14"
-        android:duration="40" />
-    <item
-        android:drawable="@mipmap/frame_15"
+        android:drawable="@mipmap/frame_2"
         android:duration="40" />
 
     <item
-        android:drawable="@mipmap/frame_16"
+        android:drawable="@mipmap/frame_3"
         android:duration="40" />
 
     <item
-        android:drawable="@mipmap/frame_17"
+        android:drawable="@mipmap/frame_4"
         android:duration="40" />
 
     <item
-        android:drawable="@mipmap/frame_18"
+        android:drawable="@mipmap/frame_5"
         android:duration="40" />
 
     <item
-        android:drawable="@mipmap/frame_19"
+        android:drawable="@mipmap/frame_6"
         android:duration="40" />
 
     <item
-        android:drawable="@mipmap/frame_20"
+        android:drawable="@mipmap/frame_7"
+        android:duration="40" />
+    <item
+        android:drawable="@mipmap/frame_8"
         android:duration="40" />
 
     <item
-        android:drawable="@mipmap/frame_21"
-        android:duration="40" />
-    <item
-        android:drawable="@mipmap/frame_22"
+        android:drawable="@mipmap/frame_9"
         android:duration="40" />
 
     <item
-        android:drawable="@mipmap/frame_23"
+        android:drawable="@mipmap/frame_10"
         android:duration="40" />
 
     <item
-        android:drawable="@mipmap/frame_24"
+        android:drawable="@mipmap/frame_11"
         android:duration="40" />
 
     <item
-        android:drawable="@mipmap/frame_25"
+        android:drawable="@mipmap/frame_12"
         android:duration="40" />
 
-    <item
-        android:drawable="@mipmap/frame_26"
-        android:duration="40" />
-
-    <item
-        android:drawable="@mipmap/frame_27"
-        android:duration="40" />
-
-    <item
-        android:drawable="@mipmap/frame_28"
-        android:duration="40" />
 
 </animation-list>
