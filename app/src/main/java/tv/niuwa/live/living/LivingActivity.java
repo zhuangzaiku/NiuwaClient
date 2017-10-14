@@ -2013,10 +2013,10 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     showGiftAnim1(LivingActivity.this, model, gift, Integer.parseInt(num));
                     break;
                 case "9":
-                    showVote();
+                    liveVote(null);
                     break;
                 case "10":
-                    audience_vote_rl.setVisibility(View.GONE);
+                    audience_vote_rl(null);
                     break;
                 case "13":
                     JSONArray array = temp.getJSONArray("reward");
