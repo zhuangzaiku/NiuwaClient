@@ -25,7 +25,7 @@ public class Util {
     public static boolean isPhoneNumber(String mobileNumber) {
         boolean flag = false;
         try {
-            Pattern regex = Pattern.compile("^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\\\d{8}$");
+            Pattern regex = Pattern.compile("^1(3|4|5|7|8)\\d{9}$");
             Matcher matcher = regex.matcher(mobileNumber);
             flag = matcher.matches();
         } catch (Exception e) {
