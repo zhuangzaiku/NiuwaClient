@@ -30,7 +30,7 @@ public class ShapedImageView extends android.support.v7.widget.AppCompatImageVie
     private PorterDuffXfermode mPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT);
     private float mPercent = 0;
     private static final float START_ANGLE = 90f;
-    private static final float CIRCLE_ANGLE = 360f;
+    private static final float CIRCLE_ANGLE = 359.9999f;
     private static final double RADIAN = Math.PI / 180;
 
 
@@ -50,7 +50,7 @@ public class ShapedImageView extends android.support.v7.widget.AppCompatImageVie
     @Override
     protected void onDraw(Canvas canvas) {
         Drawable drawable = getDrawable();
-        if (drawable != null && drawable instanceof BitmapDrawable && mPercent > 0 && mPercent < 100) {
+        if (drawable != null && drawable instanceof BitmapDrawable && mPercent < 100) {
             Paint paint = ((BitmapDrawable) drawable).getPaint();
             final int color = 0xff000000;
             Rect bitmapBounds = drawable.getBounds();
