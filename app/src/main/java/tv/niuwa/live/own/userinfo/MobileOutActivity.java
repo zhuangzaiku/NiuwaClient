@@ -18,6 +18,7 @@ import tv.niuwa.live.core.BaseSiSiEditActivity;
 import tv.niuwa.live.intf.OnRequestDataListener;
 import tv.niuwa.live.utils.Api;
 import tv.niuwa.live.utils.TimeCountUtile;
+import tv.niuwa.live.utils.Util;
 
 public class MobileOutActivity extends BaseSiSiEditActivity {
 
@@ -66,7 +67,7 @@ public class MobileOutActivity extends BaseSiSiEditActivity {
     public void getCode(final View view) {
         final Button btn = (Button) view;
         String mobileNum = mEditInputNewTel.getText().toString();
-        if (mobileNum.trim() == "" || !NumUtils.isPhoneNumber(mobileNum)) {
+        if (mobileNum.trim() == "" || !Util.isPhoneNumber(mobileNum)) {
             toast("请输入正确的手机号");
             return;
         }

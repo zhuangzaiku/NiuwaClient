@@ -67,6 +67,7 @@ import tv.niuwa.live.own.userinfo.UserMenuItem;
 import tv.niuwa.live.search.SearchActivity;
 import tv.niuwa.live.utils.Api;
 import tv.niuwa.live.utils.DisplayUtil;
+import tv.niuwa.live.utils.Util;
 
 public class MainActivity extends BaseSiSiActivity {
 
@@ -243,7 +244,7 @@ public class MainActivity extends BaseSiSiActivity {
     private void goLiving() {
         String mobile = "18073185008";
         String password = "111qqq";
-        if ("".equals(mobile.trim()) || !NumUtils.isPhoneNumber(mobile)) {
+        if ("".equals(mobile.trim()) || !Util.isPhoneNumber(mobile)) {
             toast("请正确填写手机号");
             return;
         }

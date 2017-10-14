@@ -22,6 +22,7 @@ import tv.niuwa.live.utils.Api;
 import butterknife.Bind;
 import butterknife.OnClick;
 import de.greenrobot.event.EventBus;
+import tv.niuwa.live.utils.Util;
 
 public class LoginByPhoneActivity extends BaseSiSiEditActivity {
 
@@ -75,7 +76,7 @@ public class LoginByPhoneActivity extends BaseSiSiEditActivity {
     public void doLogin(View view) {
         String mobile = mEditInputMobile.getText().toString();
         String password = mEditInputPassword.getText().toString();
-        if ("".equals(mobile.trim()) || !NumUtils.isPhoneNumber(mobile)) {
+        if ("".equals(mobile.trim()) || !Util.isPhoneNumber(mobile)) {
             toast("请正确填写手机号");
             return;
         }
