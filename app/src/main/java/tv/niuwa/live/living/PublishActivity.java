@@ -1877,6 +1877,9 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
                 case "14":
                     hideLotteryDialog();
                     break;
+                case "15":
+                    // TODO: 15/10/2017  换背景图 
+                    break;
             }
         }
     }
