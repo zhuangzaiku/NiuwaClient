@@ -423,6 +423,8 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
         }
     };
 
+    private static final int ADD_SCORE_INTERVAL = 1000 * 60 * 5;
+
     Runnable addScoreRunnable = new Runnable() {
         @Override
         public void run() {
@@ -431,10 +433,17 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             Api.addScore(LivingActivity.this, params, new OnRequestDataListener() {
                 @Override
                 public void requestSuccess(int code, JSONObject data1) {
+                    int score = data1.getInteger("addScore");
+                    if(score > 0 && data1.getInteger("code") == 200) {
+                        toast(String.format(getResources().getString(R.string.add_score_toast), String.valueOf(score)));
+                    }
+                    dataHandler.postDelayed(addScoreRunnable, ADD_SCORE_INTERVAL);
+
                 }
 
                 @Override
                 public void requestFailure(int code, String msg) {
+                    dataHandler.postDelayed(addScoreRunnable, ADD_SCORE_INTERVAL);
                 }
             });
         }
@@ -1364,7 +1373,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                         }
                     }
                     dataHandler.postDelayed(dataRunnable, 2000);
-                    dataHandler.postDelayed(addScoreRunnable, 1000 * 60 * 5);
+                    dataHandler.postDelayed(addScoreRunnable, ADD_SCORE_INTERVAL);
                     mLiveEndContainer.setVisibility(View.GONE);
                 }
 
@@ -1979,7 +1988,6 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     clickHeart();
                     break;
                 case "7":
-                    mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
                     break;
                 case "6":
                     //系统消息  -  进入房间
@@ -2011,12 +2019,6 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     gift.setContinuous(giftO.getString("continuous"));
                     String num = (null == giftO.getString("continuousNum")) ? "1" : giftO.getString("continuousNum");
                     showGiftAnim1(LivingActivity.this, model, gift, Integer.parseInt(num));
-                    break;
-                case "9":
-                    liveVote(null);
-                    break;
-                case "10":
-                    audience_vote_rl(null);
                     break;
                 case "13":
                     JSONArray array = temp.getJSONArray("reward");

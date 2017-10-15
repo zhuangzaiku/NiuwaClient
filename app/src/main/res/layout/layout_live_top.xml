@@ -49,9 +49,9 @@
     <LinearLayout
         android:id="@+id/living_danmu_container"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="55dp"
         android:orientation="vertical">
 
         <master.flame.danmaku.ui.widget.DanmakuView
@@ -99,9 +99,9 @@
 
     <ImageView
         android:id="@+id/living_gift_big"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_width="267.6dp"
+        android:layout_height="208.3dp"
+        android:layout_marginTop="90dp"
         android:scaleType="center"
         android:visibility="gone" />
 
@@ -196,6 +196,7 @@
             android:layout_height="23dp"
             android:layout_marginLeft="21dp"
             android:id="@+id/pause_layout"
+            android:layout_marginTop="15dp"
             android:background="@drawable/img_kaiguan02">
 
             <ImageView
@@ -697,6 +698,7 @@
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/checkbox_danmu_selector"
                 android:button="@null"
+                android:visibility="gone"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:textColor="@android:color/white" />

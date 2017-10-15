@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:textSize="@dimen/lcim_textsize_small"
+                android:textSize="@dimen/lcim_textsize_large"
                 android:layout_weight="1"
                 android:maxLines="1"
                 android:visibility="invisible"
