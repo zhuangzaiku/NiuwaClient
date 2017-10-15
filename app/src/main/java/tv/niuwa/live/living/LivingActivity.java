@@ -493,7 +493,8 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     private Boolean danmuChecked = false;
     private float mLastX;
     private float mLastY;
-    private IMediaPlayer.OnPreparedListener mOnPreparedListener = new IMediaPlayer.OnPreparedListener() {
+    private IMediaPlayer.OnPreparedListener
+            mOnPreparedListener = new IMediaPlayer.OnPreparedListener() {
         @Override
         public void onPrepared(IMediaPlayer mp) {
 
@@ -876,11 +877,24 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
         if (ksyMediaPlayer != null) {
             RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) mPauseBtn.getLayoutParams();
             if (isPaused) {
+
+                if(TextUtils.isEmpty(ksyMediaPlayer.getDataSource())) {
+                    if (null != mDataSource) {
+                        //loading_dialog = SFProgrssDialog.show(LivingActivity.this, "");
+                        try {
+                            ksyMediaPlayer.setDataSource(mDataSource);
+                            ksyMediaPlayer.prepareAsync();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } else {
+                    ksyMediaPlayer.start();
+                }
                 mPauseCover.setVisibility(View.GONE);
                 mPauseLayout.setBackgroundResource(R.drawable.img_kaiguan01);
                 lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
                 lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 0);
-                ksyMediaPlayer.start();
             } else {
                 mPauseCover.setVisibility(View.VISIBLE);
                 mPauseLayout.setBackgroundResource(R.drawable.img_kaiguan02);
@@ -1363,15 +1377,15 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     }
                     mDataSource = channelInfo.getString("channel_source");
                     //mDataSource = "rtmp://live.hkstv.hk.lxdns.com/live/hks";
-                    if (null != mDataSource) {
-                        //loading_dialog = SFProgrssDialog.show(LivingActivity.this, "");
-                        try {
-                            ksyMediaPlayer.setDataSource(mDataSource);
-                            ksyMediaPlayer.prepareAsync();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
+//                    if (null != mDataSource) {
+//                        //loading_dialog = SFProgrssDialog.show(LivingActivity.this, "");
+//                        try {
+//                            ksyMediaPlayer.setDataSource(mDataSource);
+//                            ksyMediaPlayer.prepareAsync();
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
                     dataHandler.postDelayed(dataRunnable, 2000);
                     dataHandler.postDelayed(addScoreRunnable, ADD_SCORE_INTERVAL);
                     mLiveEndContainer.setVisibility(View.GONE);
