@@ -61,6 +61,13 @@
                 android:text="@string/user_coin"
                 android:textColor="@color/color_F8EB8D"
                 android:textSize="@dimen/lcim_textsize_normal" />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="18dp"
+                android:src="@drawable/icon_charge"
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@+id/user_coin"
+                android:layout_below="@+id/user_nickname"/>
 
             <Button
                 android:id="@+id/loginRegister"

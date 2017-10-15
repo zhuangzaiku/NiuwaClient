@@ -85,6 +85,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="6dp"
                 android:text="充值"
+                android:visibility="gone"
                 android:textColor="@android:color/white"
                 android:textSize="12sp" />
 
@@ -92,6 +93,7 @@
                 android:layout_width="10dp"
                 android:layout_height="17dp"
                 android:layout_marginLeft="2dp"
+                android:visibility="gone"
                 android:src="@drawable/icon_forward_pay" />
 
         </LinearLayout>
