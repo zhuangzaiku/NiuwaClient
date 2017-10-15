@@ -1760,11 +1760,19 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             JSONObject jo = new JSONObject();
             jo.put("text", content);
             jo.put("message", new Gson().toJson(model));
+            jo.put("token", token);
             mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
             Api.sendDanmuNew(this, jo, new OnRequestDataListener() {
                 @Override
                 public void requestSuccess(int code, JSONObject data) {
                     LogUtils.d("zzk" + data);
+                    int retCode = data.getInteger("code");
+                    if(retCode == 510) {
+                        String desc = data.getString("descrp");
+                        if(!TextUtils.isEmpty(desc)) {
+                            toast(desc);
+                        }
+                    }
                 }
 
                 @Override
