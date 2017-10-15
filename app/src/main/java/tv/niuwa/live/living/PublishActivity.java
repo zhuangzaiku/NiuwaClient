@@ -1874,6 +1874,9 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
                     }
                     showLotteryDialog(sb.toString());
                     break;
+                case "14":
+                    hideLotteryDialog();
+                    break;
             }
         }
     }
@@ -1885,13 +1888,13 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
         if(mLotteryDialog == null) {
             mLotteryDialog = new LotteryDialog.Builder(this).create(users);
             mLotteryDialog.show();
+        }
+    }
 
-            mLotteryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                @Override
-                public void onDismiss(DialogInterface dialog) {
-                    mLotteryDialog = null;
-                }
-            });
+    private void hideLotteryDialog() {
+        if(mLotteryDialog != null && mLotteryDialog.isShowing()) {
+            mLotteryDialog.dismiss();
+            mLotteryDialog = null;
         }
     }
 

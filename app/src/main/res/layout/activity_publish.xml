@@ -91,9 +91,8 @@
             <LinearLayout
                 android:id="@+id/living_danmu_container"
                 android:layout_width="match_parent"
-                android:layout_height="110dp"
+                android:layout_height="140dp"
                 android:layout_gravity="bottom"
-                android:layout_marginBottom="60dp"
                 android:orientation="vertical">
 
                 <master.flame.danmaku.ui.widget.DanmakuView
@@ -122,11 +121,12 @@
 
             <ImageView
                 android:id="@+id/living_gift_big"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:scaleType="center"
-                android:visibility="gone" />
+                android:layout_width="291dp"
+                android:layout_height="227dp"
+                android:layout_gravity="bottom"
+                android:src="@mipmap/huojian0001"
+                android:scaleType="fitCenter"
+                android:visibility="visible" />
 
             <LinearLayout
                 android:id="@+id/publish_more"
