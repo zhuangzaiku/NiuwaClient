@@ -102,7 +102,7 @@
         android:layout_width="267.6dp"
         android:layout_height="208.3dp"
         android:layout_marginTop="90dp"
-        android:scaleType="center"
+        android:scaleType="centerInside"
         android:visibility="gone" />
 
     <LinearLayout

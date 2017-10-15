@@ -685,7 +685,6 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             bigAnim.add(model);
         } else {
             mLivingGiftBig.setVisibility(View.VISIBLE);
-            mLivingGiftBig.setBackground(null);
             int giftBgId = -1;
             switch (giftId) {
 //                case "4":
@@ -718,9 +717,9 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                 case "35":
                     giftBgId = R.drawable.gift_anim_youting;
             }
-            mLivingGiftBig.setBackgroundResource(giftBgId);
+            mLivingGiftBig.setImageResource(giftBgId);
             
-            AnimationDrawable animTemp = (AnimationDrawable) mLivingGiftBig.getBackground();
+            AnimationDrawable animTemp = (AnimationDrawable) mLivingGiftBig.getDrawable();
             animTemp.start();
             int duration = 0;
             for (int i = 0; i < animTemp.getNumberOfFrames(); i++) {
