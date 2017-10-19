@@ -13,23 +13,17 @@
         android:padding="5dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="送给"
-            android:textColor="@color/colorPrimary" />
-
-        <TextView
             android:id="@+id/tv_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="主播"
+            android:text=""
             android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/tv_gift"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="一个礼物吧"
+            android:text="送个礼物吧"
             android:textColor="@color/colorPrimary" />
     </LinearLayout>
 
@@ -85,11 +79,13 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="6dp"
                 android:text="充值"
+                android:visibility="gone"
                 android:textColor="@android:color/white"
                 android:textSize="12sp" />
 
             <ImageView
                 android:layout_width="10dp"
+                android:visibility="gone"
                 android:layout_height="17dp"
                 android:layout_marginLeft="2dp"
                 android:src="@drawable/icon_forward_pay" />

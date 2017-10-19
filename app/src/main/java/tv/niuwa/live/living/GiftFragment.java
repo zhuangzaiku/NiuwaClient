@@ -110,8 +110,8 @@ public class GiftFragment extends BaseSiSiFragment implements AdapterView.OnItem
             public void requestSuccess(int code, JSONObject data) {
 
                 //  2016/12/27 [用户]赠送一个[礼物]
-                tv_username.setText(temp.user_nicename);
-                tv_gift.setText(model.getGiftname());
+                tv_username.setText(temp.user_nicename + "的");
+                tv_gift.setText( model.getGiftname());
                 
                 mSendbtn.setText("赠送");
                 mSendbtn.setBackgroundColor(0xFFFF4081);
