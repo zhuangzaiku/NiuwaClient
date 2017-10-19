@@ -76,7 +76,7 @@ public class GiftFragment extends BaseSiSiFragment implements AdapterView.OnItem
 
     @OnClick(R.id.gift_charge)
     public void giftCharge(View view) {
-        openActivity(ChargeMoneyActivity.class);
+//        openActivity(ChargeMoneyActivity.class);
     }
 
     @OnClick(R.id.live_btn_send)

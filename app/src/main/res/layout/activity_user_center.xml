@@ -28,15 +28,15 @@
                 android:layout_marginTop="12dp"
                 android:src="@drawable/img_head" />
 
-
             <TextView
                 android:id="@+id/user_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/user_head"
                 android:layout_centerHorizontal="true"
+                android:minWidth="100dp"
+                android:gravity="center"
                 android:layout_marginTop="4dp"
-                android:text="@string/user_coin"
                 android:visibility="visible"
                 android:textColor="@color/white"
                 android:textSize="@dimen/lcim_textsize_normal" />
@@ -51,16 +51,32 @@
                 android:layout_alignBottom="@+id/user_nickname"
                 android:layout_marginBottom="-1.5dp"/>
 
-            <TextView
-                android:id="@+id/user_coin"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/user_nickname"
+                android:orientation="horizontal"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="4dp"
-                android:text="@string/user_coin"
-                android:textColor="@color/color_F8EB8D"
-                android:textSize="@dimen/lcim_textsize_normal" />
+                android:gravity="center"
+                android:id="@+id/user_coin_layout"
+                android:layout_below="@+id/user_nickname">
+                <ImageView
+                    android:layout_width="22.5dp"
+                    android:layout_height="22.5dp"
+                    android:id="@+id/user_coin_icon"
+                    android:src="@drawable/img_niubi"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginBottom="-1.5dp"/>
+                <TextView
+                    android:id="@+id/user_coin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/user_nickname"
+                    android:layout_marginLeft="6dp"
+                    android:gravity="center"
+                    android:textColor="@color/color_F8EB8D"
+                    android:textSize="@dimen/lcim_textsize_normal" />
+            </LinearLayout>
+
 
             <Button
                 android:id="@+id/loginRegister"

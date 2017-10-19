@@ -65,7 +65,7 @@
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/icon_charge" />
+                android:src="@drawable/img_niubi" />
 
             <TextView
                 android:id="@+id/gift_balances"

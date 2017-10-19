@@ -1,10 +1,15 @@
 package tv.niuwa.live.own;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -39,6 +44,7 @@ import tv.niuwa.live.own.userinfo.MyDataActivity;
 import tv.niuwa.live.own.userinfo.UserMenuItem;
 import tv.niuwa.live.search.SearchActivity;
 import tv.niuwa.live.utils.Api;
+import tv.niuwa.live.view.CustomDialog;
 
 /**
  * @author Ronan.zhuang
@@ -117,16 +123,13 @@ public class UserCenterActivity extends BaseSiSiActivity {
 
     private void initView() {
         long getTokenTime = (long) SharePrefsUtils.get(UserCenterActivity.this, "user", "getTokenTime", 0L);
-        if(System.currentTimeMillis() - getTokenTime >= TWO_DAYS) {
+        if (System.currentTimeMillis() - getTokenTime >= TWO_DAYS) {
             SharePrefsUtils.remove(UserCenterActivity.this, "user", "token");
         }
         token = (String) SharePrefsUtils.get(UserCenterActivity.this, "user", "token", "");
         userId = (String) SharePrefsUtils.get(UserCenterActivity.this, "user", "userId", "");
 
         title.setText(R.string.user_center);
-
-        userCoin.setText(Html.fromHtml(String.format(getResources().getString(R.string.user_coin), String.valueOf(54))));
-
 
         leftIcon.setImageResource(R.drawable.img_xinxi);
         leftIcon.setOnClickListener(new View.OnClickListener() {
@@ -150,6 +153,13 @@ public class UserCenterActivity extends BaseSiSiActivity {
             }
         });
 
+        findViewById(R.id.user_coin_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCoinDescription();
+            }
+        });
+
         myGift.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,7 +169,7 @@ public class UserCenterActivity extends BaseSiSiActivity {
         enterLiving.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(TextUtils.isEmpty(token)) {
+                if (TextUtils.isEmpty(token)) {
                     openActivity(LoginActivity.class);
                     return;
                 }
@@ -205,7 +215,7 @@ public class UserCenterActivity extends BaseSiSiActivity {
                         MyApplication app = (MyApplication) UserCenterActivity.this.getApplication();
                         app.setBalance(userInfo.getString("balance"));
 
-                        userCoin.setText(String.format(getString(R.string.user_coin), app.getBalance()));
+                        userCoin.setText(String.valueOf(app.getBalance()));
                         userNickname.setVisibility(View.VISIBLE);
                         userNickname.setText(nickname);
                         nicknameEdit.setVisibility(View.VISIBLE);
@@ -226,7 +236,7 @@ public class UserCenterActivity extends BaseSiSiActivity {
             loginRegister.setVisibility(View.GONE);
 
         } else {
-            userCoin.setText(String.format(getString(R.string.user_coin), "0"));
+            userCoin.setText("0");
             loginRegister.setVisibility(View.VISIBLE);
             userNickname.setVisibility(View.INVISIBLE);
             nicknameEdit.setVisibility(View.INVISIBLE);
@@ -257,5 +267,37 @@ public class UserCenterActivity extends BaseSiSiActivity {
         if (num > 0) {
             mImageOwnUnread.setVisibility(View.VISIBLE);
         }
+    }
+
+    AlertDialog mDescDialog;
+
+    private void showCoinDescription() {
+        if (isFinishing()) {
+            return;
+        }
+        mDescDialog = new AlertDialog.Builder(this, R.style.AlertDialogStyle).create();
+        View view = View.inflate(this, R.layout.dialog_coin_description, null);
+        view.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mDescDialog != null) {
+                    mDescDialog.hide();
+                }
+            }
+        });
+        mDescDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                mDescDialog = null;
+            }
+        });
+        mDescDialog.show();
+        mDescDialog.getWindow().setContentView(view);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
     }
 }
