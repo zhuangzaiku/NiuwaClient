@@ -51,7 +51,7 @@ import tv.niuwa.live.core.BaseSiSiActivity;
 import tv.niuwa.live.intf.OnRequestDataListener;
 import tv.niuwa.live.login.LoginActivity;
 import tv.niuwa.live.own.CropActivity;
-import tv.niuwa.live.own.authorize.AuthorizeActivity;
+import tv.niuwa.live.own.authorize.VerificationActivity;
 import tv.niuwa.live.utils.Api;
 import tv.niuwa.live.view.SFProgrssDialog;
 
@@ -87,6 +87,8 @@ public class MyDataActivity extends BaseSiSiActivity implements View.OnClickList
     String mobileStatus = "0";
     String token;
     String userId;
+
+    private boolean isVerfied = false;
     @OnClick(R.id.image_top_back)
     public void back(View view) {
         setResult(RESULT_OK);
@@ -106,7 +108,11 @@ public class MyDataActivity extends BaseSiSiActivity implements View.OnClickList
 
     @OnClick(R.id.linear_user_real_container)
     public void linearUserRealContainer(View view) {
-        openActivity(AuthorizeActivity.class);
+        if(isVerfied) {
+            toast(getResources().getString(R.string.already_verify));
+        } else {
+            openActivity(VerificationActivity.class);
+        }
     }
 
 
@@ -211,6 +217,7 @@ public class MyDataActivity extends BaseSiSiActivity implements View.OnClickList
                     }
                     if ("1".equals(userInfo.getString("is_truename"))) {
                         mTextUserdataReal.setText("已认证");
+                        isVerfied = true;
                     }
                     mobileStatus = userInfo.getString("mobile_status");
                     if("0".equals(mobileStatus)){

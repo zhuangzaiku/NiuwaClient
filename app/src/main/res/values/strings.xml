@@ -59,4 +59,5 @@
 
     <string name="my_reward">我的奖品</string>
     <string name="add_score_toast">牛币+%s，请继续参与互动获取更多牛币哦！</string>
+    <string name="already_verify">已认证</string>
 </resources>

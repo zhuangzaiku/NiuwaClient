@@ -113,7 +113,7 @@ import tv.niuwa.live.music.MusicActivity;
 import tv.niuwa.live.music.MusicItem;
 import tv.niuwa.live.music.MusicListAdapter;
 import tv.niuwa.live.own.UserMainActivity;
-import tv.niuwa.live.own.authorize.AuthorizeActivity;
+import tv.niuwa.live.own.authorize.VerificationActivity;
 import tv.niuwa.live.own.userinfo.ContributionActivity;
 import tv.niuwa.live.utils.AVImClientManager;
 import tv.niuwa.live.utils.Api;
@@ -1642,7 +1642,7 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
             @Override
             public void requestFailure(int code, String msg) {
                 if (508 == code) {
-                    openActivity(AuthorizeActivity.class);
+                    openActivity(VerificationActivity.class);
                 } else {
                     toast(msg);
                 }

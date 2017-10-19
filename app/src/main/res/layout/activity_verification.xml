@@ -8,8 +8,5 @@
     tools:context="tv.niuwa.live.own.authorize.VerificationActivity">
 
     <include layout="@layout/layout_top"/>
-    <WebView
-        android:id="@+id/auth_webview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></WebView>
+
 </LinearLayout>

@@ -114,7 +114,7 @@
             android:name="tv.niuwa.live.own.follow.FollowActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="tv.niuwa.live.own.authorize.AuthorizeActivity"
+            android:name="tv.niuwa.live.own.authorize.VerificationActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="tv.niuwa.live.own.level.MyLevelActivity"

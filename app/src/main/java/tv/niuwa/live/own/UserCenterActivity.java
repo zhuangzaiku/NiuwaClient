@@ -105,8 +105,7 @@ public class UserCenterActivity extends BaseSiSiActivity {
 
     @OnClick(R.id.user_head)
     public void clickAvatarName(View view) {
-        Intent i = new Intent(this, MyDataActivity.class);
-        startActivityForResult(i, 1);
+        openActivityForResult(MyDataActivity.class, 1);
     }
 
     @Bind(R.id.nickname_edit)

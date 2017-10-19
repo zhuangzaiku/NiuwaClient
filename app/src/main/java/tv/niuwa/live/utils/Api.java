@@ -94,6 +94,7 @@ public class Api {
     public static final String ADD_SCORE = HOST + "/Api/SiSi/addScore";
     public static final String GET_VOTE = HOST + "/Api/SiSi/getVote";
     public static final String DO_VOTE = HOST + "/Api/SiSi/doVote";
+    public static final String CERT_UPLOAD = HOST + "/Api/SiSi/certUpload ";
     public static final String VOTE_RESULT = HOST + "/Api/SiSi/voteResult";
     public static final String PUSH_CALLBACK = HOST + "/Api/SiSi/startLivePushCallback";
     public static final String WAP_PAY = HOST + "/portal/Appweb/chongzhi";

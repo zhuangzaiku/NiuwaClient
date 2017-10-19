@@ -35,7 +35,7 @@ import tv.niuwa.live.core.BaseSiSiFragment;
 import tv.niuwa.live.intf.OnRequestDataListener;
 import tv.niuwa.live.lean.ConversationListActivity;
 import tv.niuwa.live.login.LoginActivity;
-import tv.niuwa.live.own.authorize.AuthorizeActivity;
+import tv.niuwa.live.own.authorize.VerificationActivity;
 import tv.niuwa.live.own.family.FamilyActivity;
 import tv.niuwa.live.own.fans.FansActivity;
 import tv.niuwa.live.own.follow.FollowActivity;
@@ -295,7 +295,7 @@ public class OwnFragment extends BaseSiSiFragment implements OnShareStatusListen
 
     @OnClick(R.id.linear_own_authorize_container)
     public void authorize(View view) {
-        openActivity(AuthorizeActivity.class);
+        openActivity(VerificationActivity.class);
     }
 
     @Override

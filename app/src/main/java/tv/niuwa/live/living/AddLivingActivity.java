@@ -34,7 +34,7 @@ import tv.niuwa.live.core.BaseSiSiEditActivity;
 import tv.niuwa.live.intf.OnCustomClickListener;
 import tv.niuwa.live.intf.OnRequestDataListener;
 import tv.niuwa.live.login.LoginActivity;
-import tv.niuwa.live.own.authorize.AuthorizeActivity;
+import tv.niuwa.live.own.authorize.VerificationActivity;
 import tv.niuwa.live.utils.Api;
 import tv.niuwa.live.utils.DialogEnsureUtiles;
 import tv.niuwa.live.utils.Utile;
@@ -232,7 +232,7 @@ public class AddLivingActivity extends BaseSiSiEditActivity implements OnShareSt
                 @Override
                 public void requestFailure(int code, String msg) {
                     if (508 == code) {
-                        openActivity(AuthorizeActivity.class);
+                        openActivity(VerificationActivity.class);
                     } else {
                         toast(msg);
                     }
