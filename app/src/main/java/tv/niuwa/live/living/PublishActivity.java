@@ -174,18 +174,18 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
     ImageButton mLiveMeiyan;
     @Bind(R.id.danmu_container)
     RelativeLayout mDanmuContainer;
-    @Bind(R.id.live_user_avatar)
-    CircleImageView mLiveUserAvatar;
-    @Bind(R.id.live_user_nicename)
-    TextView mLiveUserNicename;
+//    @Bind(R.id.live_user_avatar)
+//    CircleImageView mLiveUserAvatar;
+//    @Bind(R.id.live_user_nicename)
+//    TextView mLiveUserNicename;
     @Bind(R.id.input_live_title)
     EditText mInputLiveTitle;
     @Bind(R.id.live_user_online_num)
     TextView mLiveUserOnlineNum;
-    @Bind(R.id.live_user_total)
-    TextView mLiveUserTotal;
-    @Bind(R.id.live_user_id)
-    TextView mLiveUserId;
+//    @Bind(R.id.live_user_total)
+//    TextView mLiveUserTotal;
+//    @Bind(R.id.live_user_id)
+//    TextView mLiveUserId;
     @Bind(R.id.radio_share_wechat_moment)
     CheckBox mRadioShareWechatMoment;
     @Bind(R.id.radio_share_wechat)
@@ -219,8 +219,8 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
     LinearLayout mUserDialogControlContainer;
     @Bind(R.id.image_own_message)
     ImageView mImageOwnMessage;
-    @Bind(R.id.btn_follow)
-    Button mBtnFollow;
+//    @Bind(R.id.btn_follow)
+//    Button mBtnFollow;
     @Bind(R.id.image_own_unread)
     ImageView mImageOwnUnread;
     @Bind(R.id.camera_reverse)
@@ -237,8 +237,8 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
     LinearLayout live_icon_large_ll;
     @Bind(R.id.publish_shop_icon)
     ImageView publish_shop_icon;
-    @Bind(R.id.live_sidou)
-    LinearLayout live_sidou;
+//    @Bind(R.id.live_sidou)
+//    LinearLayout live_sidou;
 
     @Bind(R.id.audience_vote_rl)
     RelativeLayout audience_vote_rl;
@@ -360,8 +360,8 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
                 public void requestSuccess(int code, JSONObject data1) {
                     if (isActive) {
                         JSONObject data = data1.getJSONObject("data");
-                        if (null != mLiveUserOnlineNum && null != mLiveUserTotal) {
-                            mLiveUserTotal.setText(data.getString("total_earn"));
+                        if (null != mLiveUserOnlineNum /*&& null != mLiveUserTotal*/) {
+//                            mLiveUserTotal.setText(data.getString("total_earn"));
                             // mLiveUserOnlineNum.setText(onlineNum + "");
                             mLiveUserOnlineNum.setText(data.getString("online_num"));
                             dataHandler.postDelayed(dataRunnable, 2000);
@@ -752,13 +752,13 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
         }, shopUrl, "请输入推广地址");
     }
 
-    @OnClick(R.id.live_user_avatar)
-    public void getUserInfo(View view) {
-        ImageView temp = (ImageView) view;
-        String uid = (String) temp.getTag(R.id.image_live_avatar);
-        otherUserId = uid;
-        showUserInfoDialogById(uid);
-    }
+//    @OnClick(R.id.live_user_avatar)
+//    public void getUserInfo(View view) {
+//        ImageView temp = (ImageView) view;
+//        String uid = (String) temp.getTag(R.id.image_live_avatar);
+//        otherUserId = uid;
+//        showUserInfoDialogById(uid);
+//    }
 
     @OnClick(R.id.text_topic)
     public void textTopic(View v) {
@@ -981,12 +981,12 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
         }
     }
 
-    @OnClick(R.id.live_sidou)
-    public void showUserContribution() {
-        Bundle data = new Bundle();
-        data.putString("id", channel_creater);
-        openActivity(ContributionActivity.class, data);
-    }
+//    @OnClick(R.id.live_sidou)
+//    public void showUserContribution() {
+//        Bundle data = new Bundle();
+//        data.putString("id", channel_creater);
+//        openActivity(ContributionActivity.class, data);
+//    }
 
     public void showUserInfoDialogById(String uid) {
         if (StringUtils.isEmpty(uid)) {
@@ -1457,10 +1457,10 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
 
         mLiveGift.setVisibility(View.GONE);
         mLiveShare.setVisibility(View.GONE);
-        mBtnFollow.setVisibility(View.GONE);
+//        mBtnFollow.setVisibility(View.GONE);
         live_icon_large_ll.setVisibility(View.GONE);
         publish_shop_icon.setVisibility(View.GONE);
-        live_sidou.setVisibility(View.GONE);
+//        live_sidou.setVisibility(View.GONE);
         mLiveTopLayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -1553,16 +1553,16 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
                 @Override
                 public void requestSuccess(int code, JSONObject data) {
                     JSONObject userInfo = data.getJSONObject("data");
-                    mLiveUserNicename.setText(userInfo.getString("user_nicename"));
-                    mLiveUserId.setText("ID:" + userInfo.getString("id"));
+//                    mLiveUserNicename.setText(userInfo.getString("user_nicename"));
+//                    mLiveUserId.setText("ID:" + userInfo.getString("id"));
                     channel_creater = userInfo.getString("id");
-                    mLiveUserTotal.setText(userInfo.getString("sidou"));
-                    Glide.with(PublishActivity.this).load(userInfo.getString("avatar"))
-                            .error(R.drawable.icon_avatar_default)
-                            .transform(new GlideCircleTransform(PublishActivity.this))
-                            .into(mLiveUserAvatar);
+//                    mLiveUserTotal.setText(userInfo.getString("sidou"));
+//                    Glide.with(PublishActivity.this).load(userInfo.getString("avatar"))
+//                            .error(R.drawable.icon_avatar_default)
+//                            .transform(new GlideCircleTransform(PublishActivity.this))
+//                            .into(mLiveUserAvatar);
 
-                    mLiveUserAvatar.setTag(R.id.image_live_avatar, userInfo.getString("id"));
+//                    mLiveUserAvatar.setTag(R.id.image_live_avatar, userInfo.getString("id"));
                     dataHandler.postDelayed(dataRunnable, 2000);
 
                     dataHandler.postDelayed(new Runnable() {

@@ -124,9 +124,8 @@
                 android:layout_width="291dp"
                 android:layout_height="227dp"
                 android:layout_gravity="bottom"
-                android:src="@mipmap/huojian0001"
                 android:scaleType="fitCenter"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/publish_more"
@@ -422,8 +421,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -431,171 +428,52 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:background="@drawable/bg_ellipse_shape"
-                        android:paddingBottom="3dp"
-                        android:paddingLeft="3dp"
-                        android:layout_alignParentRight="true"
-                        android:paddingRight="3dp"
-                        android:paddingTop="3dp">
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/live_user_avatar"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginRight="5dp"
-
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/icon_user_avatar"
-                            circle:civ_border_color="@android:color/white"
-                            circle:civ_border_width="1dp" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center_vertical"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/live_user_nicename"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:maxLength="10"
-                                android:singleLine="true"
-                                android:text=""
-                                android:textColor="@android:color/white"
-                                android:textSize="10sp" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:id="@+id/live_user_online_num"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:ellipsize="end"
-                                    android:singleLine="true"
-                                    android:text="0"
-                                    android:textColor="@android:color/white"
-                                    android:textSize="10sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:ellipsize="end"
-                                    android:singleLine="true"
-                                    android:text="人"
-                                    android:textColor="@android:color/white"
-                                    android:textSize="10sp" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <Button
-                            android:id="@+id/btn_follow"
-                            android:layout_width="35dp"
-                            android:layout_height="25dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="5dp"
-                            android:background="@drawable/shape_10radius_purple"
-                            android:text="@string/btn_follow"
-                            android:textColor="@color/white"
-                            android:textSize="10sp" />
-                    </LinearLayout>
-
-
-                    <com.bru.toolkit.views.HorizontalListView xmlns:android="http://schemas.android.com/apk/res/android"
-                        xmlns:widget="http://schemas.android.com/apk/res-auto"
+                    <com.bru.toolkit.views.HorizontalListView
                         android:id="@+id/HorizontalListView"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="205dp"
+                        android:layout_marginTop="44dp"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
                         android:divider="@null"
                         android:gravity="center" />
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/HorizontalListView"
+                        android:layout_alignLeft="@+id/HorizontalListView"
+                        android:background="@drawable/bg_ellipse_shape"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingTop="1dp"
+                        android:layout_marginTop="4dp"
+                        android:paddingBottom="1dp">
 
+                        <TextView
+                            android:id="@+id/live_user_online_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="0"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/text_size_12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="人"
+                            android:textColor="@android:color/white"
+                            android:textSize="10sp" />
+                    </LinearLayout>
                 </RelativeLayout>
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:id="@+id/live_sidou"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:background="@drawable/bg_ellipse_shape"
-                        android:gravity="center"
-                        android:paddingBottom="1dp"
-                        android:paddingLeft="2dp"
-                        android:paddingRight="2dp"
-                        android:paddingTop="1dp"
-                        android:visibility="invisible">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:text="@string/coin"
-                            android:textColor="@color/white"
-                            android:textSize="10sp" />
-
-                        <TextView
-                            android:id="@+id/live_user_total"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:text="0"
-                            android:textColor="@android:color/white"
-                            android:textSize="10sp" />
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginLeft="8dp"
-                            android:src="@drawable/icon_enter" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:visibility="gone"
-                        android:gravity="right">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="ID:"
-                            android:textColor="@android:color/white"
-                            android:textSize="10sp" />
-
-                        <TextView
-                            android:id="@+id/live_user_id"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="15dp"
-                            android:text="0"
-                            android:textColor="@android:color/white"
-                            android:textSize="10sp" />
-                    </LinearLayout>
-
-                </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
