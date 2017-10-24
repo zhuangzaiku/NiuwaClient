@@ -186,7 +186,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     @Bind(R.id.live_lianmai)
     ImageView mLiveLianMai;
     @Bind(R.id.live_user_avatar)
-    CircleImageView mLiveUserAvatar;
+    ImageView mLiveUserAvatar;
     @Bind(R.id.live_user_nicename)
     TextView mLiveUserNicename;
     @Bind(R.id.live_user_online_num)
@@ -1354,7 +1354,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     joinChat(userId, channelInfo.getString("leancloud_room"));
                     Glide.with(LivingActivity.this).load(channelInfo.getString("avatar"))
                             .error(R.drawable.icon_avatar_default)
-                            .transform(new GlideCircleTransform(LivingActivity.this))
+//                            .transform(new GlideCircleTransform(LivingActivity.this))
                             .into(mLiveUserAvatar);
                     Glide.with(LivingActivity.this).load(channelInfo.getString("avatar"))
                             .error(R.drawable.icon_avatar_default)
@@ -1740,18 +1740,23 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             Api.sendDanmu(this, params, new OnRequestDataListener() {
                 @Override
                 public void requestSuccess(int code, JSONObject data) {
-                    view.setEnabled(true);
-                    JSONObject result = data.getJSONObject("data");
-                    MyApplication app = (MyApplication) getApplication();
-                    app.setBalance((result.getString("balance")));
-                    model.setUserName(user_nicename);
-                    model.setUserLevel(user_level);
-                    model.setUserId(userId);
-                    model.setType("7");//弹幕
-                    model.setAvatar(avatar);
-                    model.setContent(content);
-                    sendMessage(model);
-                    mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
+                    int retCode = data.getInteger("code");
+                    if(retCode == 200) {
+                        view.setEnabled(true);
+                        JSONObject result = data.getJSONObject("data");
+                        MyApplication app = (MyApplication) getApplication();
+                        app.setBalance((result.getString("balance")));
+                        model.setUserName(user_nicename);
+                        model.setUserLevel(user_level);
+                        model.setUserId(userId);
+                        model.setType("7");//弹幕
+                        model.setAvatar(avatar);
+                        model.setContent(content);
+                        sendMessage(model);
+                        mDanmaManager.addChatDanma(model.getUserId(), model.getUserName(), model.getContent());
+                    } else {
+                        Toast.makeText(LivingActivity.this, data.getString("descrp"), Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 @Override

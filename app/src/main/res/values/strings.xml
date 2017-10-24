@@ -60,4 +60,13 @@
     <string name="my_reward">我的奖品</string>
     <string name="add_score_toast">牛币+%s，请继续参与互动获取更多牛币哦！</string>
     <string name="already_verify">已认证</string>
+
+    <string name="upload_verification">上传身份证明</string>
+    <string name="upload_verification_tip">（必填）</string>
+    <string name="upload_positive">上传身份证正面</string>
+    <string name="upload_negative">上传身份证反面</string>
+    <string name="upload_positive_holding">上传手持身份证照片</string>
+    <string name="upload_size_tip">图片大小不得超过2M</string>
+    <string name="upload_choose_tip">请选择照片</string>
+    <string name="commit">提交</string>
 </resources>
