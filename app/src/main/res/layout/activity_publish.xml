@@ -121,8 +121,8 @@
 
             <ImageView
                 android:id="@+id/living_gift_big"
-                android:layout_width="291dp"
-                android:layout_height="227dp"
+                android:layout_width="456dp"
+                android:layout_height="363dp"
                 android:layout_gravity="bottom"
                 android:scaleType="fitCenter"
                 android:visibility="gone" />
