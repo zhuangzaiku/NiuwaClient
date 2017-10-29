@@ -866,7 +866,19 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
 //                toast(msg);
 //            }
 //        });
+        mShopLayout.setVisibility(View.VISIBLE);
 
+        mShopLayout.startAnimation(AnimationUtils.loadAnimation(this,R.anim.in_rightleft));
+
+    }
+
+
+    @Bind(R.id.shopLayout)
+    RelativeLayout mShopLayout;
+
+    @OnClick(R.id.shopLayout)
+    public void closeShop(View view) {
+        mShopLayout.setVisibility(View.GONE);
     }
 
     private boolean isPaused = true;
@@ -2270,7 +2282,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
         mDanmaManager.pause();
         EventBus.getDefault().unregister(this);
         if (ksyMediaPlayer != null) {
-//            ksyMediaPlayer.pause();
+            ksyMediaPlayer.pause();
             mPause = true;
         }
         mStreamer.onPause();
