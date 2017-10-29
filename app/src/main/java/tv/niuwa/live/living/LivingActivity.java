@@ -1786,7 +1786,8 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     LogUtils.d("zzk" + data);
                     int retCode = data.getInteger("code");
                     if(retCode == 200) {
-                        mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
+//                        sendMessage(model);
+//                        mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
                     }
                 }
 
@@ -1846,6 +1847,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
 //    }
 
     public void sendMessage(DanmuModel model) {
+        Log.d(TAG,model.getContent());
         if (isActive) {
 //            mDanmuItems.add(model);
 //            mDanmuadapter.notifyDataSetChanged();
@@ -2001,6 +2003,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             model.setContent(temp.getString("content"));
             model.setUserId(temp.getString("userId"));
             model.setAvatar(temp.getString("avatar"));
+            Log.d(TAG, "zzk" + model.getType() + model.getUserId() + model.getUserName() + model.getContent());
             if (!model.getType().equals("9") && !model.getType().equals("10")) {
                 mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
             }

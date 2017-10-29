@@ -130,13 +130,13 @@ public class UserCenterActivity extends BaseSiSiActivity {
 
         title.setText(R.string.user_center);
 
-        leftIcon.setImageResource(R.drawable.img_xinxi);
-        leftIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivity(MessageActivity.class);
-            }
-        });
+//        leftIcon.setImageResource(R.drawable.img_xinxi);
+//        leftIcon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openActivity(MessageActivity.class);
+//            }
+//        });
         rightIcon.setImageResource(R.drawable.img_setting);
         rightIcon.setOnClickListener(new View.OnClickListener() {
             @Override

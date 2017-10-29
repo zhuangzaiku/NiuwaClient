@@ -405,7 +405,6 @@ public class Api {
             String response = null;
             try {
                 response = new String(responseBody, "UTF-8");
-                LogUtils.d("origin response" + response);
                 if (response != null) {
                     JSONObject object = JSON.parseObject(response);
                     LogUtils.i("response=" + object.toString());
@@ -451,6 +450,7 @@ public class Api {
         params.put("soft_ver", SOFT_VER);
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams requestParams = getRequestParams(params);
+        if(!url.contains("getLiveRoomOnlineNumEarn"))
         LogUtils.d(url + requestParams.toString());
         client.post(context, url, requestParams, new AsyncHttpResponseHandler() {
 
