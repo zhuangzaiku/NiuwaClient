@@ -5,8 +5,8 @@ bugly {
     appKey = 'c877d311-6bd9-429f-8a93-2bea743a2372'
 }
 android {
-    compileSdkVersion 24
-    buildToolsVersion '25.0.2'
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
     dexOptions {
         javaMaxHeapSize "4g"
     }
@@ -72,11 +72,12 @@ android {
 }
 repositories {
     jcenter()
+    google()
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.android.support:appcompat-v7:+'
     compile 'com.android.support:design:+'
     compile 'com.android.support:recyclerview-v7:+'
     compile 'cn.leancloud.android:avoscloud-sdk:v3.13.+'
@@ -113,4 +114,6 @@ dependencies {
 
     compile 'com.github.ctiao:DanmakuFlameMaster:0.9.12'
     compile 'com.github.ctiao:ndkbitmap-armv7a:0.9.12'
+
+    annotationProcessor 'com.jakewharton:butterknife:7.0.1'
 }

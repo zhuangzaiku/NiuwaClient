@@ -1775,27 +1775,25 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             model.setAvatar(avatar);
             model.setContent(content);
 //            sendMessage(model);
-            JSONObject jo = new JSONObject();
+            final JSONObject jo = new JSONObject();
             jo.put("text", content);
             jo.put("message", new Gson().toJson(model));
             jo.put("token", token);
-            mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
+
             Api.sendDanmuNew(this, jo, new OnRequestDataListener() {
                 @Override
                 public void requestSuccess(int code, JSONObject data) {
                     LogUtils.d("zzk" + data);
                     int retCode = data.getInteger("code");
-                    if(retCode == 510) {
-                        String desc = data.getString("descrp");
-                        if(!TextUtils.isEmpty(desc)) {
-                            toast(desc);
-                        }
+                    if(retCode == 200) {
+                        mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
                     }
                 }
 
                 @Override
                 public void requestFailure(int code, String msg) {
                     LogUtils.d("error" + msg);
+                    toast(msg);
                 }
             });
             if (mLivingDanmuContainer.getVisibility() == View.VISIBLE) {
@@ -2005,9 +2003,6 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             model.setAvatar(temp.getString("avatar"));
             if (!model.getType().equals("9") && !model.getType().equals("10")) {
                 mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
-//                mDanmuItems.add(model);
-//                mDanmuadapter.notifyDataSetChanged();
-//                mLiveingDanmu.setSelection(mDanmuadapter.getCount() - 1);
             }
             switch (model.getType()) {
                 case "4":
