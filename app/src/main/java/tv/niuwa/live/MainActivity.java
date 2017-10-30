@@ -266,14 +266,14 @@ public class MainActivity extends BaseSiSiActivity {
                         String userId = obj.getString("id");
                         SharePrefsUtils.put(MainActivity.this, "user", "userId", userId);
                     }
-                    toast("登录成功");
+//                    toast("登录成功");
                     openActivity(PublishActivity.class);
 //                    onCreateRest();
                     finish();
                     // 发送通知
                     EventBus.getDefault().post(new BroadCastEvent(LoginActivity.FINISH_EVENT));
                 } else {
-                    toast("token获取失败");
+//                    toast("token获取失败");
                 }
 
             }

@@ -311,7 +311,7 @@ public class DanmaManager {
 		danmaku.priority = 1;
 		danmaku.setTime(danmakuSurfaceView.getCurrentTime() + 200);
 		danmaku.isLive = true;
-		danmaku.textSize = DisplayUtil.sp2px(context, 18);
+		danmaku.textSize = DisplayUtil.sp2px(context, 32);
 		danmaku.textShadowColor = context.getResources().getColor(R.color.kk_danma_my_text_alpha);
 		danmaku.borderColor = 0;
 		if(showType == BaseDanmaku.TYPE_FIX_TOP) {

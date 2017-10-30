@@ -91,7 +91,7 @@
             <LinearLayout
                 android:id="@+id/living_danmu_container"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="260dp"
                 android:layout_gravity="bottom"
                 android:orientation="vertical">
 
@@ -124,6 +124,7 @@
                 android:layout_width="456dp"
                 android:layout_height="363dp"
                 android:layout_gravity="bottom"
+                android:layout_marginBottom="140dp"
                 android:scaleType="fitCenter"
                 android:visibility="gone" />
 
@@ -432,9 +433,9 @@
                     <com.bru.toolkit.views.HorizontalListView
                         android:id="@+id/HorizontalListView"
                         android:layout_width="wrap_content"
-                        android:layout_marginLeft="205dp"
+                        android:layout_marginLeft="305dp"
                         android:layout_marginTop="44dp"
-                        android:layout_height="30dp"
+                        android:layout_height="60dp"
                         android:layout_weight="1"
                         android:divider="@null"
                         android:gravity="center" />
@@ -447,9 +448,9 @@
                         android:background="@drawable/bg_ellipse_shape"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
-                        android:paddingTop="1dp"
-                        android:layout_marginTop="4dp"
-                        android:paddingBottom="1dp">
+                        android:paddingTop="2dp"
+                        android:layout_marginTop="8dp"
+                        android:paddingBottom="2dp">
 
                         <TextView
                             android:id="@+id/live_user_online_num"
@@ -459,7 +460,7 @@
                             android:singleLine="true"
                             android:text="0"
                             android:textColor="@android:color/white"
-                            android:textSize="@dimen/text_size_12sp" />
+                            android:textSize="@dimen/lcim_textsize_large" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -468,7 +469,7 @@
                             android:singleLine="true"
                             android:text="人"
                             android:textColor="@android:color/white"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/lcim_textsize_large" />
                     </LinearLayout>
                 </RelativeLayout>
 
