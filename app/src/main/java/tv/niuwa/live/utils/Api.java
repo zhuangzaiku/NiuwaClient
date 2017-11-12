@@ -11,6 +11,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.smart.androidutils.utils.LogUtils;
+import com.smart.androidutils.utils.SharePrefsUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -19,6 +20,7 @@ import java.util.Iterator;
 
 import cz.msebera.android.httpclient.Header;
 import tv.niuwa.live.intf.OnRequestDataListener;
+import tv.niuwa.live.own.UserCenterActivity;
 import tv.niuwa.live.view.SFProgrssDialog;
 
 /**
@@ -446,6 +448,7 @@ public class Api {
     protected static void excutePost(final String url, final Context context, JSONObject params, final SFProgrssDialog dialog, final OnRequestDataListener listener) {
         params.put("os", OS);
         params.put("soft_ver", SOFT_VER);
+        params.put("userId", SharePrefsUtils.get(context, "user", "userId", ""));
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams requestParams = getRequestParams(params);
         LogUtils.d(url + requestParams.toString());

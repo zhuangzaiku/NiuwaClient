@@ -5,9 +5,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -52,6 +55,13 @@ public class LotteryDialog extends Dialog {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             // instantiate the dialog with the custom Theme
             final LotteryDialog dialog = new LotteryDialog(context, R.style.Dialog);
+            Window window = dialog.getWindow();
+            if(window != null) {
+                WindowManager.LayoutParams  attrs = window.getAttributes();
+                if(attrs != null) {
+                    attrs.gravity = Gravity.CENTER_VERTICAL | Gravity.LEFT;
+                }
+            }
             View layout = inflater.inflate(R.layout.dialog_lottery, null);
             dialog.addContentView(layout, new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
