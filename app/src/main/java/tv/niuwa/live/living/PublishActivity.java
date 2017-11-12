@@ -1476,7 +1476,7 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
         mThirdShare.setOnShareStatusListener(this);
         startLive("niuwa");
 
-        mDanmaManager = new DanmaManager(this,mDanmakuView);
+        mDanmaManager = new DanmaManager(this,mDanmakuView); //test
     }
 
     @Override
