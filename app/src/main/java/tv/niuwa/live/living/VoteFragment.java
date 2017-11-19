@@ -57,6 +57,12 @@ public class VoteFragment extends BaseSiSiFragment {
     @Bind(R.id.divider)
     ImageView divider;
 
+    @Bind(R.id.red_name)
+    TextView redName;
+
+    @Bind(R.id.blue_name)
+    TextView blueName;
+
     private VoteAdapter mVoteAdapter;
     private List<VoteListItem> mVoteList = new ArrayList<>();
 
@@ -162,8 +168,11 @@ public class VoteFragment extends BaseSiSiFragment {
                         case 2:
                             int num1 = mVoteList.get(0).getVoteNum();
                             int num2 = mVoteList.get(1).getVoteNum();
+                            redName.setText(mVoteList.get(0).getVoteOpName());
+                            blueName.setText(mVoteList.get(1).getVoteOpName());
+
                             RelativeLayout.LayoutParams lpBlue = (RelativeLayout.LayoutParams) blue.getLayoutParams();
-                            int maxWidth = DisplayUtil.dipToPix(getContext(), 515);
+                            int maxWidth = DisplayUtil.dipToPix(getContext(), 512);
                             if(num1 == 0 && num2 == 0) {
                                 blueLeft.setVisibility(View.GONE);
                                 blueRight.setVisibility(View.VISIBLE);

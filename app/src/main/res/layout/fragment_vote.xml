@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/alpha_gray"
     android:paddingBottom="11.5dp"
     >
 
@@ -12,7 +13,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="30.5dp"
         android:id="@+id/pk_layout"
-        android:visibility="gone"
+        android:visibility="visible"
         android:background="@drawable/img_tiao01"
         >
 
@@ -32,7 +33,7 @@
                 android:visibility="visible"
                 />
             <ImageView
-                android:layout_width="515dp"
+                android:layout_width="512dp"
                 android:layout_height="17.5dp"
                 android:layout_centerVertical="true"
                 android:background="@drawable/img_tiao02"
@@ -48,6 +49,7 @@
                 android:id="@+id/blue_right"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="1.5dp"
                 android:visibility="visible"
                 android:background="@drawable/img_tiao07"/>
 
@@ -63,6 +65,31 @@
 
         </RelativeLayout>
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="527dp"
+        android:layout_height="20.5dp"
+        android:layout_below="@+id/pk_layout"
+        android:layout_alignLeft="@+id/pk_layout">
+        
+        
+        <TextView
+            android:layout_width="112dp"
+            android:layout_height="match_parent"
+            android:id="@+id/red_name"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@drawable/img_tiao05"/>
+
+        <TextView
+            android:layout_width="112dp"
+            android:layout_height="match_parent"
+            android:id="@+id/blue_name"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/img_tiao06"/>
     </RelativeLayout>
 
     <GridView
