@@ -57,6 +57,7 @@ public class LotteryDialog extends Dialog {
             final LotteryDialog dialog = new LotteryDialog(context, R.style.Dialog);
             Window window = dialog.getWindow();
             if(window != null) {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND | WindowManager.LayoutParams.FLAG_DIM_BEHIND);
                 WindowManager.LayoutParams  attrs = window.getAttributes();
                 if(attrs != null) {
                     attrs.gravity = Gravity.CENTER_VERTICAL | Gravity.LEFT;

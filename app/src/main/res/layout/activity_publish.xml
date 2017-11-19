@@ -105,10 +105,10 @@
             <tv.niuwa.live.view.BubbleView
                 android:id="@+id/praise_anim"
                 android:layout_width="150dp"
-                android:layout_height="160dp"
+                android:layout_height="186dp"
                 android:layout_gravity="bottom|right"
-                android:layout_marginBottom="55dp"
-                android:layout_marginRight="10dp" />
+                android:layout_marginBottom="166dp"
+                android:layout_marginRight="2dp" />
 
             <LinearLayout
                 android:id="@+id/gift_container"

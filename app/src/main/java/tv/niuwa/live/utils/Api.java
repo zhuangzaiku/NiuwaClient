@@ -97,6 +97,7 @@ public class Api {
     public static final String GET_VOTE = HOST + "/Api/SiSi/getVote";
     public static final String DO_VOTE = HOST + "/Api/SiSi/doVote";
     public static final String VOTE_RESULT = HOST + "/Api/SiSi/voteResult";
+    public static final String DANMU_ATTR = HOST + "/Api/SiSi/danMuAttr";
     public static final String PUSH_CALLBACK = HOST + "/Api/SiSi/startLivePushCallback";
     public static final String WAP_PAY = HOST + "/portal/Appweb/chongzhi";
     public static final String WEB_Family = HOST + "portal/Family/index";
@@ -398,6 +399,9 @@ public class Api {
     }
     public static void doVote(final Context context, JSONObject params, final OnRequestDataListener listener) {
         excutePost(DO_VOTE, context, params, null, listener);
+    }
+    public static void danmuAttr(final Context context, JSONObject params, final OnRequestDataListener listener) {
+        excutePost(DANMU_ATTR, context, params, null, listener);
     }
 
     protected static JSONObject getJsonObject(int statusCode, byte[] responseBody, OnRequestDataListener listener) {

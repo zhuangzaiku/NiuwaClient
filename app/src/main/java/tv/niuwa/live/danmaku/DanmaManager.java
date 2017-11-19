@@ -163,8 +163,8 @@ public class DanmaManager {
 		HashMap<Integer, Boolean> overlappingEnablePair = new HashMap<Integer, Boolean>();
 		overlappingEnablePair.put(TYPE_SCROLL_RL, true);
 //		overlappingEnablePair.put(TYPE_SCROLL_LR, true);
-		overlappingEnablePair.put(BaseDanmaku.TYPE_FIX_TOP, true);
-		overlappingEnablePair.put(BaseDanmaku.TYPE_SPECIAL, true);
+//		overlappingEnablePair.put(BaseDanmaku.TYPE_FIX_TOP, true);
+//		overlappingEnablePair.put(BaseDanmaku.TYPE_SPECIAL, true);
 
 		danmakuContext.
 				setDanmakuStyle(IDisplayer.DANMAKU_STYLE_STROKEN, 3).
@@ -278,24 +278,40 @@ public class DanmaManager {
 		msg.obj = danmaku;
 		handler.sendMessage(msg);
 	}
-	private int[] mShowType = new int[]{BaseDanmaku.TYPE_SCROLL_RL,BaseDanmaku.TYPE_SCROLL_RL,BaseDanmaku.TYPE_FIX_TOP,BaseDanmaku.TYPE_SPECIAL,BaseDanmaku.TYPE_SPECIAL};
-	private int[] mShowColor = new int[]{R.color.kk_danma_color1, R.color.kk_danma_color2, R.color.kk_danma_color3,
-			R.color.kk_danma_color4, R.color.kk_danma_color5};
+	private String[] mShowColor = new String[]{"#3e913", "#38f3ff", "#ffdc38", "f63030"};
+	private int mFontSize = 48;
+	private int mDuration = 4;
+	private String mShadowColor = "#59000000";
+
+	public void setmShowColor(String[] mShowColor) {
+		this.mShowColor = mShowColor;
+	}
+
+	public void setmFontSize(int mFontSize) {
+		this.mFontSize = mFontSize;
+	}
+
+	public void setmDuration(int mDuration) {
+		this.mDuration = mDuration;
+	}
+
+	public void setmShadowColor(String mShadowColor) {
+		this.mShadowColor = mShadowColor;
+	}
+
 	private Random mRandom = new Random(System.currentTimeMillis());
 	
 	private BaseDanmaku createDanma(String userid, DanmaType type) {
-		int index = mRandom.nextInt(4);
-		int showType = mShowType[index];
-		BaseDanmaku danmaku = danmakuContext.mDanmakuFactory.createDanmaku(showType);
+		BaseDanmaku danmaku = danmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_SCROLL_RL);
 		if (danmaku == null) {
 			return null;
 		}
 		if (type == DanmaType.CHAT) {
 			if (userid.equals((String) SharePrefsUtils.get(context, "user", "userId", ""))) {
-				danmaku.textColor = context.getResources().getColor(mShowColor[mRandom.nextInt(10000) % 5]);
+				danmaku.textColor = Color.parseColor(mShowColor[mRandom.nextInt(10000) % 4]);
 //				danmaku.textColor = context.getResources().getColor(R.color.kk_danma_my_text_color);
 			} else {
-				danmaku.textColor = context.getResources().getColor(mShowColor[mRandom.nextInt(10000) % 5]);
+				danmaku.textColor = Color.parseColor(mShowColor[mRandom.nextInt(10000) % 4]);
 			}
 		} else if (type == DanmaType.GIFT) {
 //			if (userid != GameSetting.getInstance().getUserId()) {
@@ -311,15 +327,10 @@ public class DanmaManager {
 		danmaku.priority = 1;
 		danmaku.setTime(danmakuSurfaceView.getCurrentTime() + 200);
 		danmaku.isLive = true;
-		danmaku.textSize = DisplayUtil.sp2px(context, 32);
-		danmaku.textShadowColor = context.getResources().getColor(R.color.kk_danma_my_text_alpha);
+		danmaku.textSize = mFontSize;
+		danmaku.textShadowColor = Color.parseColor(mShadowColor);
 		danmaku.borderColor = 0;
-		if(showType == BaseDanmaku.TYPE_FIX_TOP) {
-			danmaku.setDuration(new Duration(2500));
-			danmaku.padding = 20;
-		} else {
-			danmaku.setDuration(new Duration(5000));
-		}
+		danmaku.setDuration(new Duration(mDuration * 1000));
 
 		return danmaku;
 	}

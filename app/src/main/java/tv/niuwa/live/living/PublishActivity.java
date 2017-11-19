@@ -124,6 +124,7 @@ import tv.niuwa.live.utils.AVImClientManager;
 import tv.niuwa.live.utils.Api;
 import tv.niuwa.live.utils.DialogEnsureUtiles;
 import tv.niuwa.live.utils.Utile;
+import tv.niuwa.live.view.BubbleView;
 import tv.niuwa.live.view.LotteryDialog;
 import tv.niuwa.live.view.LoveAnimView;
 
@@ -131,6 +132,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.Bind;
 import butterknife.OnCheckedChanged;
@@ -268,6 +270,7 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
     TextView dialogUserChangkong;
     ImageView dialogAttentionImage;
     ImageView dialogChangkongImageOff;
+    BubbleView bubbleView;
     private final int MUSIC_CODE = 1;
     private final int TOPIC_CODE = 2;
     //live music
@@ -347,6 +350,8 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
     private final String RTC_AUTH_SERVER = "http://rtc.vcloud.ks-live.com:6002/rtcauth";
     private final String RTC_AUTH_URI = "https://rtc.vcloud.ks-live.com:6001";
     private final String RTC_UINIQUE_NAME = "apptest";
+
+    public String[] mDanmuColor = new String[]{"#3e913", "#38f3ff", "#ffdc38", "f63030"};
     @Bind(R.id.lianmai_stop)
     TextView mLianmaiStop;
     Runnable dataRunnable = new Runnable() {
@@ -1476,8 +1481,64 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
         mThirdShare.setOnShareStatusListener(this);
         startLive("niuwa");
 
-        mDanmaManager = new DanmaManager(this,mDanmakuView); //test
+        mDanmaManager = new DanmaManager(this,mDanmakuView);
+
+        bubbleView = (BubbleView) findViewById(R.id.praise_anim);
+        bubbleView.setDefaultDrawableList();
+
+        Timer heart_timer = new Timer(true);
+        heart_timer.schedule(task, 500, 500); //延时1000ms后执行，1000ms执行一次
+
+        initDanmuAttr();
     }
+
+    private void initDanmuAttr() {
+        Api.danmuAttr(this, new JSONObject(), new OnRequestDataListener() {
+            @Override
+            public void requestSuccess(int code, JSONObject data) {
+                JSONObject config = data.getJSONObject("config");
+                if(mDanmaManager != null) {
+                    String fontSize = config.getString("fontSize");
+                    mDanmaManager.setmFontSize(Integer.parseInt(fontSize));
+                    String fontColorStr = config.getString("fontColor");
+                    if(!TextUtils.isEmpty(fontColorStr)) {
+                        String [] colors = fontColorStr.split(":");
+                        mDanmaManager.setmShowColor(colors);
+                    }
+                    String shadowColor = config.getString("shadowColor");
+                    if(!TextUtils.isEmpty(shadowColor)) {
+                        mDanmaManager.setmShadowColor(shadowColor);
+                    }
+
+                    int duration = config.getIntValue("duration");
+                    if(duration > 0) {
+                        mDanmaManager.setmDuration(duration);
+                    }
+
+                }
+            }
+
+            @Override
+            public void requestFailure(int code, String msg) {
+
+            }
+        });
+    }
+
+
+    TimerTask task = new TimerTask() {
+        public void run() {
+            Message message = new Message();
+            message.what = 1;
+            mMainHandler.sendMessage(message);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    bubbleView.startAnimation(bubbleView.getWidth(), bubbleView.getHeight());
+                }
+            });
+        }
+    };
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -1797,15 +1858,14 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
             model.setContent(temp.getString("content"));
             model.setUserId(temp.getString("userId"));
             model.setAvatar(temp.getString("avatar"));
-            if(!model.getType().equals("5") && !model.getType().equals("6") && !model.getType().equals("10") && !model.getType().equals("10")) {
-                mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
-            }
+
             switch (model.getType()) {
                 case "4":
                     //clickHeart();
                     break;
                 case "7":
                     showDanmuAnim(this, model);
+                    mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
                     break;
                 case "8":
                     if (null == lianmaiList) {
@@ -1825,6 +1885,7 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
                     }
                     lianmaiList.add(model);
                     mLiveLianmaiNum.setText("" + lianmaiList.size());
+                    mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
                     break;
                 case "6":
                     //系统消息  -  进入房间
@@ -1847,6 +1908,7 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
                     gift.setContinuous(giftO.getString("continuous"));
                     String num = (null == giftO.getString("continuousNum")) ? "1" : giftO.getString("continuousNum");
                     showGiftAnim1(PublishActivity.this, model, gift, Integer.parseInt(num));
+                    mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
                     break;
                 case "5":
                     //系统消息  -  离开房间

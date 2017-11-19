@@ -4,23 +4,23 @@
     android:layout_height="wrap_content">
 
     <tv.niuwa.live.view.ShapedImageView
-        android:layout_width="69dp"
-        android:layout_height="69dp"
+        android:layout_width="101dp"
+        android:layout_height="101dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/vote_bg"/>
 
     <TextView
-        android:layout_width="69dp"
-        android:layout_height="69dp"
-        android:textSize="@dimen/text_size_12sp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:textSize="@dimen/text_size_13sp"
         android:gravity="center"
         android:id="@+id/vote_num"
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="95dp"
+        android:layout_height="38.5dp"
         android:background="@drawable/img_name"
         android:layout_below="@+id/vote_bg"
         android:id="@+id/vote_name"

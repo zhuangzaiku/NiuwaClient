@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ import tv.niuwa.live.intf.OnRequestDataListener;
 import tv.niuwa.live.living.adapter.VoteAdapter;
 import tv.niuwa.live.living.model.VoteListItem;
 import tv.niuwa.live.utils.Api;
+import tv.niuwa.live.utils.DisplayUtil;
 
 /**
  * @author Ronan.zhuang
@@ -39,6 +41,21 @@ public class VoteFragment extends BaseSiSiFragment {
 
     @Bind(R.id.voteList)
     GridView mVoteListView;
+
+    @Bind(R.id.pk_layout)
+    RelativeLayout pkLayout;
+
+    @Bind(R.id.blue)
+    ImageView blue;
+
+    @Bind(R.id.blue_left)
+    ImageView blueLeft;
+
+    @Bind(R.id.blue_right)
+    ImageView blueRight;
+
+    @Bind(R.id.divider)
+    ImageView divider;
 
     private VoteAdapter mVoteAdapter;
     private List<VoteListItem> mVoteList = new ArrayList<>();
@@ -59,7 +76,6 @@ public class VoteFragment extends BaseSiSiFragment {
         Api.getVote(getContext(), new JSONObject(), new OnRequestDataListener() {
             @Override
             public void requestSuccess(int code, JSONObject data) {
-
                 JSONArray votes = data.getJSONArray("data");
                 mVoteList.clear();
                 for (int i = 0; i < votes.size(); i++) {
@@ -69,8 +85,26 @@ public class VoteFragment extends BaseSiSiFragment {
                 }
                 int length = votes.size();
                 if (length > 0) {
+                    pkLayout.setVisibility(View.GONE);
+                    RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) mVoteListView.getLayoutParams();
+                    switch (length) {
+                        case 2:
+                            pkLayout.setVisibility(View.VISIBLE);
+                            lp.setMargins(DisplayUtil.dipToPix(getContext(), 150), lp.topMargin, DisplayUtil.dipToPix(getContext(), 200) , lp.bottomMargin);
+                            break;
+                        case 3:
+                            lp.setMargins(DisplayUtil.dipToPix(getContext(), 80), lp.topMargin, DisplayUtil.dipToPix(getContext(), 160) , lp.bottomMargin);
+                            break;
+                        case 4:
+                            lp.setMargins(DisplayUtil.dipToPix(getContext(), 0), lp.topMargin, DisplayUtil.dipToPix(getContext(), 140) , lp.bottomMargin);
+                            break;
+                        case 5:
+                            lp.setMargins(DisplayUtil.dipToPix(getContext(), 0), lp.topMargin, DisplayUtil.dipToPix(getContext(), 140) , lp.bottomMargin);
+                            break;
+                    }
+                    mVoteListView.setLayoutParams(lp);
                     mVoteListView.setNumColumns(length);
-                    mVoteAdapter.setVoteList(mVoteList);
+//                    mVoteAdapter.setVoteList(mVoteList);
                 }
 
                 getVoteResult();
@@ -109,6 +143,8 @@ public class VoteFragment extends BaseSiSiFragment {
         Api.voteResult(getContext(), new JSONObject(), new OnRequestDataListener() {
             @Override
             public void requestSuccess(int code, JSONObject data) {
+
+                int total = 0;
                 JSONArray votes = data.getJSONArray("data");
                 int listSize = mVoteList.size();
                 for (int i = 0; i < listSize; i++) {
@@ -117,10 +153,59 @@ public class VoteFragment extends BaseSiSiFragment {
                         JSONObject jo = votes.getJSONObject(j);
                         if(!TextUtils.isEmpty(item.getVoteOpName()) && item.getVoteOpName().equals(jo.getString("vote_option"))) {
                             item.setVoteNum(jo.getIntValue("vote_num"));
+                            total += item.getVoteNum();
                         }
                     }
                 }
-                mVoteAdapter.setVoteList(mVoteList);
+                if (listSize > 0) {
+                    switch (listSize) {
+                        case 2:
+                            int num1 = mVoteList.get(0).getVoteNum();
+                            int num2 = mVoteList.get(1).getVoteNum();
+                            RelativeLayout.LayoutParams lpBlue = (RelativeLayout.LayoutParams) blue.getLayoutParams();
+                            int maxWidth = DisplayUtil.dipToPix(getContext(), 515);
+                            if(num1 == 0 && num2 == 0) {
+                                blueLeft.setVisibility(View.GONE);
+                                blueRight.setVisibility(View.VISIBLE);
+                                divider.setVisibility(View.VISIBLE);
+                                blue.setVisibility(View.VISIBLE);
+                                lpBlue.width = maxWidth / 2;
+
+                            } else if(num1 == 0 && num2 > 0) {
+                                blueLeft.setVisibility(View.VISIBLE);
+                                blueRight.setVisibility(View.VISIBLE);
+                                divider.setVisibility(View.GONE);
+                                blue.setVisibility(View.VISIBLE);
+                                lpBlue.width = maxWidth;
+                            } else if(num1 > 0 && num2 == 0) {
+                                blueLeft.setVisibility(View.GONE);
+                                blueRight.setVisibility(View.GONE);
+                                divider.setVisibility(View.GONE);
+                                blue.setVisibility(View.GONE);
+                            } else {
+                                blueLeft.setVisibility(View.GONE);
+                                blueRight.setVisibility(View.VISIBLE);
+                                divider.setVisibility(View.VISIBLE);
+                                blue.setVisibility(View.VISIBLE);
+                                lpBlue.width = (int)(((float)num2) / (num1 + num2) * maxWidth);
+
+                            }
+                            blue.setLayoutParams(lpBlue);
+
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                    }
+
+                    mVoteAdapter.setmTotalNum(total);
+                    mVoteAdapter.setVoteList(mVoteList);
+                }
+
+
             }
 
             @Override
@@ -129,6 +214,7 @@ public class VoteFragment extends BaseSiSiFragment {
             }
         });
     }
+
 
     @Override
     public int getLayoutResource() {
