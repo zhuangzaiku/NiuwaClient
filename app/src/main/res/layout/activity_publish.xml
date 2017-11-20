@@ -104,11 +104,33 @@
 
             <tv.niuwa.live.view.BubbleView
                 android:id="@+id/praise_anim"
-                android:layout_width="150dp"
+                android:layout_width="130dp"
                 android:layout_height="186dp"
                 android:layout_gravity="bottom|right"
-                android:layout_marginBottom="166dp"
-                android:layout_marginRight="2dp" />
+                android:layout_marginBottom="148dp" />
+
+            <tv.niuwa.live.view.FadingScrollView
+                android:id="@+id/praise_scrollview"
+                android:layout_width="120dp"
+                android:layout_height="80dp"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="67.5dp"
+                android:overScrollMode="never"
+                android:requiresFadingEdge="vertical"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/praise_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp" />
+                </LinearLayout>
+            </tv.niuwa.live.view.FadingScrollView>
 
             <LinearLayout
                 android:id="@+id/gift_container"

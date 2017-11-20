@@ -278,7 +278,7 @@ public class DanmaManager {
 		msg.obj = danmaku;
 		handler.sendMessage(msg);
 	}
-	private String[] mShowColor = new String[]{"#3e913", "#38f3ff", "#ffdc38", "f63030"};
+	private String[] mShowColor = new String[]{"#03e913", "#38f3ff", "#ffdc38", "#8d41ff"};
 	private int mFontSize = 48;
 	private int mDuration = 4;
 	private String mShadowColor = "#59000000";

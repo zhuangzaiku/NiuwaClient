@@ -125,6 +125,7 @@ import tv.niuwa.live.utils.Api;
 import tv.niuwa.live.utils.DialogEnsureUtiles;
 import tv.niuwa.live.utils.Utile;
 import tv.niuwa.live.view.BubbleView;
+import tv.niuwa.live.view.FadingScrollView;
 import tv.niuwa.live.view.LotteryDialog;
 import tv.niuwa.live.view.LoveAnimView;
 
@@ -339,6 +340,7 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
     private boolean mIsTorchOn = false;
     private AlertDialog userInfoDialog;
     private String token;
+    private PraiseManager mPraiseManager;
 
     //rtc
     private AuthHttpTask mRTCAuthTask;
@@ -1486,10 +1488,23 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
         bubbleView = (BubbleView) findViewById(R.id.praise_anim);
         bubbleView.setDefaultDrawableList();
 
+        bubbleView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mPraiseManager != null) {
+                    DanmuModel dm = new DanmuModel();
+                    dm.setContent("用户156277点亮了❤️");
+                    mPraiseManager.addDanmaView(dm);
+                }
+            }
+        });
+
         Timer heart_timer = new Timer(true);
         heart_timer.schedule(task, 500, 500); //延时1000ms后执行，1000ms执行一次
 
         initDanmuAttr();
+
+        mPraiseManager = new PraiseManager(this, (FadingScrollView) findViewById(R.id.praise_scrollview));
     }
 
     private void initDanmuAttr() {
@@ -1504,6 +1519,9 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
                     if(!TextUtils.isEmpty(fontColorStr)) {
                         String [] colors = fontColorStr.split(":");
                         mDanmaManager.setmShowColor(colors);
+                        if(mPraiseManager != null) {
+                            mPraiseManager.setmColors(colors);
+                        }
                     }
                     String shadowColor = config.getString("shadowColor");
                     if(!TextUtils.isEmpty(shadowColor)) {
@@ -1516,6 +1534,8 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
                     }
 
                 }
+
+
             }
 
             @Override
@@ -1860,11 +1880,17 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
             model.setAvatar(temp.getString("avatar"));
 
             switch (model.getType()) {
+                case "1":
+                    mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
+                    break;
                 case "4":
                     //clickHeart();
+                    if(mPraiseManager != null) {
+                        mPraiseManager.addDanmaView(model);
+                    }
                     break;
                 case "7":
-                    showDanmuAnim(this, model);
+//                    showDanmuAnim(this, model);
                     mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
                     break;
                 case "8":
@@ -2254,6 +2280,10 @@ public class PublishActivity extends BaseActivity implements AdapterView.OnItemC
             mTimer.cancel();
         }
         mStreamer.release();
+
+        if(mPraiseManager != null) {
+            mPraiseManager.clear();
+        }
     }
 
     private void startStream() {
