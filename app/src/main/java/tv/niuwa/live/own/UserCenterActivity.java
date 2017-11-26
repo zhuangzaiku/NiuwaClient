@@ -73,6 +73,9 @@ public class UserCenterActivity extends BaseSiSiActivity {
     @Bind(R.id.btn_enter_living)
     ImageView enterLiving;
 
+    @Bind(R.id.btn_hudong)
+    ImageView community;
+
     @Bind(R.id.right_icon)
     ImageView rightIcon;
 
@@ -191,6 +194,13 @@ public class UserCenterActivity extends BaseSiSiActivity {
                 Intent intent = new Intent(UserCenterActivity.this, LivingActivity.class);
                 intent.putExtras(data);
                 UserCenterActivity.this.startActivity(intent);
+            }
+        });
+
+        community.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openActivity(CommunityActivity.class);
             }
         });
     }
