@@ -1561,6 +1561,63 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
 
         mDanmaManager = new DanmaManager(this,mDanmakuView);
         mPraiseManager = new PraiseManager(this, (FadingScrollView) findViewById(R.id.praise_scrollview));
+        guideDanmu();
+    }
+
+    @Bind(R.id.guide_danmu)
+    RelativeLayout guideLivingLayout;
+    @Bind(R.id.guide_share)
+    RelativeLayout guideShareLayout;
+    @Bind(R.id.guide_vote)
+    RelativeLayout guideVoteLayout;
+
+    public void guideDanmu() {
+        boolean guideDanmu = (boolean) SharePrefsUtils.get(this, "user", "guideDanmu", false);
+        if(!guideDanmu) {
+            guideLivingLayout.setVisibility(View.VISIBLE);
+            guideLivingLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    guideLivingLayout.setVisibility(View.GONE);
+                    guideShare();
+                }
+            });
+            SharePrefsUtils.put(this,"user", "guideDanmu", true);
+        } else {
+            guideShare();
+        }
+
+    }
+
+    public void guideShare() {
+        boolean guideShare = (boolean) SharePrefsUtils.get(this, "user", "guideShare", false);
+        if(!guideShare) {
+            guideShareLayout.setVisibility(View.VISIBLE);
+            guideShareLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    guideShareLayout.setVisibility(View.GONE);
+                    guideVote();
+                }
+            });
+            SharePrefsUtils.put(this,"user", "guideShare", true);
+        } else {
+            guideVote();
+        }
+    }
+
+    public void guideVote() {
+        boolean guideVote = (boolean) SharePrefsUtils.get(this, "user", "guideVote", false);
+        if(!guideVote) {
+            guideVoteLayout.setVisibility(View.VISIBLE);
+            guideVoteLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    guideVoteLayout.setVisibility(View.GONE);
+                }
+            });
+            SharePrefsUtils.put(this,"user", "guideVote", true);
+        }
     }
 
 

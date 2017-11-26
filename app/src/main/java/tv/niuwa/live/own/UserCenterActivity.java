@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONObject;
@@ -91,6 +92,9 @@ public class UserCenterActivity extends BaseSiSiActivity {
     @Bind(R.id.user_coin)
     TextView userCoin;
 
+    @Bind(R.id.guide_edit)
+    RelativeLayout guideEditLayout;
+
 //    @Bind(R.id.user_center_menus)
 //    ListView menuList;
 
@@ -120,8 +124,8 @@ public class UserCenterActivity extends BaseSiSiActivity {
         startActivityForResult(i, 1);
     }
 
-    String token;
-    String userId;
+    private String token;
+    private String userId;
 
     private void initView() {
         long getTokenTime = (long) SharePrefsUtils.get(UserCenterActivity.this, "user", "getTokenTime", 0L);
@@ -203,6 +207,17 @@ public class UserCenterActivity extends BaseSiSiActivity {
                 openActivity(CommunityActivity.class);
             }
         });
+        boolean guideEdit = (boolean) SharePrefsUtils.get(this, "user", "guideEdit", false);
+        if(!guideEdit) {
+            guideEditLayout.setVisibility(View.VISIBLE);
+            guideEditLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    guideEditLayout.setVisibility(View.GONE);
+                }
+            });
+            SharePrefsUtils.put(this,"user", "guideEdit", true);
+        }
     }
 
     private static final long TWO_DAYS = 1000 * 60 * 60 * 48;

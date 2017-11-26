@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    >
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -158,4 +163,56 @@
     <!--android:divider="@null"-->
     <!--android:id="@+id/user_center_menus"/>-->
 
+
+
 </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/guide_edit"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="152.5dp"
+            android:id="@+id/viewTop"
+            android:background="@color/guide_bg"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:id="@+id/viewMiddle"
+            android:layout_below="@+id/viewTop">
+            <ImageView
+                android:layout_width="62dp"
+                android:layout_height="49dp"
+                android:id="@+id/clipArea"
+                android:layout_toRightOf="@+id/clipLeft"
+                android:src="@drawable/img_yindao06"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/clipArea"
+                android:background="@color/guide_bg"/>
+            <View
+                android:layout_width="218dp"
+                android:id="@+id/clipLeft"
+                android:layout_height="wrap_content"
+                android:background="@color/guide_bg"/>
+        </RelativeLayout>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/viewMiddle"
+            android:background="@color/guide_bg"/>
+        <ImageView
+            android:layout_width="197dp"
+            android:layout_height="77dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/viewMiddle"
+            android:layout_marginTop="-12dp"
+            android:src="@drawable/img_yindao01"/>
+    </RelativeLayout>
+</RelativeLayout>
