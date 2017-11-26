@@ -69,23 +69,37 @@
         android:layout_marginBottom="95dp"
         android:layout_marginRight="10dp" />
 
+    <tv.niuwa.live.view.FadingScrollView
+        android:id="@+id/praise_scrollview"
+        android:layout_width="72dp"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="65.5dp"
+        android:layout_marginBottom="67.5dp"
+        android:overScrollMode="never"
+        android:requiresFadingEdge="vertical"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/praise_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="80dp" />
+        </LinearLayout>
+    </tv.niuwa.live.view.FadingScrollView>
+
     <RelativeLayout
-        android:layout_width="43.5dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="60dp"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="57dp"
         android:layout_marginRight="15dp"
         android:background="@drawable/btn_dianzan"
         android:id="@+id/btn_like"
         android:layout_gravity="bottom|right">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/like_num"
-            android:textSize="@dimen/text_size_12sp"
-            android:layout_marginTop="1dp"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/white"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -213,7 +227,7 @@
 
         <LinearLayout
             android:id="@+id/live_icon_large_ll"
-            android:layout_width="227dp"
+            android:layout_width="180dp"
             android:layout_height="36dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
@@ -249,14 +263,14 @@
                 android:id="@+id/live_audience_chat_iv"
                 android:layout_width="26dp"
                 android:layout_height="25dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="30dp"
                 android:src="@drawable/btn_chat" />
 
             <ImageView
                 android:id="@+id/live_audience_share_iv"
                 android:layout_width="26dp"
                 android:layout_height="25dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="30dp"
                 android:src="@drawable/btn_zhuanfa" />
 
             <!--<ImageView-->
@@ -266,12 +280,12 @@
             <!--android:layout_weight="1.0"-->
             <!--android:src="@drawable/icon_room_rec" />-->
 
-            <ImageView
-                android:id="@+id/live_audience_gift_iv"
-                android:layout_width="26dp"
-                android:layout_height="25dp"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/btn_gift" />
+            <!--<ImageView-->
+                <!--android:id="@+id/live_audience_gift_iv"-->
+                <!--android:layout_width="26dp"-->
+                <!--android:layout_height="25dp"-->
+                <!--android:layout_marginRight="20dp"-->
+                <!--android:src="@drawable/btn_gift" />-->
 
             <ImageView
                 android:id="@+id/live_audience_vote_iv"
@@ -691,7 +705,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/shop"
-                android:visibility="visible" />
+                android:visibility="gone" />
         </RelativeLayout>
 
     </LinearLayout>
@@ -805,478 +819,6 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"/>
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp">
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="64dp"
-                            android:src="@drawable/img_baobei01"
-                            android:id="@+id/baobei1"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="10dp"/>
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="初秋港味复古破洞镂空宽松短袖"
-                            android:layout_toRightOf="@id/baobei1"
-                            android:layout_alignTop="@+id/baobei1"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginTop="4dp"
-                            android:id="@+id/beobei1name"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="￥120"
-                            android:layout_below="@+id/beobei1name"
-                            android:layout_alignLeft="@+id/beobei1name"
-                            android:layout_marginTop="8dp"
-                            android:textColor="@color/common_top_bg"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-                        <TextView
-                            android:layout_width="70dp"
-                            android:layout_height="24dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentBottom="true"
-                            android:textColor="@color/black"
-                            android:text="加入购物车"
-                            android:gravity="center"
-                            android:textSize="@dimen/text_size_12sp"
-                            android:background="@drawable/btn_01"
-                            android:layout_marginRight="8dp"
-                            android:layout_marginBottom="8dp"/>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/grey"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginRight="4dp"/>
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp">
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="64dp"
-                            android:src="@drawable/img_baobei02"
-                            android:id="@+id/baobei2"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="10dp"/>
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="初秋港味复古破洞镂空宽松短袖"
-                            android:layout_toRightOf="@id/baobei2"
-                            android:layout_alignTop="@+id/baobei2"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginTop="4dp"
-                            android:id="@+id/beobei2name"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="￥120"
-                            android:textColor="@color/common_top_bg"
-                            android:layout_below="@+id/beobei2name"
-                            android:layout_alignLeft="@+id/beobei2name"
-                            android:layout_marginTop="8dp"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-                        <TextView
-                            android:layout_width="70dp"
-                            android:layout_height="24dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentBottom="true"
-                            android:textColor="@color/black"
-                            android:text="加入购物车"
-                            android:gravity="center"
-                            android:textSize="@dimen/text_size_12sp"
-                            android:background="@drawable/btn_01"
-                            android:layout_marginRight="8dp"
-                            android:layout_marginBottom="8dp"/>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/grey"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginRight="4dp"/>
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp">
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="64dp"
-                            android:src="@drawable/img_baobei03"
-                            android:id="@+id/baobei3"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="10dp"/>
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="初秋港味复古破洞镂空宽松短袖"
-                            android:layout_toRightOf="@id/baobei3"
-                            android:layout_alignTop="@+id/baobei3"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginTop="4dp"
-                            android:id="@+id/beobei3name"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="￥120"
-                            android:textColor="@color/common_top_bg"
-                            android:layout_below="@+id/beobei3name"
-                            android:layout_alignLeft="@+id/beobei3name"
-                            android:layout_marginTop="8dp"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-                        <TextView
-                            android:layout_width="70dp"
-                            android:layout_height="24dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentBottom="true"
-                            android:textColor="@color/black"
-                            android:text="加入购物车"
-                            android:gravity="center"
-                            android:textSize="@dimen/text_size_12sp"
-                            android:background="@drawable/btn_01"
-                            android:layout_marginRight="8dp"
-                            android:layout_marginBottom="8dp"/>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/grey"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginRight="4dp"/>
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp">
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="64dp"
-                            android:src="@drawable/img_baobei04"
-                            android:id="@+id/baobei4"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="10dp"/>
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="初秋港味复古破洞镂空宽松短袖"
-                            android:layout_toRightOf="@id/baobei4"
-                            android:layout_alignTop="@+id/baobei4"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginTop="4dp"
-                            android:id="@+id/beobei4name"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="￥120"
-                            android:textColor="@color/common_top_bg"
-                            android:layout_below="@+id/beobei4name"
-                            android:layout_alignLeft="@+id/beobei4name"
-                            android:layout_marginTop="8dp"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-                        <TextView
-                            android:layout_width="70dp"
-                            android:layout_height="24dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentBottom="true"
-                            android:textColor="@color/black"
-                            android:text="加入购物车"
-                            android:gravity="center"
-                            android:textSize="@dimen/text_size_12sp"
-                            android:background="@drawable/btn_01"
-                            android:layout_marginRight="8dp"
-                            android:layout_marginBottom="8dp"/>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/grey"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginRight="4dp"/>
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp">
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="64dp"
-                            android:src="@drawable/img_baobei05"
-                            android:id="@+id/baobei5"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="10dp"/>
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="初秋港味复古破洞镂空宽松短袖"
-                            android:layout_toRightOf="@id/baobei5"
-                            android:layout_alignTop="@+id/baobei5"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginTop="4dp"
-                            android:id="@+id/beobei5name"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="￥120"
-                            android:textColor="@color/common_top_bg"
-                            android:layout_below="@+id/beobei5name"
-                            android:layout_alignLeft="@+id/beobei5name"
-                            android:layout_marginTop="8dp"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-                        <TextView
-                            android:layout_width="70dp"
-                            android:layout_height="24dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentBottom="true"
-                            android:textColor="@color/black"
-                            android:text="加入购物车"
-                            android:gravity="center"
-                            android:textSize="@dimen/text_size_12sp"
-                            android:background="@drawable/btn_01"
-                            android:layout_marginRight="8dp"
-                            android:layout_marginBottom="8dp"/>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/grey"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginRight="4dp"/>
-
-                    </RelativeLayout>
-
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp">
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="64dp"
-                            android:src="@drawable/img_baobei06"
-                            android:id="@+id/baobei6"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="10dp"/>
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="初秋港味复古破洞镂空宽松短袖"
-                            android:layout_toRightOf="@id/baobei6"
-                            android:layout_alignTop="@+id/baobei6"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginTop="4dp"
-                            android:id="@+id/beobei6name"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="￥120"
-                            android:textColor="@color/common_top_bg"
-                            android:layout_below="@+id/beobei6name"
-                            android:layout_alignLeft="@+id/beobei6name"
-                            android:layout_marginTop="8dp"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-                        <TextView
-                            android:layout_width="70dp"
-                            android:layout_height="24dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentBottom="true"
-                            android:textColor="@color/black"
-                            android:text="加入购物车"
-                            android:gravity="center"
-                            android:textSize="@dimen/text_size_12sp"
-                            android:background="@drawable/btn_01"
-                            android:layout_marginRight="8dp"
-                            android:layout_marginBottom="8dp"/>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/grey"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginRight="4dp"/>
-
-                    </RelativeLayout>
-
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp">
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="64dp"
-                            android:src="@drawable/img_baobei07"
-                            android:id="@+id/baobei7"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="10dp"/>
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="初秋港味复古破洞镂空宽松短袖"
-                            android:layout_toRightOf="@id/baobei7"
-                            android:layout_alignTop="@+id/baobei7"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginTop="4dp"
-                            android:id="@+id/beobei7name"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="￥120"
-                            android:textColor="@color/common_top_bg"
-                            android:layout_below="@+id/beobei7name"
-                            android:layout_alignLeft="@+id/beobei7name"
-                            android:layout_marginTop="8dp"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-                        <TextView
-                            android:layout_width="70dp"
-                            android:layout_height="24dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentBottom="true"
-                            android:textColor="@color/black"
-                            android:text="加入购物车"
-                            android:gravity="center"
-                            android:textSize="@dimen/text_size_12sp"
-                            android:background="@drawable/btn_01"
-                            android:layout_marginRight="8dp"
-                            android:layout_marginBottom="8dp"/>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/grey"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginRight="4dp"/>
-
-                    </RelativeLayout>
-
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp">
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="64dp"
-                            android:src="@drawable/img_baobei08"
-                            android:id="@+id/baobei8"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="10dp"/>
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="初秋港味复古破洞镂空宽松短袖"
-                            android:layout_toRightOf="@id/baobei8"
-                            android:layout_alignTop="@+id/baobei8"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginTop="4dp"
-                            android:id="@+id/beobei8name"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="￥120"
-                            android:textColor="@color/common_top_bg"
-                            android:layout_below="@+id/beobei8name"
-                            android:layout_alignLeft="@+id/beobei8name"
-                            android:layout_marginTop="8dp"
-                            android:textSize="@dimen/text_size_12sp"
-                            />
-                        <TextView
-                            android:layout_width="70dp"
-                            android:layout_height="24dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentBottom="true"
-                            android:textColor="@color/black"
-                            android:text="加入购物车"
-                            android:gravity="center"
-                            android:textSize="@dimen/text_size_12sp"
-                            android:background="@drawable/btn_01"
-                            android:layout_marginRight="8dp"
-                            android:layout_marginBottom="8dp"/>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/grey"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginRight="4dp"/>
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-            </ScrollView>
 
         </LinearLayout>
     </RelativeLayout>

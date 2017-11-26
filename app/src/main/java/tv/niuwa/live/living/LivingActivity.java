@@ -116,6 +116,7 @@ import tv.niuwa.live.utils.Api;
 import tv.niuwa.live.utils.DialogEnsureUtiles;
 import tv.niuwa.live.utils.Util;
 import tv.niuwa.live.view.BubbleView;
+import tv.niuwa.live.view.FadingScrollView;
 import tv.niuwa.live.view.LotteryDialog;
 import tv.niuwa.live.view.SFProgrssDialog;
 
@@ -322,6 +323,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     private VoteFragment mVoteFragment;
     private Handler myHandler;
 
+    private PraiseManager mPraiseManager;
     //漂浮心
     TimerTask task = new TimerTask() {
         public void run() {
@@ -366,8 +368,6 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     private String guard_status = "0";
     private String channel_like = "0";
 
-    @Bind(R.id.like_num)
-    TextView mLikeNum;
     Runnable dataRunnable = new Runnable() {
         @Override
         public void run() {
@@ -386,7 +386,6 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                             if(TextUtils.isEmpty(channel_like)) {
                                 channel_like = "0";
                             }
-                            mLikeNum.setText(channel_like);
                             mLiveUserOnlineNum.setText(data.getString("online_num"));
                             dataHandler.postDelayed(dataRunnable, 2000);
                         }
@@ -1013,13 +1012,13 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
     }
 
     //@OnClick(R.id.live_gift)
-    @OnClick(R.id.live_audience_gift_iv)
-    public void liveGift(View view) {
-        mLivingDanmuContainer.setVisibility(View.GONE);
-        mLiveBottomBtn.setVisibility(View.GONE);
-        //mGiftContainer.setVisibility(View.VISIBLE);
-        showGift();
-    }
+//    @OnClick(R.id.live_audience_gift_iv)
+//    public void liveGift(View view) {
+//        mLivingDanmuContainer.setVisibility(View.GONE);
+//        mLiveBottomBtn.setVisibility(View.GONE);
+//        //mGiftContainer.setVisibility(View.VISIBLE);
+//        showGift();
+//    }
 
 //    @OnClick(R.id.live_audience_rec_iv)
 //    public void liveRecord(View view) {
@@ -1561,6 +1560,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
         });
 
         mDanmaManager = new DanmaManager(this,mDanmakuView);
+        mPraiseManager = new PraiseManager(this, (FadingScrollView) findViewById(R.id.praise_scrollview));
     }
 
 
@@ -1791,7 +1791,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             jo.put("text", content);
             jo.put("message", new Gson().toJson(model));
             jo.put("token", token);
-
+            mDanmaManager.addChatDanma(model.getUserId(), model.getUserName(), model.getContent());
             Api.sendDanmuNew(this, jo, new OnRequestDataListener() {
                 @Override
                 public void requestSuccess(int code, JSONObject data) {
@@ -2015,14 +2015,18 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             model.setUserId(temp.getString("userId"));
             model.setAvatar(temp.getString("avatar"));
             Log.d(TAG, "zzk" + model.getType() + model.getUserId() + model.getUserName() + model.getContent());
-            if (!model.getType().equals("9") && !model.getType().equals("10")) {
-                mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
-            }
             switch (model.getType()) {
+                case "1":
+                    mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
+                    break;
                 case "4":
-                    clickHeart();
+//                    clickHeart();
+                    if(mPraiseManager != null) {
+                        mPraiseManager.addDanmaView(model);
+                    }
                     break;
                 case "7":
+                    mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
                     break;
                 case "6":
                     //系统消息  -  进入房间
@@ -2035,6 +2039,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     user.setUser_nicename(model.getUserName());
                     mUserItems.add(user);
                     mOnlineUserAdapter.notifyDataSetChanged();
+                    mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
                     break;
                 case "5":
                     //系统消息  -  离开房间
@@ -2042,6 +2047,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     utemp.setId(model.getUserId());
                     mUserItems.remove(utemp);
                     mOnlineUserAdapter.notifyDataSetChanged();
+                    mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
                     break;
                 case "2":
                     //toast("显示礼物画面");
@@ -2054,6 +2060,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                     gift.setContinuous(giftO.getString("continuous"));
                     String num = (null == giftO.getString("continuousNum")) ? "1" : giftO.getString("continuousNum");
                     showGiftAnim1(LivingActivity.this, model, gift, Integer.parseInt(num));
+                    mDanmaManager.addChatDanma(model.getUserId(),model.getUserName(),model.getContent());
                     break;
                 case "13":
                     JSONArray array = temp.getJSONArray("reward");
@@ -2066,6 +2073,10 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                         }
                     }
                     showLotteryDialog(sb.toString());
+                case "14":
+                    hideLotteryDialog();
+                    break;
+                case "15":
                     break;
 //	);
             }
@@ -2076,16 +2087,26 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
 
     private void showLotteryDialog(String users) {
         LogUtils.d(TAG, "lottery users->" + users);
-        if(mLotteryDialog == null) {
-            mLotteryDialog = new LotteryDialog.Builder(this).create(users);
-            mLotteryDialog.show();
+        if(mLotteryDialog != null) {
+            mLotteryDialog.dismiss();
+            mLotteryDialog = null;
+        }
 
-            mLotteryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                @Override
-                public void onDismiss(DialogInterface dialog) {
-                    mLotteryDialog = null;
-                }
-            });
+        mLotteryDialog = new LotteryDialog.Builder(this).create(users);
+        mLotteryDialog.show();
+
+        mLotteryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                mLotteryDialog = null;
+            }
+        });
+    }
+
+    private void hideLotteryDialog() {
+        if(mLotteryDialog != null && mLotteryDialog.isShowing()) {
+            mLotteryDialog.dismiss();
+            mLotteryDialog = null;
         }
     }
 

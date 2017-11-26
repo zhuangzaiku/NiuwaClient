@@ -31,6 +31,11 @@ public class VoteAdapter extends BaseAdapter {
     private List<VoteListItem> mVoteList = new ArrayList<>();
     private static final int[] VOTE_BG = new int[]{R.drawable.img_piao01, R.drawable.img_piao02, R.drawable.img_piao03,
             R.drawable.img_piao04, R.drawable.img_piao05, };
+    private int mTotalNum;
+
+    public void setmTotalNum(int mTotalNum) {
+        this.mTotalNum = mTotalNum;
+    }
 
     public void setVoteList(List<VoteListItem> data) {
         mVoteList.clear();
@@ -67,41 +72,31 @@ public class VoteAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         final VoteListItem item = (VoteListItem) getItem(i);
         ViewHolder viewHolder = null;
-        view = LayoutInflater.from(mContext).inflate(R.layout.item_vote, null);
-        viewHolder = new ViewHolder();
-        viewHolder.bg = (ShapedImageView) view.findViewById(R.id.vote_bg);
-        viewHolder.voteName = (TextView) view.findViewById(R.id.vote_name);
-        viewHolder.voteNum = (TextView) view.findViewById(R.id.vote_num);
-        view.setTag(viewHolder);
-
-        float[] percents = getPercents();
-        Log.d(TAG,i + "---" + VOTE_BG[i] + "--" + percents[i] + item.getVoteOpName());
-        viewHolder.bg.setImageResource(VOTE_BG[i]);
-        viewHolder.bg.setPercent(percents[i]);
-        viewHolder.voteName.setText(item.getVoteOpName());
-        if(item.getVoteNum() > 999) {
-            viewHolder.voteNum.setTextSize(8);
+        if(view == null) {
+            view = LayoutInflater.from(mContext).inflate(R.layout.item_vote, null);
+            viewHolder = new ViewHolder();
+            viewHolder.bg = (ShapedImageView) view.findViewById(R.id.vote_bg);
+            viewHolder.voteName = (TextView) view.findViewById(R.id.vote_name);
+            viewHolder.voteNum = (TextView) view.findViewById(R.id.vote_num);
+            view.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) view.getTag();
         }
-        viewHolder.voteNum.setText(String.valueOf(item.getVoteNum()));
+
+
+        viewHolder.bg.setImageResource(VOTE_BG[i]);
+        Log.d(TAG,"num" + i + "->" + item.getVoteNum() + "----total->" + mTotalNum);
+        float percent = 100;
+        if(mTotalNum != 0) {
+            percent = item.getVoteNum() * 100.f / mTotalNum;
+        }
+
+        Log.d(TAG,"percent->" + percent);
+        viewHolder.bg.setPercent(percent);
+        viewHolder.voteName.setText(item.getVoteOpName());
+        viewHolder.voteNum.setText(String.format(mContext.getString(R.string.percents),String.valueOf((int)percent)));
         return view;
     }
 
-    private float[] getPercents() {
-        int length = mVoteList.size();
-        float[] ret = new float[length];
-        int max = 0;
-        for(int i = 0;i < length; i++) {
-            VoteListItem item = mVoteList.get(i);
-            if(item.getVoteNum() > max) {
-                max = item.getVoteNum();
-            }
-        }
-        if(max != 0 ) {
-            for (int i = 0; i < length; i++) {
-                VoteListItem item = mVoteList.get(i);
-                ret[i] = (float)item.getVoteNum() / max * 100;
-            }
-        }
-        return ret;
-    }
+
 }

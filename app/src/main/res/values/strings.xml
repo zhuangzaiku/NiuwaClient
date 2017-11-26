@@ -69,4 +69,6 @@
     <string name="upload_size_tip">图片大小不得超过2M</string>
     <string name="upload_choose_tip">请选择照片</string>
     <string name="commit">提交</string>
+
+    <string name="percents">%s%%</string>
 </resources>

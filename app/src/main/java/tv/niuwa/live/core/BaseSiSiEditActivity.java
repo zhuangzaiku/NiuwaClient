@@ -1,5 +1,7 @@
 package tv.niuwa.live.core;
 
+import android.widget.Toast;
+
 import com.smart.androidutils.activity.BaseEditActivity;
 
 import tv.niuwa.live.R;
@@ -12,6 +14,6 @@ public abstract class BaseSiSiEditActivity extends BaseEditActivity {
 
     @Override
     public void toast(String s) {
-        ToastHelper.makeText(this, s, ToastHelper.LENGTH_SHORT).setAnimation(R.style.Animation_Toast).show();
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }
 }

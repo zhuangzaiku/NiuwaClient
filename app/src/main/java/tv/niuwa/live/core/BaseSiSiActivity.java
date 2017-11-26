@@ -1,5 +1,7 @@
 package tv.niuwa.live.core;
 
+import android.widget.Toast;
+
 import com.smart.androidutils.activity.BaseActivity;
 
 import tv.niuwa.live.R;
@@ -14,7 +16,7 @@ public abstract class BaseSiSiActivity extends BaseActivity {
     public void toast(String s) {
 //        super.toast(s);
 //        ToastUtils.makeText(this, s).show();
-        ToastHelper.makeText(this, s, ToastHelper.LENGTH_SHORT).setAnimation(R.style.Animation_Toast).show();
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }
 
 }
