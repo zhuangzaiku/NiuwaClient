@@ -888,30 +888,31 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
             RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) mPauseBtn.getLayoutParams();
             if (isPaused) {
 
-                if(TextUtils.isEmpty(ksyMediaPlayer.getDataSource())) {
-                    if (null != mDataSource) {
-                        //loading_dialog = SFProgrssDialog.show(LivingActivity.this, "");
-                        try {
-                            ksyMediaPlayer.setDataSource(mDataSource);
-                            ksyMediaPlayer.prepareAsync();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                } else {
-                    ksyMediaPlayer.start();
-                }
-                mPauseCover.setVisibility(View.GONE);
+//                if(TextUtils.isEmpty(ksyMediaPlayer.getDataSource())) {
+//                    if (null != mDataSource) {
+//                        //loading_dialog = SFProgrssDialog.show(LivingActivity.this, "");
+//                        try {
+//                            ksyMediaPlayer.setDataSource(mDataSource);
+//                            ksyMediaPlayer.prepareAsync();
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                } else {
+//                    ksyMediaPlayer.start();
+//                }
+//                mPauseCover.setVisibility(View.GONE);
                 mPauseLayout.setBackgroundResource(R.drawable.img_kaiguan01);
                 lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
                 lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 0);
+                toast(getResources().getString(R.string.video_not_available));
             } else {
                 mPauseCover.setVisibility(View.VISIBLE);
                 mPauseLayout.setBackgroundResource(R.drawable.img_kaiguan02);
                 lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 0);
                 lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 
-                ksyMediaPlayer.pause();
+//                ksyMediaPlayer.pause();
             }
             mPauseBtn.setLayoutParams(lp);
             isPaused = !isPaused;
@@ -2130,6 +2131,7 @@ public class LivingActivity extends BaseActivity implements TextureView.SurfaceT
                         }
                     }
                     showLotteryDialog(sb.toString());
+                    break;
                 case "14":
                     hideLotteryDialog();
                     break;

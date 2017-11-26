@@ -72,4 +72,6 @@
     <string name="commit">提交</string>
 
     <string name="percents">%s%%</string>
+    <string name="video_not_available">视频直播暂未开放</string>
+
 </resources>

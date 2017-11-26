@@ -56,13 +56,13 @@ public class LotteryDialog extends Dialog {
             // instantiate the dialog with the custom Theme
             final LotteryDialog dialog = new LotteryDialog(context, R.style.Dialog);
             Window window = dialog.getWindow();
-//            if(window != null) {
-//                window.clearFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND | WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-//                WindowManager.LayoutParams  attrs = window.getAttributes();
-//                if(attrs != null) {
-//                    attrs.gravity = Gravity.CENTER_VERTICAL | Gravity.LEFT;
-//                }
-//            }
+            if(window != null) {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND | WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                WindowManager.LayoutParams  attrs = window.getAttributes();
+                if(attrs != null) {
+                    attrs.gravity = Gravity.CENTER_VERTICAL | Gravity.LEFT;
+                }
+            }
             View layout = inflater.inflate(R.layout.dialog_lottery, null);
             dialog.addContentView(layout, new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
