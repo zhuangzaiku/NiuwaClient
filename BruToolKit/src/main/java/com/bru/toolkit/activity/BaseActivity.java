@@ -27,8 +27,7 @@ public abstract class BaseActivity extends FragmentActivity {
     protected String TAG = getClass().getSimpleName();
 
     protected int eventCode = -1;
-    protected Handler handler = new Handler() {
-    };
+    protected Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle bundle) {

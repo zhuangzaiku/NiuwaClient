@@ -4,8 +4,6 @@ import android.widget.Toast;
 
 import com.smart.androidutils.activity.BaseActivity;
 
-import tv.niuwa.live.R;
-import tv.niuwa.live.utils.ToastHelper;
 
 /**
  * Created by fengjh on 16/9/12.
